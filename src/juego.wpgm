@@ -1,8 +1,41 @@
 import wollok.game.*
-import pepita.*
+import jugador.*
+import objetosEntorno.*
+import enemigos.*
+import movimientoPersonaje.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.title("Infiltrados")
+	game.width(200)
+	game.height(100)
+	game.cellSize(10)
+
+	game.addVisual(puerta)
+	game.addVisual(paredGrande)
+	game.addVisual(paredChica)
+	game.addVisual(fondoCastillo)
+	game.addVisual(vigilanteJoven)
+	game.addVisual(vigilanteViejo)
+	game.addVisual(guardia)
+	game.addVisual(jugador)
+	game.addVisual(capaDeInvisibilidad)
+	game.addVisual(pildoraDeAltura)
+	game.addVisual(pocionDeVida)
+	game.addVisual(veneno)
+	game.addVisual(zapatosDeVelocidad)
+	game.addVisual(arma)
+	
+	
+	keyboard.up().onPressDo({jugador.mover(arriba)})
+	keyboard.down().onPressDo({jugador.mover(abajo)})
+	keyboard.left().onPressDo({jugador.mover(izquierda)})
+	keyboard.right().onPressDo({jugador.mover(derecha)})
+	//keyboard.a().onPressDo({jugador.atacar(personaje)})
+	//keyboard.s().onPressDo({jugador.agarrar(objeto)})
+	//keyboard.d().onPressDo({jugador.usar(objeto)})
+
+	game.whenCollideDo(jugador, {personaje => personaje.atacar(jugador)})
+	
 	game.start()
+	
 }
