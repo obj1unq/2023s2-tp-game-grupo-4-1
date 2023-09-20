@@ -6,36 +6,42 @@ import movimientoPersonaje.*
 
 program juego {
 	game.title("Infiltrados")
-	game.width(200)
-	game.height(100)
+	game.width(102)	// Ancho y alto dividio por la cantidad de celdas
+	game.height(76) // 
 	game.cellSize(10)
+	
+	game.addVisual(fondoCastillo)
+	game.addVisualCharacter(jugador)
+	game.showAttributes(jugador)
 
-	game.addVisual(puerta)
-	game.addVisual(paredGrande)
+	/* game.addVisual(paredGrande)
 	game.addVisual(paredChica)
 	game.addVisual(fondoCastillo)
 	game.addVisual(vigilanteJoven)
 	game.addVisual(vigilanteViejo)
 	game.addVisual(guardia)
-	game.addVisual(jugador)
 	game.addVisual(capaDeInvisibilidad)
 	game.addVisual(pildoraDeAltura)
 	game.addVisual(pocionDeVida)
 	game.addVisual(veneno)
 	game.addVisual(zapatosDeVelocidad)
 	game.addVisual(arma)
-	
-	
+	*/
+
 	keyboard.up().onPressDo({jugador.mover(arriba)})
 	keyboard.down().onPressDo({jugador.mover(abajo)})
 	keyboard.left().onPressDo({jugador.mover(izquierda)})
-	keyboard.right().onPressDo({jugador.mover(derecha)})
-	//keyboard.a().onPressDo({jugador.atacar(personaje)})
-	//keyboard.s().onPressDo({jugador.agarrar(objeto)})
-	//keyboard.d().onPressDo({jugador.usar(objeto)})
-
-	game.whenCollideDo(jugador, {personaje => personaje.atacar(jugador)})
-	
+	keyboard.right().onPressDo({jugador.mover(derecha)})	
 	game.start()
+	
+	
+	/*
+	 * Determinar el tamaño de la celdas
+	 * Calibrar el movimiento 
+	 * 
+	 * 
+	 * OBJETOS 32X32 
+	 * PJ 64X64
+	 */
 	
 }

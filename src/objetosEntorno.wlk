@@ -35,7 +35,7 @@ object arma {
 
 object puerta {
 	
-	method imagen(){return "puerta-"+ self.estadoImagen()+".png"}
+	method image(){return "puerta-"+ self.estadoImagen()+".png"}
 	method position(){ return game.at(200,50)}
 	method estadoImagen(){
 		return if (guardia.estado()=="muerto"&& jugador.estaEnLaPuerta()) "abierta"
@@ -55,8 +55,8 @@ object paredChica {
 
 object fondoCastillo {
 	
-	method image(){return "castillo.jpeg"}
-	method position(){return game.at(game.width(), 1)}
+	method image(){return "piso.png"}
+	method position(){return game.at(0, 0)}
 	
 }
 	
