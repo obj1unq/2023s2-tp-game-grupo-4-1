@@ -16,21 +16,26 @@ object jugador {
 		if (tablero.pertenece(self.position())){
 			self.position(direccion.siguiente(self.position()))}
 	}
-	method estaEnLaPuerta(){return self.position() == puerta.position()}
-	method tomarPocion(){vida+=10}
-	method atacar(personaje){
-		 personaje.recibirAtaque(poderDeAtaque)
-	}
-	method usar(objeto){
-		
-	}
-	method agarrar(objeto){}
-	method valorPoderDeAtaque(){}
 	
-	method morir(){if (vida <= 0) estado = "muerto"}
+	method estaEnLaPuerta() = self.position() == puerta.position()
+	
+	method tomarPocion() { vida+=10 }
+	
+	method atacar(personaje){ personaje.recibirAtaque(poderDeAtaque) }
+	
+	method usar(objeto){/**/}
+	
+	method agarrar(objeto){/**/}
+
+	method valorPoderDeAtaque(){/**/}
+	
+	method morir(){if (vida <= 0) estado = "muerto"} // evalúa la muerte pero no necesariamente muere 
+	
 	method recibirAtaque(fuerzaDeAtaque){
 		vida -= fuerzaDeAtaque
-		poderDeAtaque-=1}
-	method estado(){return estado}
+		poderDeAtaque-=1
+	}
+		
+	method estado() = estado
 	
 }

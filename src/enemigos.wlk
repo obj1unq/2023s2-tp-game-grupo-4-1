@@ -7,12 +7,10 @@ object vigilanteJoven {
 	var vida = 5
 	var poderDeAtaque = 5
 
-	method image(){return "vigilanteJoven.png"}
+	method image() = "vigilanteJoven.png"
 	
-	method estado(){
-		return if (vida <= 0)  "muerto"
-		else "vigilando"
-	}
+	method estado() = if (vida <= 0) "muerto" else "vigilando"
+
 	
 	method recibirAtaque(personaje){
 		vida -= personaje.poderDeAtaque()
@@ -29,12 +27,10 @@ object vigilanteViejo{
 	var vida = 5
 	var poderDeAtaque = 5
 	
-	method image(){return "vigilanteViejo.png"}
-		
-	method estado(){
-		return if (vida <= 0)  "muerto"
-		else "vigilando"
-	}
+	method image() = "vigilanteViejo.png"
+	
+	method estado()=  if (vida <= 0)  "muerto" else "vigilando"
+	
 	
 	method recibirAtaque(personaje){
 		vida -= personaje.poderDeAtaque()
@@ -56,6 +52,7 @@ object guardia{
 		return if (vida <= 0)  "muerto"
 		else "vigilando"
 	}
+	
 	method recibirAtaque(personaje){
 		vida -= personaje.poderDeAtaque()
 	}
@@ -70,21 +67,21 @@ object visionDeVigilanteViejo{
 	var property position
 	const origen = vigilanteViejo 
 	
-	method image(){return "visionViejo.png"}
+	method image() = "visionViejo.png"
 	
 }
 object visionDeVigilanteJoven{
 	var property position
 	const origen = vigilanteJoven
 	
-	method image(){return "visionJoven.png"}
+	method image() = "visionJoven.png"
 	
 }
 object visionDeGuardia{
 	var property position
 	const origen = guardia
 	
-	method image(){return "visionGuardia.png"}
+	method image() = "visionGuardia.png"
 	
 }
 

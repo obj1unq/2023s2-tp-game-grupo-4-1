@@ -7,10 +7,19 @@ import enemigos.*
 
 //Direcciones
 
-object arriba {method siguiente(position){ return position.up(1)}}
-object abajo {method siguiente(position){	return position.down(1)}}
-object izquierda {method siguiente(position){ return position.left(1)}}
-object derecha {method siguiente(position){ return position.right(1)}}
+
+object arriba {
+	method siguiente(position) =  position.up(1)
+}
+object abajo {
+	method siguiente(position) = position.down(1)
+}
+object izquierda {
+	method siguiente(position) = position.left(1)
+}
+object derecha {
+	method siguiente(position) = position.right(1)
+}
 
 object tablero {
 	method pertenece(_position){ 
