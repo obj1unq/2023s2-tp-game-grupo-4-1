@@ -5,12 +5,18 @@ import enemigos.*
 import movimientoPersonaje.*
 
 program juego {
+	/*
+	 * Resolucion 4:3 de 960x720
+	 * Tamaño de las imagenes 96x72
+	 * 
+	 */
 	game.title("Infiltrados")
-	game.width(200)
-	game.height(100)
+	game.width(96) 
+	game.height(72)
 	game.cellSize(10)
-
-	game.addVisual(puerta)
+	game.addVisualCharacter(jugador)
+	game.addVisual(vigilanteJoven)
+/*
 	game.addVisual(paredGrande)
 	game.addVisual(paredChica)
 	game.addVisual(fondoCastillo)
@@ -30,11 +36,12 @@ program juego {
 	keyboard.down().onPressDo({jugador.mover(abajo)})
 	keyboard.left().onPressDo({jugador.mover(izquierda)})
 	keyboard.right().onPressDo({jugador.mover(derecha)})
-	//keyboard.a().onPressDo({jugador.atacar(personaje)})
-	//keyboard.s().onPressDo({jugador.agarrar(objeto)})
-	//keyboard.d().onPressDo({jugador.usar(objeto)})
-
-	game.whenCollideDo(jugador, {personaje => personaje.atacar(jugador)})
+	keyboard.a().onPressDo({jugador.atacar(personaje)})
+	keyboard.s().onPressDo({jugador.agarrar(objeto)})
+	keyboard.d().onPressDo({jugador.usar(objeto)})
+ */
+ 
+ 	game.onTick(100, "enemyMovement", {vigilanteJoven.mover()})
 	
 	game.start()
 	
