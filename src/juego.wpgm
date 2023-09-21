@@ -16,6 +16,7 @@ program juego {
 	game.cellSize(10)
 	game.addVisualCharacter(jugador)
 	game.addVisual(vigilanteJoven)
+	game.onTick(50, "movimientoDelJugador", {})
 /*
 	game.addVisual(paredGrande)
 	game.addVisual(paredChica)
@@ -40,8 +41,29 @@ program juego {
 	keyboard.s().onPressDo({jugador.agarrar(objeto)})
 	keyboard.d().onPressDo({jugador.usar(objeto)})
  */
- 
+ 	keyboard.d().onPressDo({
+ 		game.removeTickEvent("movimientoDelJugador")
+ 		game.onTick(50, "movimientoDelJugador", {
+ 			jugador.mover(derecha)
+ 		})
+ 	})
+ 	keyboard.s().onPressDo({
+ 		game.removeTickEvent("movimientoDelJugador")
+ 		game.onTick(50, "movimientoDelJugador", {
+ 			jugador.mover(abajo)
+ 		})
+ 	})
+ 	keyboard.w().onPressDo({
+ 		game.removeTickEvent("movimientoDelJugador")
+ 		game.onTick(50, "movimientoDelJugador", {jugador.mover(arriba)})
+ 	})
+ 	keyboard.a().onPressDo({
+ 		game.removeTickEvent("movimientoDelJugador")
+ 		game.onTick(50, "movimientoDelJugador", {jugador.mover(izquierda)})
+ 	})
  	game.onTick(50, "enemyMovement", {vigilanteJoven.mover()})
+	
+	keyboard.space()
 	
 	game.start()
 	

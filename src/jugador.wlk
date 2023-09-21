@@ -1,17 +1,16 @@
 import wollok.game.*
 import enemigos.*
 import movimientoPersonaje.*
-
 object jugador {
 	var property velocidad = 5 
-    var property estado = "normal"
+    var property estado = normal
 	var property poderDeAtaque = 5 
-	var property position = game.at(1,1)
+	var property position = game.center()
 	var property vida = 10 
 	
 	
 	method mover(direccion){
-		
+		estado = direccion.estado()
 		if (tablero.pertenece(self.position())){
 			self.position(direccion.siguiente(self.position()))}
 	}
@@ -36,6 +35,6 @@ object jugador {
 		
 	method estado() = estado
 	
-	method image()="jugador.png"
+	method image()=estado.image()
 	
 }
