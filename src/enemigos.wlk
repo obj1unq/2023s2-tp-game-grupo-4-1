@@ -5,7 +5,7 @@ import movimientoPersonaje.*
 
 object vigilanteJoven {
 	const objetivo = jugador
-	const recorrido = recorridoLargo
+	const recorrido = recorrerBorde
 	var vida = 5
 	var poderDeAtaque = 5
 	var property position = game.at(0,1)

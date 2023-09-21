@@ -41,7 +41,7 @@ program juego {
 	keyboard.d().onPressDo({jugador.usar(objeto)})
  */
  
- 	game.onTick(100, "enemyMovement", {vigilanteJoven.mover()})
+ 	game.onTick(50, "enemyMovement", {vigilanteJoven.mover()})
 	
 	game.start()
 	

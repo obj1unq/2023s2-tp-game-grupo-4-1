@@ -24,3 +24,15 @@ object retrocederEnY {
 		return posicionActual.y()-1
 	} 
 }
+
+object avanceNuloEnY{
+	method proximaPosicion(posicionActual){
+		return posicionActual.y()
+	} 
+}
+
+object avanceNuloEnX{
+	method proximaPosicion(posicionActual){
+		return posicionActual.x()
+	} 
+}

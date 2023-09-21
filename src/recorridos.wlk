@@ -4,7 +4,7 @@ object recorridoLargo {
 	const maximoDeX 	 = 86
 	const maximoDeY 	 = 62
 	var movimientoEnX    = avanzarEnX  
-	var movimientoEnY    = avanzarEnY  
+	var movimientoEnY    = avanceNuloEnY  
 	method siguientePaso(posicionActual){
 		
 		self.actualizarEstado(posicionActual)
@@ -19,9 +19,16 @@ object recorridoLargo {
 		if( posicionActual.x() > maximoDeX ){
 			movimientoEnX = retrocederEnX
 		}
+		if(posicionActual.x() == 0){
+			movimientoEnX = avanzarEnX
+		}
 		
 		if( posicionActual.y() > maximoDeY ){
 			movimientoEnY = retrocederEnY
+		}
+		
+		if( posicionActual.y() == 0){
+			movimientoEnY = avanzarEnY
 		}
 	}
 	
