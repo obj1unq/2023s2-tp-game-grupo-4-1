@@ -1,13 +1,14 @@
 import wollok.game.*
-import objetosEntorno.*
+import recorridos.*
 import jugador.*
 import movimientoPersonaje.*
 
 object vigilanteJoven {
 	const objetivo = jugador
+	const recorrido = recorridoLargo
 	var vida = 5
 	var poderDeAtaque = 5
-	var property position = game.center() 
+	var property position = game.at(0,1)
 	method image() = "test_enemy_sprite.png"
 	
 	method estado() = if (vida <= 0) "muerto" else "vigilando"
@@ -23,7 +24,7 @@ object vigilanteJoven {
 	}
 	
 	method decidirProximoPaso(){
-		return objetivo.position()
+		return recorrido.siguientePaso(position)
 	}
 	method mover(){
 		self.position(

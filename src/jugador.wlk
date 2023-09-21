@@ -1,5 +1,4 @@
 import wollok.game.*
-import objetosEntorno.*
 import enemigos.*
 import movimientoPersonaje.*
 
@@ -17,7 +16,6 @@ object jugador {
 			self.position(direccion.siguiente(self.position()))}
 	}
 	
-	method estaEnLaPuerta() = self.position() == puerta.position()
 	
 	method tomarPocion() { vida+=10 }
 	
