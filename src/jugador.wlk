@@ -38,4 +38,6 @@ object jugador {
 		
 	method estado() = estado
 	
+	method image()="jugador.png"
+	
 }

@@ -4,10 +4,11 @@ import jugador.*
 import movimientoPersonaje.*
 
 object vigilanteJoven {
+	const objetivo = jugador
 	var vida = 5
 	var poderDeAtaque = 5
-
-	method image() = "vigilanteJoven.png"
+	var property position = game.center() 
+	method image() = "test_enemy_sprite.png"
 	
 	method estado() = if (vida <= 0) "muerto" else "vigilando"
 
@@ -21,6 +22,14 @@ object vigilanteJoven {
 		personaje.recibirAtaque(self)
 	}
 	
+	method decidirProximoPaso(){
+		return objetivo.position()
+	}
+	method mover(){
+		self.position(
+			self.decidirProximoPaso()
+		)
+	}
 }
 
 object vigilanteViejo{
