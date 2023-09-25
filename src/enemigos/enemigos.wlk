@@ -87,5 +87,5 @@ package enemigos {
 		method image() = "visionGuardia.png"
 		
 	}
-
+ //prueba
 }
