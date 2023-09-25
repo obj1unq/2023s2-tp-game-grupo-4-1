@@ -2,14 +2,12 @@ import wollok.game.*
 import recorridos.*
 package enemigos {
 	object vigilanteJoven {
-		const recorrido = recorrerBorde
+		const recorrido = recorrerHastaColisionar
 		var vida = 5
 		var poderDeAtaque = 5
 		var property position = game.at(0,1)
 		method image() = "test_enemy_sprite.png"
-		
 		method estado() = if (vida <= 0) "muerto" else "vigilando"
-	
 		
 		method recibirAtaque(personaje){
 			vida -= personaje.poderDeAtaque()
@@ -20,13 +18,12 @@ package enemigos {
 			personaje.recibirAtaque(self)
 		}
 		
-		method decidirProximoPaso(){
-			return recorrido.siguientePaso(position)
+		method cambiarDireccion(){
+			return recorrido.siguienteDireccion()
 		}
-		method mover(){
-			self.position(
-				self.decidirProximoPaso()
-			)
+		
+		method avanzar(){
+			position = recorrido.position(self)
 		}
 	}
 	
@@ -63,7 +60,6 @@ package enemigos {
 		method recibirAtaque(personaje){
 			vida -= personaje.poderDeAtaque()
 		}
-	
 		
 		method atacar(personaje){
 			personaje.recibirAtaque(self)

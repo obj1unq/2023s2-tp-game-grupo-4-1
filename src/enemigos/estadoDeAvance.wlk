@@ -1,14 +1,22 @@
+import wollok.game.*
+
 object avanzarEnX {
 	
-	method proximaPosicion(posicionActual){
-		return posicionActual.x() + 1
+	method position(entidad){
+		return game.at(
+			entidad.position().x() + 1,
+			entidad.position().y() 
+		)
 	}
 }
 
 object retrocederEnX {
 	
-	method proximaPosicion(posicionActual){
-		return posicionActual.x()-1
+	method position(entidad){
+		return game.at(
+			entidad.position().x() - 1,
+			entidad.position().y() 
+		)
 	}
 }
 
