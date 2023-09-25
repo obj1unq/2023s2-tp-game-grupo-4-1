@@ -3,28 +3,37 @@ import jugador.*
 import objetosEntorno.*
 import enemigos.*
 import movimientoPersonaje.*
+import estados.*
 
 program juego {
 	game.title("Infiltrados")
-	game.width(200)
-	game.height(100)
-	game.cellSize(10)
+	game.width(192)
+	game.height(120)
+	game.cellSize(5)
 
+
+
+	game.addVisual(fondo)
 	game.addVisual(puerta)
-	game.addVisual(paredGrande)
-	game.addVisual(paredChica)
-	game.addVisual(fondoCastillo)
-	game.addVisual(vigilanteJoven)
+	game.addVisual(paredHorizontal1)
+	game.addVisual(paredHorizontal2)
+	game.addVisual(paredHorizontal3)
+	game.addVisual(paredVertical1)
+	game.addVisual(paredVertical2)
+	game.addVisual(paredVertical3)
+
+	//game.addVisual(vigilanteJoven)
 	game.addVisual(vigilanteViejo)
 	game.addVisual(guardia)
-	game.addVisual(jugador)
+	
 	game.addVisual(capaDeInvisibilidad)
-	game.addVisual(pildoraDeAltura)
+	game.addVisual(moneda)
 	game.addVisual(pocionDeVida)
 	game.addVisual(veneno)
-	game.addVisual(zapatosDeVelocidad)
+	game.addVisual(armadura)
 	game.addVisual(arma)
 	
+	game.addVisualCharacter(jugador)
 	
 	keyboard.up().onPressDo({jugador.mover(arriba)})
 	keyboard.down().onPressDo({jugador.mover(abajo)})
@@ -34,7 +43,7 @@ program juego {
 	//keyboard.s().onPressDo({jugador.agarrar(objeto)})
 	//keyboard.d().onPressDo({jugador.usar(objeto)})
 
-	game.whenCollideDo(jugador, {personaje => personaje.atacar(jugador)})
+	//game.whenCollideDo(jugador, {personaje => personaje.atacar(jugador)})
 	
 	game.start()
 	

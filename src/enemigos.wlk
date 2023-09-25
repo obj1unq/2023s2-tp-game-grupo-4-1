@@ -2,6 +2,7 @@ import wollok.game.*
 import objetosEntorno.*
 import jugador.*
 import movimientoPersonaje.*
+import estados.*
 
 object vigilanteJoven {
 	var vida = 5
@@ -26,10 +27,11 @@ object vigilanteJoven {
 object vigilanteViejo{
 	var vida = 5
 	var poderDeAtaque = 5
+	var property position = game.at(50,120)
 	
 	method image() = "vigilanteViejo.png"
 	
-	method estado()=  if (vida <= 0)  "muerto" else "vigilando"
+	method estado()=  if (vida <= 0) muerto else vigilante
 	
 	
 	method recibirAtaque(personaje){
@@ -45,21 +47,28 @@ object vigilanteViejo{
 object guardia{
 	var vida = 5
 	var poderDeAtaque = 5
+	var property position = game.at(90,50)
+	var property estado = vigilante
+	var property recibioSoborno = false
 
 	method image(){return "guardia.png"}
 	
 	method estado(){
-		return if (vida <= 0)  "muerto"
-		else "vigilando"
+		return if (vida <= 0)  muerto
+		else if (recibioSoborno) sobornado 
+		else vigilante
 	}
 	
 	method recibirAtaque(personaje){
 		vida -= personaje.poderDeAtaque()
 	}
 
-	
 	method atacar(personaje){
 		personaje.recibirAtaque(self)
+	}
+	
+	method sobornar(){
+		
 	}
 }
 

@@ -2,23 +2,31 @@ import wollok.game.*
 import objetosEntorno.*
 import jugador.*
 import enemigos.*
+import estados.*
 
 
 
 //Direcciones
 
-
 object arriba {
-	method siguiente(position) =  position.up(1)
+    method estado()=self
+    method image()="jugador-arriba.png"
+    method siguiente(position) =  position.up(jugador.velocidad())
 }
 object abajo {
-	method siguiente(position) = position.down(1)
+    method estado()=self
+    method image()="jugador-abajo.png"
+    method siguiente(position) = position.down(jugador.velocidad())
 }
 object izquierda {
-	method siguiente(position) = position.left(1)
+    method estado()=self
+    method image()="jugador-izquierda.png"
+    method siguiente(position) = position.left(jugador.velocidad())
 }
 object derecha {
-	method siguiente(position) = position.right(1)
+    method estado()=self
+    method image()="jugador-derecha.png"
+    method siguiente(position) = position.right(jugador.velocidad())
 }
 
 object tablero {
