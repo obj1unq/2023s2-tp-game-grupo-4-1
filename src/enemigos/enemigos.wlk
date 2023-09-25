@@ -2,7 +2,7 @@ import wollok.game.*
 import recorridos.*
 package enemigos {
 	object vigilanteJoven {
-		const recorrido = recorrerHastaColisionar
+		const recorrido = new RecorrerHastaColisionar()
 		var vida = 5
 		var poderDeAtaque = 5
 		var property position = game.at(0,1)
@@ -19,7 +19,7 @@ package enemigos {
 		}
 		
 		method cambiarDireccion(){
-			return recorrido.siguienteDireccion()
+			recorrido.siguienteDireccion()
 		}
 		
 		method avanzar(){

@@ -8,10 +8,21 @@ object avanzarEnX {
 			entidad.position().y() 
 		)
 	}
+	
+	method siguiente()= avanzarEnY
+}
+object avanzarEnY {
+	method position(entidad){
+		return game.at(
+			entidad.position().x(),
+			entidad.position().y() +  1 
+		)
+	}
+	method siguiente()= retrocederEnX
 }
 
 object retrocederEnX {
-	
+	method siguiente()= retrocederEnY
 	method position(entidad){
 		return game.at(
 			entidad.position().x() - 1,
@@ -21,26 +32,13 @@ object retrocederEnX {
 }
 
 
-object avanzarEnY {
-	method proximaPosicion(posicionActual){
-		return posicionActual.y()+1
-	} 
-}
 
 object retrocederEnY {
-	method proximaPosicion(posicionActual){
-		return posicionActual.y()-1
-	} 
-}
-
-object avanceNuloEnY{
-	method proximaPosicion(posicionActual){
-		return posicionActual.y()
-	} 
-}
-
-object avanceNuloEnX{
-	method proximaPosicion(posicionActual){
-		return posicionActual.x()
-	} 
+	method siguiente()= avanzarEnX
+	method position(entidad){
+		return game.at(
+			entidad.position().x(),
+			entidad.position().y() -  1 
+		)
+	}
 }
