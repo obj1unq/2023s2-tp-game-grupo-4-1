@@ -1,0 +1,9 @@
+object enemigoVivo {
+	
+	
+}
+
+object enemigoMuerto {
+	
+	
+}

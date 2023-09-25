@@ -1,7 +1,7 @@
 import wollok.game.*
 import jugador.*
 import objetosEntorno.*
-import enemigos.*
+import enemigos.enemigos.*
 import movimientoPersonaje.*
 
 program juego {
