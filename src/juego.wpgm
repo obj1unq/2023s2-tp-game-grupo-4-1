@@ -3,7 +3,7 @@ import jugador.*
 import objetosEntorno.*
 import enemigos.enemigos.*
 import movimientoPersonaje.*
-
+import collisionDePrueba.*
 program juego {
 	/*
 	 * Resolucion 4:3 de 960x720
@@ -66,9 +66,13 @@ program juego {
 	game.onTick(50, "moverEnemigos", {
 		vigilanteJoven.avanzar()
 	})
-	game.onCollideDo(vigilanteJoven, {vigilanteJoven.cambiarDireccion()})
 	
-
+	game.onCollideDo(vigilanteJoven, { element => 
+		element.recibirAtaque(vigilanteJoven)
+		if(element == testCollision ){
+			vigilanteJoven.cambiarDireccion()		
+		}
+	})
 	
 	keyboard.space()
 	game.start()
