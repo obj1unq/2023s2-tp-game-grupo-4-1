@@ -25,7 +25,7 @@ object m {
 	}			
 }
 
-object piz {
+object p {
 	method generar(position){
 		game.addVisual(
 			new Pared(position=position)
@@ -49,15 +49,21 @@ object e{
 */
 
 object mapa {
-	
+	/*
+	 * P = pared - Dependiendo de la posicion de la pared se carga un asset diferente 
+	 * M = Muro  - 
+	 */
 	const celdas = [
-		[_,_,_,_,_,_,_,_,_,_,_,_],
-		[_,_,m,m,m,_,_,_,_,_,_,_],
-		[_,_,m,_,m,_,m,_,_,_,_,_],
-		[_,_,m,_,m,_,m,_,_,_,_,_],
-		[_,_,_,_,_,_,_,_,_,_,_,_],		
-		[_,_,_,_,_,_,_,_,_,_,_,_],		
-		[piz,_,_,_,_,_,_,_,_,_,_,_]
+		[p,p,p,p,p,p,p,p,p,p,p,p,p,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,m,m,m,_,_,_,_,_,_,_,_,p],
+		[p,_,m,_,m,_,m,_,_,_,_,_,_,p],
+		[p,_,m,_,m,_,m,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
+		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
 	
 	
@@ -65,6 +71,7 @@ object mapa {
 	method generar() {
 		game.width(celdas.anyOne().size())
 		game.height(celdas.size())
+		game.cellSize(96)
 		(0..game.width() -1).forEach({x =>
 			(0..game.height() -1).forEach( {y =>
 				self.generarCelda(x,y)
