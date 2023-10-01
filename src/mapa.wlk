@@ -33,7 +33,7 @@ object e{
 	}		
 }
 
-object mapa {
+class Mapa {
 	
 	var celdas = [
 		[_,_,_,_,_,_,_,_,_,p],
