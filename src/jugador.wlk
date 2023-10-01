@@ -1,5 +1,5 @@
 import wollok.game.*
-import objetosEntorno.*
+import entorno.*
 import enemigos.*
 import movimientoPersonaje.*
 import mapa.*

@@ -1,7 +1,7 @@
 import wollok.game.*
 import jugador.*
 import enemigos.*
-import objetosEntorno.*
+import entorno.*
 object _ {
 	
 	method generar(position) {

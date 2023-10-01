@@ -1,6 +1,6 @@
 import wollok.game.*
 import jugador.*
-import objetosEntorno.*
+import entorno.*
 import enemigos.*
 import movimientoPersonaje.*
 import mapa.*
@@ -15,9 +15,8 @@ object movimientoJugador{
 }
 
 program juego {
-	game.title("Infiltrados") 
+	game.title("Dungeon zx") 
 	mapa.generar() // NO TOCAR
-	
 	game.start()
 }
 
