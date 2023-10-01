@@ -66,8 +66,6 @@ object mapa {
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
 	
-	
-	
 	method generar() {
 		game.width(celdas.anyOne().size())
 		game.height(celdas.size())
