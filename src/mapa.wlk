@@ -5,7 +5,9 @@ import objetosEntorno.*
 object _ {
 	
 	method generar(position) {
-		//El vacio no agrega nada
+		game.addVisual(
+			new Piso(position=position)
+		)
 	}	
 }
 
@@ -17,9 +19,12 @@ object j {
 
 object m {
 	method generar(position) {
-		
+		game.addVisual(
+			new Muro(position=position)
+		)
 	}			
 }
+/*
 object p {
 	//door
 	method generar(position) {
@@ -33,16 +38,18 @@ object e{
 	}		
 }
 
-class Mapa {
+*/
+
+object mapa {
 	
-	var celdas = [
-		[_,_,_,_,_,_,_,_,_,p],
-		[_,_,j,_,_,_,_,_,_,_],
-		[_,_,m,m,_,_,m,_,_,_],
-		[_,_,_,_,_,_,m,_,_,_],
-		[_,_,_,_,_,_,m,_,_,_],		
-		[_,_,_,_,_,_,m,m,_,_],		
-		[_,_,_,e,_,_,_,_,_,_]		
+	const celdas = [
+		[_,_,_,_,_,_,_,_,_,_,_,_],
+		[_,_,m,m,m,_,_,_,_,_,_,_],
+		[_,_,m,_,m,_,m,_,_,_,_,_],
+		[_,_,m,_,m,_,m,_,_,_,_,_],
+		[_,_,_,_,_,_,_,_,_,_,_,_],		
+		[_,_,_,_,_,_,_,_,_,_,_,_],		
+		[_,_,_,_,_,_,_,_,_,_,_,_]
 	].reverse() //reverse porque el y crece en el orden inverso
 	
 	

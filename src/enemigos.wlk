@@ -46,7 +46,7 @@ object guardia{
 	var vida = 5
 	var poderDeAtaque = 5
 
-	method image(){return "guardia.png"}
+	method image()="guardia.png"
 	
 	method estado(){
 		return if (vida <= 0)  "muerto"

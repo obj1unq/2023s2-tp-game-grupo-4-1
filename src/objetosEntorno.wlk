@@ -3,6 +3,11 @@ import jugador.*
 import enemigos.*
 import movimientoPersonaje.*
 
+
+class Piso {
+	const property position = game.at(0,0)
+	const property image 	= "Piso.png"
+}
 object capaDeInvisibilidad {
 	
 	
@@ -33,6 +38,10 @@ object arma {
 	
 }
 
+class Muro {
+	const property position = game.at(0,0)
+	const property image = "Muro.png"
+} 
 object puerta {
 	
 	method imagen(){return "puerta-"+ self.estadoImagen()+".png"}
