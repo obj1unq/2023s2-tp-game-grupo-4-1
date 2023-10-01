@@ -24,6 +24,14 @@ object m {
 		)
 	}			
 }
+
+object piz {
+	method generar(position){
+		game.addVisual(
+			new Pared(position=position)
+		)
+	}
+}
 /*
 object p {
 	//door
@@ -49,7 +57,7 @@ object mapa {
 		[_,_,m,_,m,_,m,_,_,_,_,_],
 		[_,_,_,_,_,_,_,_,_,_,_,_],		
 		[_,_,_,_,_,_,_,_,_,_,_,_],		
-		[_,_,_,_,_,_,_,_,_,_,_,_]
+		[piz,_,_,_,_,_,_,_,_,_,_,_]
 	].reverse() //reverse porque el y crece en el orden inverso
 	
 	

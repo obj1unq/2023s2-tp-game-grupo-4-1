@@ -4,6 +4,20 @@ import enemigos.*
 import movimientoPersonaje.*
 
 
+class Pared {
+	const property position = game.at(0,0)
+	
+	
+	method image(){
+		if (self.position().x() == 0 and self.position().y() == 0){
+			return "ParedBordeInferiorIzquierdo.png"
+		}else{
+			return "Muro.png"
+		}
+		
+	}
+}
+
 class Piso {
 	const property position = game.at(0,0)
 	const property image 	= "Piso.png"
