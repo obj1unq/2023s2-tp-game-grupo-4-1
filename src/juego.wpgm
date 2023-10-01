@@ -15,16 +15,10 @@ object movimientoJugador{
 }
 
 program juego {
-	game.title("Infiltrados")
-	game.width(102)
-	game.height(76)
-	game.cellSize(96)
+	game.title("Infiltrados") 
+	mapa.generar() // NO TOCAR
 	
-	
-	mapa.generar()
-
 	game.start()
-	
 }
 
 
