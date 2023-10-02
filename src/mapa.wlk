@@ -17,10 +17,18 @@ object j {
 	}		
 }
 
-object m {
+object op {
 	method generar(position) {
 		game.addVisual(
-			new Muro(position=position)
+			new ObstaculoPared(position=position)
+		)
+	}			
+}
+
+object o {
+	method generar(position) {
+		game.addVisual(
+			new Obstaculo(position=position)
 		)
 	}			
 }
@@ -57,9 +65,9 @@ object mapa {
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
-		[p,_,m,m,m,_,_,_,_,_,_,_,_,p],
-		[p,_,m,_,m,_,m,_,_,_,_,_,_,p],
-		[p,_,m,_,m,_,m,_,_,_,_,_,_,p],
+		[p,_,o,op,o,_,_,_,_,_,_,_,_,p],
+		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
+		[p,_,op,_,op,_,op,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		

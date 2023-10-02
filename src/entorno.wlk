@@ -79,10 +79,15 @@ class Piso {
 	const property image 	= "Piso.png"
 }
 
-class Muro {
+class ObstaculoPared {
 	const property position = game.at(0,0)
-	const property image = "Muro.png"
-} 
+	const property image	= "Obstaculo_pared.png"
+}
+
+class Obstaculo {
+	const property position = game.at(0,0)
+	const property image	= "Obstaculo.png"
+}  
 object puerta {
 	const estado = puertaCerrada
 	method imagen(){return estado.image()}
