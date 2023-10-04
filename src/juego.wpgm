@@ -4,6 +4,8 @@ import entorno.*
 import enemigos.*
 import movimientoPersonaje.*
 import mapa.*
+import recolectables.*
+
 object movimientoJugador{
 	
 	method movimiento(){
@@ -16,8 +18,11 @@ object movimientoJugador{
 
 program juego {
 	game.title("Dungeon zx") 
+	game.ground("piso.png") // Evita el glitch del piso invisible
 	mapa.generar() // NO TOCAR
+	game.onTick(41, "animacion moneda", {moneda.animation()})
 	game.start()
+	
 }
 
 

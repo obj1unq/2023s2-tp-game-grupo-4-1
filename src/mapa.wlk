@@ -2,6 +2,14 @@ import wollok.game.*
 import jugador.*
 import enemigos.*
 import entorno.*
+import recolectables.*
+
+object m {
+	method generar(position) {
+		moneda.position(position)
+	}
+}
+
 object _ {
 	
 	method generar(position) {
@@ -69,7 +77,7 @@ object mapa {
 		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
 		[p,_,op,_,op,_,op,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,m,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
@@ -84,6 +92,7 @@ object mapa {
 			})
 		})
 		game.addVisual(jugador) //agrego al final por un tema del z index
+		game.addVisual(moneda)
 	}
 	
 	method generarCelda(x,y) {
