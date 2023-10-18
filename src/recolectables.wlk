@@ -22,7 +22,7 @@ object posionMisteriosa { // Usa lo aleatorio
 }
 
 
-object moneda { 
+object moneda { // Usa la validacion 
 	// Recolectable que sirve apara sobornar al guardia
 	const fotogramas = 10
 	var fotograma = 1
@@ -44,7 +44,7 @@ object zapatosDeVelocidad { // Usa state (del pj)
 }
 
 class Espada { // Usa herencia 
-	// Clase para construir distintas espadas con distintas cualidades (p.ej.: velocidad, daño, etc)
+	// Clase para construir distintas espadas con distintas cualidades (p.ej.: daño, visual)
 	
 }
 
