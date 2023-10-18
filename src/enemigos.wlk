@@ -9,7 +9,7 @@ object vigilanteJoven {
 
 	method image() = "vigilanteJoven.png"
 	
-	method estado() = if (vida <= 0) "muerto" else "vigilando"
+	method estado() = if (vida <= 0) "muerto" else "vigilando" // CAMBIAR!!!! A state 
 
 	
 	method recibirAtaque(personaje){
@@ -22,6 +22,8 @@ object vigilanteJoven {
 	}
 	
 }
+
+
 
 object vigilanteViejo{
 	var vida = 5
@@ -37,10 +39,12 @@ object vigilanteViejo{
 		poderDeAtaque-=1
 	}
 
+
 	method atacar(personaje){
 		personaje.recibirAtaque(self)
 	}
 }
+
 
 object guardia{
 	var vida = 5

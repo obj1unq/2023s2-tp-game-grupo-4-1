@@ -2,28 +2,28 @@ import wollok.game.*
 
 object capaDeInvisibilidad {
 	
-	
 }
 
 object pildoraDeAltura {
 	
-	
 }
+
+
+
+
+
+
 
 
 // Test de animaciones 
-object pocionDeVida {
-	
-	
-}
-
-object veneno {
-	
+object posionMisteriosa { // Usa lo aleatorio
+	// Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 	
 }
 
 
-object moneda {
+object moneda { 
+	// Recolectable que sirve apara sobornar al guardia
 	const fotogramas = 10
 	var fotograma = 1
 	var property position = game.at(0,0)
@@ -39,12 +39,12 @@ object moneda {
 	
 }
 
-object zapatosDeVelocidad {
-	
+object zapatosDeVelocidad { // Usa state (del pj)
+	// Equipabler que otorga velocidad
+}
+
+class Espada { // Usa herencia 
+	// Clase para construir distintas espadas con distintas cualidades (p.ej.: velocidad, daño, etc)
 	
 }
 
-object arma {
-	
-	
-}
