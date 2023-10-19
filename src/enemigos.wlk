@@ -2,8 +2,8 @@ import wollok.game.*
 import entorno.*
 import jugador.*
 import movimientoPersonaje.*
-import gameObject.*
-class Enemigo inherits GameObject{
+class Enemigo {
+	const property isSolid = false
 	var vida = 0
 	var poderDeAtaque = 0
 	var property position = null
@@ -16,7 +16,6 @@ class Guardia inherits Enemigo {
 	 * mueven de la puerta y atacan al jugador
 	 * a menos que el jugador tenga una moneda
 	 */
-	override method comportamiento(){}
 	override method image()="guardia.png"
 }
 
@@ -28,10 +27,6 @@ class Vigilante inherits Enemigo {
 	 
 	const estado = caminandoAlaIzquierda
 	override method image()="vigilante.png"
-	
-	override method comportamiento(){
-		position= estado.siguientePosicion(self)
-	}
 }
 
 object caminandoAlaIzquierda{

@@ -108,7 +108,7 @@ object mapa {
 				self.generarCelda(x,y)
 			})
 		})
-		game.addVisualCharacter(jugador) //agrego al final por un tema del z index
+		game.addVisual(jugador) //agrego al final por un tema del z index
 	}
 	
 	method generarCelda(x,y) {

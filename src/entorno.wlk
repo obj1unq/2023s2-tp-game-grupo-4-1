@@ -10,6 +10,7 @@ object tableroPosition {
 	 * TODO: Revisar o refactorizar
 	 * 
 	 */
+	 
 	method esBordeInferiorIzquierdo(position) {
 		return position == game.origin()
 	}
@@ -38,7 +39,10 @@ object tableroPosition {
 	}
 }
 
-class Pared {
+class SolidObject {
+	method isSolid()=true
+}
+class Pared inherits SolidObject{
 	/*
 	 * Determina la imagen segun la propiedad position
 	 */
@@ -70,19 +74,19 @@ class Pared {
 		}
 		return "Muro.png" // En ningun caso tendría que llegar a cargar esta imagen
 	}
-	
 }
 class Piso {
 	const property position = game.at(0,0)
 	const property image 	= "Piso.png"
+	const property isSolid	= false
 }
 
-class ObstaculoPared {
+class ObstaculoPared inherits SolidObject {
 	const property position = game.at(0,0)
 	const property image	= "Obstaculo_pared.png"
 }
 
-class Obstaculo {
+class Obstaculo inherits SolidObject{
 	const property position = game.at(0,0)
 	const property image	= "Obstaculo.png"
 }  

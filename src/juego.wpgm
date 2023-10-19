@@ -18,6 +18,7 @@ program juego {
 	game.title("Dungeon zx") 
 	mapa.generar() // NO TOCAR
 	
+	movimientoJugador.movimiento()
 	game.start()
 }
 
