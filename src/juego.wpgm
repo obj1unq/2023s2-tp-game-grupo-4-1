@@ -19,6 +19,8 @@ program juego {
 	mapa.generar() // NO TOCAR
 	
 	movimientoJugador.movimiento()
+	game.allVisuals().forEach({element=>element.comportamiento()})
+	
 	game.start()
 }
 

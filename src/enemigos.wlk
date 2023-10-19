@@ -4,11 +4,14 @@ import jugador.*
 import movimientoPersonaje.*
 class Enemigo {
 	const property isSolid = false
+	const property poderDeAtaque = 10
 	var vida = 0
-	var poderDeAtaque = 0
 	var property position = null
 	method position()
 	method image()
+	method comportamiento(){}
+	method collide(a){}
+	method recibirAtaque(a){}
 }
 class Guardia inherits Enemigo {
 	/*
@@ -25,11 +28,14 @@ class Vigilante inherits Enemigo {
 	 * rondan por todo el mapa
 	 */
 	 
-	const estado = caminandoAlaIzquierda
+	var estado = caminandoAlaIzquierda
 	override method image()="vigilante.png"
+	override method comportamiento(){
+		game.onCollideDo(self, {element=> element.recibirAtaque(self)})
+	}
 }
 
 object caminandoAlaIzquierda{
-	method siguientePosicion(p)= game.at(p.position().x()+1, p.position().y())
+	method siguientePosicion(p)=game.at(p.position().x()+1, p.position().y())
 }
 

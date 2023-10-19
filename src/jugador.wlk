@@ -17,8 +17,11 @@ object jugador {
 	
 	method morir(){if (vida <= 0) estado = "muerto"}  
 	
-	method recibirAtaque(fuerzaDeAtaque){
-		vida -= fuerzaDeAtaque
-		poderDeAtaque-=1
+	method recibirAtaque(gameObject){
+		vida -= gameObject.poderDeAtaque()
+		game.say(self, "auch")
+	}
+	method comportamiento(){
+		
 	}
 }

@@ -40,7 +40,10 @@ object tableroPosition {
 }
 
 class SolidObject {
+	method recibirAtaque(a){}
 	method isSolid()=true
+	method comportamiento(){}
+	method collide(a){}
 }
 class Pared inherits SolidObject{
 	/*
@@ -79,6 +82,9 @@ class Piso {
 	const property position = game.at(0,0)
 	const property image 	= "Piso.png"
 	const property isSolid	= false
+	method poderDeAtaque()=0
+	method comportamiento(){}
+	method recibirAtaque(a){}
 }
 
 class ObstaculoPared inherits SolidObject {
@@ -93,7 +99,10 @@ class Obstaculo inherits SolidObject{
 class Puerta {
 	const property position = 0
 	const estado = puertaAbierta
+	method poderDeAtaque()=0
 	method imagen()=estado.image()
+	method comportamiento(){}
+	method recibirAtaque(a){}
 }
 object puertaCerrada {
 	method image()= "PuertaCerrada.png"
