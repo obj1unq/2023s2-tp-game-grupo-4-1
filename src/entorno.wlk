@@ -43,7 +43,7 @@ class SolidObject {
 	method recibirAtaque(a){}
 	method isSolid()=true
 	method comportamiento(){}
-	method collideDo(a){
+	method collide(a){
 		a.cambiarSentido()
 	}
 }
@@ -87,7 +87,7 @@ class Piso {
 	method poderDeAtaque()=0
 	method comportamiento(){}
 	method recibirAtaque(a){}
-	method collideDo(a){}
+	method collide(a){}
 }
 
 class ObstaculoPared inherits SolidObject {

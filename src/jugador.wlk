@@ -10,6 +10,7 @@ object jugador {
 	var property position = game.at(1,1)
 	var property vida = 10 	
 	const property image = "Jugador.png"
+	const property isSolid = false
 	method mover(direccion){
 		if (tablero.pertenece(self.position())){
 			self.position(direccion.siguiente(self.position()))}
@@ -22,6 +23,6 @@ object jugador {
 		game.say(self, "auch")
 	}
 	method comportamiento(){
-		
+		game.onCollideDo(self, {element=> element.collide(self)})
 	}	
 }
