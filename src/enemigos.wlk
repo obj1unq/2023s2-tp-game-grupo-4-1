@@ -12,6 +12,7 @@ class Enemigo {
 	method comportamiento(){}
 	method collide(a){}
 	method recibirAtaque(a){}
+	method cambiarSentido(){}
 }
 class Guardia inherits Enemigo {
 	/*
@@ -31,11 +32,33 @@ class Vigilante inherits Enemigo {
 	var estado = caminandoAlaIzquierda
 	override method image()="vigilante.png"
 	override method comportamiento(){
-		game.onCollideDo(self, {element=> element.recibirAtaque(self)})
+		game.say(self, "hola")
+		
+		game.onTick(200, "avanzarVigilante", {
+			self.cambiarSentido()
+			self.position(estado.siguientePosicion(self))		
+		})
+	}
+	
+	override method cambiarSentido(){
+		if (not estado.hayProximaCelda(self)){
+			estado = estado.siguiente()
+		}
 	}
 }
 
-object caminandoAlaIzquierda{
-	method siguientePosicion(p)=game.at(p.position().x()+1, p.position().y())
+object caminandoAlaIzquierda{ 
+	method siguientePosicion(pj)=game.at(pj.position().x()-1, pj.position().y()) 
+	
+	method hayProximaCelda(pj)= movementValidator.canMove(self.siguientePosicion(pj))
+	
+	method siguiente()=caminadoAlaDerecha
+}
+object caminadoAlaDerecha{
+	method siguientePosicion(pj)=game.at(pj.position().x()+1, pj.position().y()) 
+	
+	method hayProximaCelda(pj)= movementValidator.canMove(self.siguientePosicion(pj))
+	
+	method siguiente()=caminandoAlaIzquierda
 }
 

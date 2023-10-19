@@ -44,6 +44,9 @@ object p {
 object pr {
 	method generar(position){
 		game.addVisual(
+			new Piso(position=position)
+		)
+		game.addVisual(
 			new Puerta(position=position)
 		)
 	}
@@ -51,12 +54,18 @@ object pr {
 object g {
 	method generar(position){
 		game.addVisual(
+			new Piso(position=position)
+		)
+		game.addVisual(
 			new Guardia(position=position)
 		)
 	}
 }
 object v {
 	method generar(position){
+		game.addVisual(
+			new Piso(position=position)
+		)
 		game.addVisual(
 			new Vigilante(position=position)
 		)
@@ -92,9 +101,9 @@ object mapa {
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,o,op,o,_,_,_,_,_,_,_,_,p],
 		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
-		[p,_,op,_,op,_,op,_,_,_,_,_,g,pr],
+		[p,_,op,_,op,_,op,_,_,_,_,_,_,pr],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
-		[p,_,_,_,_,_,_,v,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso

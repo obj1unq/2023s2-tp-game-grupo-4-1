@@ -23,5 +23,5 @@ object jugador {
 	}
 	method comportamiento(){
 		
-	}
+	}	
 }
