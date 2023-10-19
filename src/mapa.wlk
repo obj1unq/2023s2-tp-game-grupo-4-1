@@ -40,6 +40,21 @@ object p {
 		)
 	}
 }
+
+object pr {
+	method generar(position){
+		game.addVisual(
+			new Puerta(position=position)
+		)
+	}
+}
+object g {
+	method generar(position){
+		game.addVisual(
+			new Guardia(position=position)
+		)
+	}
+}
 /*
 object p {
 	//door
@@ -60,6 +75,8 @@ object mapa {
 	/*
 	 * P = pared - Dependiendo de la posicion de la pared se carga un asset diferente 
 	 * M = Muro  - 
+	 * PR = Puerta
+	 * g = Guardia
 	 */
 	const celdas = [
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p],
@@ -67,7 +84,7 @@ object mapa {
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,o,op,o,_,_,_,_,_,_,_,_,p],
 		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
-		[p,_,op,_,op,_,op,_,_,_,_,_,_,p],
+		[p,_,op,_,op,_,op,_,_,_,_,_,g,pr],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
@@ -83,7 +100,7 @@ object mapa {
 				self.generarCelda(x,y)
 			})
 		})
-		game.addVisual(jugador) //agrego al final por un tema del z index
+		game.addVisualCharacter(jugador) //agrego al final por un tema del z index
 	}
 	
 	method generarCelda(x,y) {
