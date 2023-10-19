@@ -17,8 +17,6 @@ object jugador {
 			self.position(direccion.siguiente(self.position()))}
 	}
 	
-	method estaEnLaPuerta() = self.position() == puerta.position()
-	
 	method tomarPocion() { vida+=10 }
 	
 	method atacar(personaje){ personaje.recibirAtaque(poderDeAtaque) }
@@ -35,7 +33,5 @@ object jugador {
 		vida -= fuerzaDeAtaque
 		poderDeAtaque-=1
 	}
-		
 	method estado() = estado
-	
 }

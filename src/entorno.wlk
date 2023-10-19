@@ -43,7 +43,6 @@ class Pared {
 	 * Determina la imagen segun la propiedad position
 	 */
 	const property position = game.at(0,0)
-
 	method image(){
 		if (tableroPosition.esBordeInferiorIzquierdo(position)){
 			return "ParedBordeInferiorIzquierdo.png"
@@ -72,7 +71,6 @@ class Pared {
 		return "Muro.png" // En ningun caso tendría que llegar a cargar esta imagen
 	}
 	
-	
 }
 class Piso {
 	const property position = game.at(0,0)
@@ -88,21 +86,16 @@ class Obstaculo {
 	const property position = game.at(0,0)
 	const property image	= "Obstaculo.png"
 }  
-object puerta {
-	const estado = puertaCerrada
-	method imagen(){return estado.image()}
-	method position(){ return game.at(200,50)}
-	method colision(){
-		/*
-		 * TODO: Determinar la logica en la que la puerta se abre
-		 */
-	}
+class Puerta {
+	const property position = 0
+	const estado = puertaAbierta
+	method imagen()=estado.image()
 }
 object puertaCerrada {
-	method image()= "Puerta_cerrada.png"
+	method image()= "PuertaCerrada.png"
 }
 
 object puertaAbierta {
-	method image()= "Puerta_abierta.png"
+	method image()= "PuertaAbierta.png"
 }
 	

@@ -55,6 +55,13 @@ object g {
 		)
 	}
 }
+object v {
+	method generar(position){
+		game.addVisual(
+			new Vigilante(position=position)
+		)
+	}
+}
 /*
 object p {
 	//door
@@ -77,6 +84,7 @@ object mapa {
 	 * M = Muro  - 
 	 * PR = Puerta
 	 * g = Guardia
+	 * v = Vigilante
 	 */
 	const celdas = [
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p],
@@ -86,7 +94,7 @@ object mapa {
 		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
 		[p,_,op,_,op,_,op,_,_,_,_,_,g,pr],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,v,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
@@ -106,6 +114,6 @@ object mapa {
 	method generarCelda(x,y) {
 		const celda = celdas.get(y).get(x)
 		celda.generar(game.at(x,y))
-	}
 	
+	}	
 }
