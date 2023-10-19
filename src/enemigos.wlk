@@ -50,12 +50,28 @@ class Vigilante inherits Enemigo {
 object caminandoAlaIzquierda{ 
 	method siguientePosicion(pj)=game.at(pj.position().x()-1, pj.position().y()) 
 	
-	method hayProximaCelda(pj)= movementValidator.canMove(self.siguientePosicion(pj))
+	method hayProximaCelda(pj)=movementValidator.canMove(self.siguientePosicion(pj))
 	
 	method siguiente()=caminadoAlaDerecha
 }
 object caminadoAlaDerecha{
 	method siguientePosicion(pj)=game.at(pj.position().x()+1, pj.position().y()) 
+	
+	method hayProximaCelda(pj)= movementValidator.canMove(self.siguientePosicion(pj))
+	
+	method siguiente()=caminadoArriba
+}
+
+object caminadoArriba{
+	method siguientePosicion(pj)=game.at(pj.position().x(), pj.position().y()+1) 
+	
+	method hayProximaCelda(pj)= movementValidator.canMove(self.siguientePosicion(pj))
+	
+	method siguiente()=caminadoAbajo
+}
+
+object caminadoAbajo{
+	method siguientePosicion(pj)=game.at(pj.position().x(), pj.position().y()-1) 
 	
 	method hayProximaCelda(pj)= movementValidator.canMove(self.siguientePosicion(pj))
 	
