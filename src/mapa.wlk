@@ -10,6 +10,12 @@ object m {
 	}
 }
 
+object po{
+	method generar(position) {
+		posionMisteriosa.position(position)
+	}
+}
+
 object _ {
 	
 	method generar(position) {
@@ -77,7 +83,7 @@ object mapa {
 		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
 		[p,_,op,_,op,_,op,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
-		[p,_,_,_,_,_,_,_,m,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,m,_,po,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
@@ -93,6 +99,7 @@ object mapa {
 		})
 		game.addVisual(jugador) //agrego al final por un tema del z index
 		game.addVisual(moneda)
+		game.addVisual(posionMisteriosa)
 	}
 	
 	method generarCelda(x,y) {

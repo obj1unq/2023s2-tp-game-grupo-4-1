@@ -1,4 +1,5 @@
 import wollok.game.*
+import jugador.*
 
 object capaDeInvisibilidad {
 	
@@ -11,24 +12,17 @@ object pildoraDeAltura {
 
 
 
-
-
-
-
-// Test de animaciones 
-object posionMisteriosa { // Usa lo aleatorio
-	// Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
-	
-}
-
-
-object moneda { // Usa la validacion 
-	// Recolectable que sirve apara sobornar al guardia
-	const fotogramas = 10
+class ObjetoAnimado {
+	const property fotogramas 
+	const property nombre
+		
 	var fotograma = 1
+	const recolector = jugador 
 	var property position = game.at(0,0)
+
 	
-	method image() =  "moneda_de_oro-rotacion-"+ fotograma +".png"
+	method image() = nombre + fotograma + ".png"
+	
 	
 	method animation(){
 		if (fotograma != fotogramas) {
@@ -36,15 +30,34 @@ object moneda { // Usa la validacion
 		} else {fotograma = 1}
 	}
 	
+}
+
+
+
+// Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
+object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
+
+	method serAgarrado() {
+		const vidaASumar = (-3 .. 3).anyOne()
+		recolector.alterarVida(vidaASumar) 
+		// Agregar el método alterarVida() al personaje e implementar o colideDo
+	}
+}
+
+
+// Recolectable que sirve apara sobornar al guardia
+object moneda inherits ObjetoAnimado(fotogramas = 10, nombre = "moneda_de_oro-rotacion-") { // Usa la validacion 
+
+}
+
+// Equipabler que otorga velocidad
+object zapatosDeVelocidad { // Usa state (del pj)
 	
 }
 
-object zapatosDeVelocidad { // Usa state (del pj)
-	// Equipabler que otorga velocidad
-}
 
+// Clase para construir distintas espadas con distintas cualidades (p.ej.: daño, visual)	
 class Espada { // Usa herencia 
-	// Clase para construir distintas espadas con distintas cualidades (p.ej.: daño, visual)
 	
 }
 

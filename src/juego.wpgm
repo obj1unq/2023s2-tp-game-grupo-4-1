@@ -21,6 +21,8 @@ program juego {
 	game.ground("piso.png") // Evita el glitch del piso invisible
 	mapa.generar() // NO TOCAR
 	game.onTick(41, "animacion moneda", {moneda.animation()})
+	game.onTick(41, "animacion posion", {posionMisteriosa.animation()})
+	
 	game.start()
 	
 }
