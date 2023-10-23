@@ -1,84 +1,75 @@
-	import wollok.game.*
+import wollok.game.*
 import jugador.*
+
 object hud {
-	method add(){
+
+	method add() {
 		hud_HP.mostrar()
 	}
-	
-	method reducirVida(){
+
+	method reducirVida() {
 		hud_HP.reducirVida()
 	}
-	method aumentarVida(){
+
+	method aumentarVida() {
 		hud_HP.aumentarVida()
 	}
-}
 
+}
 
 object hud_HP {
-	const vida = self.hpVisuals()
-	var vidaActual = jugador.vida()
-	method mostrar(){
-		vida.forEach({hp=> game.addVisual(hp)})
+
+	const vidas = self.hpVisuals()
+	var vidaActual = jugador.vida()-1
+
+	method mostrar() {
+		vidas.forEach({ hp => game.addVisual(hp)})
 	}
-	
-	method hpVisuals(){
-		const lista = [startHp]
-		(1..jugador.vida()-1).forEach({ x =>
-			lista.add(new HalfHp(position=game.at(x+1,game.height()-1)))
-		})		
-		lista.add(endHp)
-		
+
+	method hpVisuals() {
+		const lista = []
+		(0..jugador.vida() - 1).forEach({ x => 
+			lista.add(
+				new Vida(position = game.at(x + 1, game.height() - 1))
+			)
+		})
 		return lista
 	}
-	method reducirVida(){
-		vida.get(vidaActual).reducir()
+
+	method reducirVida() {
+		vidas.get(vidaActual).vaciar()
 		vidaActual = vidaActual - 1
 	}
-	method aumentarVida(){
-		vida.get(vidaActual).aumentar()
+
+	method aumentarVida() {
+		vidas.get(vidaActual).llenar()
 		vidaActual = vidaActual + 1
 	}
-}
+	method envenenarVida(){
+		vidas.forEach({vida=> vida.envenenar()})
+	}
 
-class HalfHp {
+}
+class Vida {
 	const property position = null
-	var state= ""
-	method image()="hp_center" + state + ".png"
-	method comportamiento(){
-		game.say(self, "aqui")
-	}
-	method isSolid()=false
-	method collide(a){}
-	
-	method reducir(){
-		state = "_void"
-	}
-method aumentar(){state = ""}
+	var state = full
+	method image()= "hp" + state.image() + ".png"
+	method comportamiento(){}
+	method collide(x){}
+	method vaciar(){state=empty}
+	method llenar(){state=full}
+	method envenenar(){state=poisoned}
 }
 
-object startHp {
-	const property position = game.at(1, game.height()-1)
-	var state = ""
-	method image()= "hp_start" + state + ".png"
-	method comportamiento(){
-		game.say(self, "aqui")
-	} 
-	method collide(a){}
-	method isSolid()=false
-	
-	method reducir(){ state = "_void"}
-	method aumentar(){state = ""}
+object full {
+	method image()= "_full"
+}
+object empty {
+	method image()="_empty"
 }
 
-object endHp{
-	const property position = game.at(jugador.vida(),game.height()-1)
-	var state = ""
-	method image()= "hp_end" + state + ".png"
-	method reducir(){ state = "_void"}
-	method comportamiento(){
-		game.say(self, "aqui")
-	}
-	method aumentar(){state = ""}
-	method collide(a){}
-	method isSolid()=false
-}
+object poisoned{
+	method image()="_poisoned"
+} 
+
+

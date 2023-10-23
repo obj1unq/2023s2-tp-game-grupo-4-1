@@ -9,7 +9,7 @@ object jugador {
     var property estado = "normal"
 	var property poderDeAtaque = 5 
 	var property position = game.at(1,1)
-	var property vida = 9
+	var property vida = 3
 	const property image = "Jugador.png"
 	const property isSolid = false
 	method mover(direccion){
