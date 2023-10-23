@@ -1,4 +1,5 @@
 import wollok.game.*
+import hud.*
 import jugador.*
 import entorno.*
 import enemigos.*
@@ -20,6 +21,7 @@ program juego {
 	mapa.generar() // NO TOCAR
 	movimientoJugador.movimiento()
 	generadorDeEnemigos.generar()
+	hud.add()
 	game.allVisuals().forEach({element=>element.comportamiento()})
 	
 	game.start()
