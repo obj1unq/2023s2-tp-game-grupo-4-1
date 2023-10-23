@@ -1,4 +1,4 @@
-import wollok.game.*
+	import wollok.game.*
 import jugador.*
 object hud {
 	method add(){
