@@ -3,12 +3,13 @@ import entorno.*
 import enemigos.*
 import movimientoPersonaje.*
 import mapa.*
+import hud.* 
 object jugador {
 	var property velocidad = 5 
     var property estado = "normal"
 	var property poderDeAtaque = 5 
 	var property position = game.at(1,1)
-	var property vida = 5	
+	var property vida = 9
 	const property image = "Jugador.png"
 	const property isSolid = false
 	method mover(direccion){
@@ -20,6 +21,7 @@ object jugador {
 	
 	method recibirAtaque(gameObject){
 		vida -= gameObject.poderDeAtaque()
+		hud.reducirVida()
 		game.say(self, "auch")
 	}
 	method comportamiento(){
