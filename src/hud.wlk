@@ -8,6 +8,9 @@ object hud {
 	method reducirVida(){
 		hud_HP.reducirVida()
 	}
+	method aumentarVida(){
+		hud_HP.aumentarVida()
+	}
 }
 
 
@@ -21,15 +24,19 @@ object hud_HP {
 	method hpVisuals(){
 		const lista = [startHp]
 		(1..jugador.vida()-1).forEach({ x =>
-			lista.add(new HalfHp(position=game.at(x,game.height()-1)))
+			lista.add(new HalfHp(position=game.at(x+1,game.height()-1)))
 		})		
 		lista.add(endHp)
 		
 		return lista
 	}
 	method reducirVida(){
-		vida.get(vidaActual).changeState()
+		vida.get(vidaActual).reducir()
 		vidaActual = vidaActual - 1
+	}
+	method aumentarVida(){
+		vida.get(vidaActual).aumentar()
+		vidaActual = vidaActual + 1
 	}
 }
 
@@ -43,13 +50,14 @@ class HalfHp {
 	method isSolid()=false
 	method collide(a){}
 	
-	method changeState(){
+	method reducir(){
 		state = "_void"
 	}
+method aumentar(){state = ""}
 }
 
 object startHp {
-	const property position = game.at(0, game.height()-1)
+	const property position = game.at(1, game.height()-1)
 	var state = ""
 	method image()= "hp_start" + state + ".png"
 	method comportamiento(){
@@ -58,17 +66,19 @@ object startHp {
 	method collide(a){}
 	method isSolid()=false
 	
-	method changeState(){ state = "_void"}
+	method reducir(){ state = "_void"}
+	method aumentar(){state = ""}
 }
 
 object endHp{
 	const property position = game.at(jugador.vida(),game.height()-1)
 	var state = ""
 	method image()= "hp_end" + state + ".png"
-	method changeState(){ state = "_void"}
+	method reducir(){ state = "_void"}
 	method comportamiento(){
 		game.say(self, "aqui")
 	}
+	method aumentar(){state = ""}
 	method collide(a){}
 	method isSolid()=false
 }
