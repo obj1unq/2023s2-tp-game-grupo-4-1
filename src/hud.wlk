@@ -17,7 +17,10 @@ object hud {
 	method aumentarVida() {
 		hud_HP.aumentarVida()
 	}
-
+	
+	method envenenarVida(){
+		hud_HP.envenenarVida()
+	}
 }
 
 object hud_HP {
@@ -47,7 +50,6 @@ object hud_HP {
 		})
 		return lista
 	}
-
 	method reducirVida() {
 		self.validarQueElJugadorEstaVivo()
 		vidas.get(vidaActual).vaciar()
