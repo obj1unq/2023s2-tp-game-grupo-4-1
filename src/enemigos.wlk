@@ -58,20 +58,19 @@ object direccionAleatoria {
 
 }
 object caminandoAlaIzquierda {
-	method siguientePosicion(position) = game.at(position.x() - 1, position.y())
+	method siguientePosicion(position) = position.left(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 object caminadoAlaDerecha {
-	method siguientePosicion(position) = game.at(position.x() + 1, position.y())
+	method siguientePosicion(position) = position.right(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 object caminadoArriba {
-	method siguientePosicion(position) = game.at(position.x(), position.y() + 1)
+	method siguientePosicion(position) = position.up(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 object caminadoAbajo {
-	method siguientePosicion(position) = game.at(position.x(), position.y() - 1)
+	method siguientePosicion(position) = position.down(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
-
 }
 
