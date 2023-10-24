@@ -3,6 +3,11 @@ import jugador.*
 import enemigos.*
 import movimientoPersonaje.*
 
+class Entorno {
+	const property isSolid = false
+	method collide(a){}
+	method comportamiento(){}
+}
 
 
 object tableroPosition {
@@ -51,43 +56,43 @@ class Pared inherits SolidObject{
 	/*
 	 * Determina la imagen segun la propiedad position
 	 */
+	const image = "Pared"
 	const property position = game.at(0,0)
 	method image(){
 		if (tableroPosition.esBordeInferiorIzquierdo(position)){
-			return "ParedBordeInferiorIzquierdo.png"
+			return image + "BordeInferiorIzquierdo.png"
 		}
 		if(tableroPosition.esBordeSuperiorIzquierdo(position)){
-			return "ParedBordeSuperiorIzquierdo.png"
+			return image + "BordeSuperiorIzquierdo.png"
 		}
 		if(tableroPosition.esBordeInferiorDerecho(position)){
-			return "ParedBordeInferiorDerecho.png"
+			return image + "BordeInferiorDerecho.png"
 		}
 		if(tableroPosition.esBordeSuperiorDerecho(position)){
-			return "ParedBordeSuperiorDerecho.png"
+			return image + "BordeSuperiorDerecho.png"
 		}
 		if(tableroPosition.esParedDerecha(position)){
-			return "ParedDerecha.png"
+			return image + "Derecha.png"
 		}
 		if(tableroPosition.esParedIzquierda(position)){
-			return "ParedIzquierda.png"
+			return image + "Izquierda.png"
 		}
 		if(tableroPosition.esParedSuperior(position)){
-			return "ParedArriba.png"
+			return image + "Arriba.png"
 		}
 		if(tableroPosition.esParedInferior(position)){
-			return "ParedAbajo.png"
+			return image + "Abajo.png"
 		}
 		return "Muro.png" // En ningun caso tendría que llegar a cargar esta imagen
 	}
 }
-class Piso {
+class Piso inherits Entorno{
 	const property position = game.at(0,0)
 	const property image 	= "Piso.png"
-	const property isSolid	= false
 	method poderDeAtaque()=0
-	method comportamiento(){}
+
 	method recibirAtaque(a){}
-	method collide(a){}
+
 }
 
 class ObstaculoPared inherits SolidObject {
@@ -99,12 +104,11 @@ class Obstaculo inherits SolidObject{
 	const property position = game.at(0,0)
 	const property image	= "Obstaculo.png"
 }  
-class Puerta {
+class Puerta inherits Entorno{
 	const property position = 0
 	const estado = puertaAbierta
 	method poderDeAtaque()=0
 	method imagen()=estado.image()
-	method comportamiento(){}
 	method recibirAtaque(a){}
 }
 object puertaCerrada {
