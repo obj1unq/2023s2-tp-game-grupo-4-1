@@ -2,27 +2,12 @@ import wollok.game.*
 import entorno.*
 import jugador.*
 import movimientoPersonaje.*
-import hitBox.*
-class Enemigo {
-	const hitBox = new HitBox(entity=self)
-	const property isSolid = false
-	const property poderDeAtaque = 10
-	var vida = 0
-	var property position = null
 
-	method position(a)
-	method image()
-	method comportamiento() {
+import gameEntity.*
+class Enemigo inherits GameEntity{
+	override method collide(entity) {
+		entity.recibirAtaque(self)
 	}
-
-	method collide(a) {
-		a.recibirAtaque(self)
-		
-		
-	}
-	method recibirAtaque(a) {}
-	method cambiarSentido() {}
-
 }
 
 class Guardia inherits Enemigo {
@@ -49,7 +34,7 @@ class Vigilante inherits Enemigo {
 			hitBox.updatePosition()
 		})
 	}
-	override method cambiarSentido() {
+	method cambiarSentido() {
 		if (not estado.hayProximaCelda(self.position())) {
 			estado = randomState.direccionAleatoria(self.position())
 		}
