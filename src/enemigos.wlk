@@ -10,9 +10,7 @@ class Enemigo {
 	var vida = 0
 	var property position = null
 
-	method position(a){
-		hitBox.updatePosition()
-	}
+	method position(a)
 	method image()
 	method comportamiento() {
 	}
@@ -44,14 +42,11 @@ class Vigilante inherits Enemigo {
 	var estado = caminadoAlaDerecha
 
 	override method image() = "vigilante.png"
-	override method position(p){
-		super(p)
-		position=p
-	}
 	override method comportamiento() {
-		game.onTick(200, "avanzarVigilante", { 
+		game.onTick(300, "avanzarVigilante", { 
 			self.cambiarSentido()
 			self.position(estado.siguientePosicion(self.position()))
+			hitBox.updatePosition()
 		})
 	}
 	override method cambiarSentido() {

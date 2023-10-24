@@ -2,25 +2,26 @@ import wollok.game.*
 class HitBox {
 	const property entity = null
 	var position = entity.position()
-	const boxes = self.createBoxes()
-	
-	
-	method updatePosition(){
-		self.generarHitbox()
-		position = entity.position()
-		boxes.forEach({ box => box.position(position)})
-	}
-	method position()=position
-	method createBoxes(){
-		return [
+	const boxes = [
 			new BoxTop(position=position),
 			new BoxRight(position=position),
 			new BoxLeft(position=position),
 			new BoxBot(position=position)
 		]
+	var generated = false
+	
+	method updatePosition(){
+		self.generarHitbox()
+		position = entity.position()
+		boxes.forEach({ box => box.position(position)})
+		
 	}
+	method position()=position
 	method generarHitbox(){
-		boxes.forEach({ box => game.addVisual(box)})
+		if (not generated){
+			boxes.forEach({ box => game.addVisual(box)})
+			generated = true			
+		}
 	}
 }
 
