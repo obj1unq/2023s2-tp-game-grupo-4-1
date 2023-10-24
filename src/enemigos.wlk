@@ -2,14 +2,17 @@ import wollok.game.*
 import entorno.*
 import jugador.*
 import movimientoPersonaje.*
+import hitBox.*
 class Enemigo {
-
+	const hitBox = new HitBox(entity=self)
 	const property isSolid = false
 	const property poderDeAtaque = 10
 	var vida = 0
 	var property position = null
 
-	method position()
+	method position(a){
+		hitBox.updatePosition()
+	}
 	method image()
 	method comportamiento() {
 	}
@@ -31,7 +34,6 @@ class Guardia inherits Enemigo {
 	 * a menos que el jugador tenga una moneda
 	 */
 	override method image() = "guardia.png"
-
 }
 
 class Vigilante inherits Enemigo {
@@ -42,7 +44,10 @@ class Vigilante inherits Enemigo {
 	var estado = caminadoAlaDerecha
 
 	override method image() = "vigilante.png"
-
+	override method position(p){
+		super(p)
+		position=p
+	}
 	override method comportamiento() {
 		game.onTick(200, "avanzarVigilante", { 
 			self.cambiarSentido()
