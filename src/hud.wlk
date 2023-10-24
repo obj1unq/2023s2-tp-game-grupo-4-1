@@ -21,6 +21,17 @@ object hud {
 	method envenenarVida(){
 		hud_HP.envenenarVida()
 	}
+	
+	method mostrarCartelDeDerrota(){
+		game.addVisual(
+			derrota			
+		)
+	}
+}
+
+object derrota{
+	const property position = game.at(0,game.width()/4 + 1)
+	const property image= "derrota.png"
 }
 
 object hud_HP {

@@ -30,6 +30,7 @@ object jugador {
 		game.say(self, self.vida().toString())
 		if(vida <= 0){
 			game.allVisuals().forEach({element=>element.parar()})
+			hud.mostrarCartelDeDerrota()
 		}
 	}
 	
