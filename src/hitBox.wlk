@@ -3,10 +3,10 @@ class HitBox {
 	const property entity = null
 	var position = entity.position()
 	const boxes = [
-			new BoxTop(position=position),
-			new BoxRight(position=position),
-			new BoxLeft(position=position),
-			new BoxBot(position=position)
+			new BoxTop(position=position, entity=entity),
+			new BoxRight(position=position, entity=entity),
+			new BoxLeft(position=position, entity=entity),
+			new BoxBot(position=position, entity=entity)
 		]
 	var generated = false
 	
@@ -27,12 +27,13 @@ class HitBox {
 
 
 class Box{
+	const entity= null
 	var position = null	
 	method image()= "hitboxPreview.png"
 	method position(p)
 	method position()=position
 	method collide(e){
-		
+		entity.collide(e)
 	}
 	method isSolid()=false
 }
