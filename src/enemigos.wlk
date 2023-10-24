@@ -36,14 +36,13 @@ class Vigilante inherits Enemigo {
 	}
 	method cambiarSentido() {
 		if (not estado.hayProximaCelda(self.position())) {
-			estado = randomState.direccionAleatoria(self.position())
+			estado = direccionAleatoria.generarDireccion(self.position())
 		}
 	}
-
 }
-object randomState {
+object direccionAleatoria {
 	const direcctions = [caminandoAlaIzquierda, caminadoAlaDerecha, caminadoArriba, caminadoAbajo]
-	method direccionAleatoria(position){
+	method generarDireccion(position){
 		direcctions.reverse()
 		return self.direccionesValidas(position).anyOne() 
 	}
@@ -62,17 +61,14 @@ object caminandoAlaIzquierda {
 	method siguientePosicion(position) = game.at(position.x() - 1, position.y())
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
-
 object caminadoAlaDerecha {
 	method siguientePosicion(position) = game.at(position.x() + 1, position.y())
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
-
 object caminadoArriba {
 	method siguientePosicion(position) = game.at(position.x(), position.y() + 1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
-
 object caminadoAbajo {
 	method siguientePosicion(position) = game.at(position.x(), position.y() - 1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
