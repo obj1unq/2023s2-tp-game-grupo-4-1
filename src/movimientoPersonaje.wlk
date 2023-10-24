@@ -25,10 +25,3 @@ object izquierda {
 object derecha {
 	method siguiente(position) = if(movementValidator.canMove(position.right(1))) { position.right(1) } else {position}
 }
-
-object tablero {
-	method pertenece(_position){ 
-		return _position.x().between(0, game.width()-1) 
-		&& _position.y().between(0, game.height()-1)
-	}
-}
