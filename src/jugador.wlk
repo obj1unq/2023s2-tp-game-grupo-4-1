@@ -26,5 +26,7 @@ object jugador {
 	}
 	method comportamiento(){
 		game.onCollideDo(self, {element=> element.collide(self)})
-	}	
+	}
+	
 }
+

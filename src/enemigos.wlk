@@ -2,7 +2,6 @@ import wollok.game.*
 import entorno.*
 import jugador.*
 import movimientoPersonaje.*
-
 class Enemigo {
 
 	const property isSolid = false
@@ -11,26 +10,21 @@ class Enemigo {
 	var property position = null
 
 	method position()
-
 	method image()
-
 	method comportamiento() {
 	}
 
 	method collide(a) {
 		a.recibirAtaque(self)
+		
+		
 	}
-
-	method recibirAtaque(a) {
-	}
-
-	method cambiarSentido() {
-	}
+	method recibirAtaque(a) {}
+	method cambiarSentido() {}
 
 }
 
 class Guardia inherits Enemigo {
-
 	/*
 	 * Los guardias son enemigos que no se 
 	 * mueven de la puerta y atacan al jugador
@@ -41,66 +35,62 @@ class Guardia inherits Enemigo {
 }
 
 class Vigilante inherits Enemigo {
-
 	/*
 	 * Los Vigilantes son enemigos que 
 	 * rondan por todo el mapa
 	 */
-	var estado = caminandoAlaIzquierda
+	var estado = caminadoAlaDerecha
 
 	override method image() = "vigilante.png"
 
 	override method comportamiento() {
-		game.onTick(200, "avanzarVigilante", { self.cambiarSentido()
-			self.position(estado.siguientePosicion(self))
+		game.onTick(200, "avanzarVigilante", { 
+			self.cambiarSentido()
+			self.position(estado.siguientePosicion(self.position()))
 		})
 	}
-
 	override method cambiarSentido() {
-		if (not estado.hayProximaCelda(self)) {
-			estado = estado.siguiente()
+		if (not estado.hayProximaCelda(self.position())) {
+			estado = randomState.direccionAleatoria(self.position())
 		}
 	}
 
 }
+object randomState {
+	const direcctions = [caminandoAlaIzquierda, caminadoAlaDerecha, caminadoArriba, caminadoAbajo]
+	method direccionAleatoria(position){
+		direcctions.reverse()
+		return self.direccionesValidas(position).anyOne() 
+	}
+	
+	method direccionesValidas(position){
+		/*Toma una lista de direcciones y devuelve unicamente las direcciones
+		 * en las que el existe 1 celda en x direccion
+		 */
+		 return direcctions.filter({dir=> 
+		 	dir.hayProximaCelda(position)
+		 })
+	}
 
+}
 object caminandoAlaIzquierda {
-
-	method siguientePosicion(pj) = game.at(pj.position().x() - 1, pj.position().y())
-
-	method hayProximaCelda(pj) = movementValidator.canMove(self.siguientePosicion(pj))
-
-	method siguiente() = caminadoAlaDerecha
-
+	method siguientePosicion(position) = game.at(position.x() - 1, position.y())
+	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 
 object caminadoAlaDerecha {
-
-	method siguientePosicion(pj) = game.at(pj.position().x() + 1, pj.position().y())
-
-	method hayProximaCelda(pj) = movementValidator.canMove(self.siguientePosicion(pj))
-
-	method siguiente() = caminadoArriba
-
+	method siguientePosicion(position) = game.at(position.x() + 1, position.y())
+	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 
 object caminadoArriba {
-
-	method siguientePosicion(pj) = game.at(pj.position().x(), pj.position().y() + 1)
-
-	method hayProximaCelda(pj) = movementValidator.canMove(self.siguientePosicion(pj))
-
-	method siguiente() = caminadoAbajo
-
+	method siguientePosicion(position) = game.at(position.x(), position.y() + 1)
+	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 
 object caminadoAbajo {
-
-	method siguientePosicion(pj) = game.at(pj.position().x(), pj.position().y() - 1)
-
-	method hayProximaCelda(pj) = movementValidator.canMove(self.siguientePosicion(pj))
-
-	method siguiente() = caminandoAlaIzquierda
+	method siguientePosicion(position) = game.at(position.x(), position.y() - 1)
+	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 
 }
 
