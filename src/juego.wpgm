@@ -6,20 +6,10 @@ import enemigos.*
 import movimientoPersonaje.*
 import mapa.*
 import generadorDeEnemigos.*
-object movimientoJugador{
-	
-	method movimiento(){
-		keyboard.up().onPressDo({jugador.mover(arriba)})
-		keyboard.down().onPressDo({jugador.mover(abajo)})
-		keyboard.left().onPressDo({jugador.mover(izquierda)})
-		keyboard.right().onPressDo({jugador.mover(derecha)})
-	}
-}
 
 program juego {
 	game.title("Dungeon zx") 
 	mapa.generar() // NO TOCAR
-	movimientoJugador.movimiento()
 	generadorDeEnemigos.generar()
 	hud.add()
 	game.allVisuals().forEach({element=>element.comportamiento()})
