@@ -1,7 +1,7 @@
 import wollok.game.*
 import entorno.*
 import jugador.*
-import movimientoPersonaje.*
+import movimientoEntidades.*
 
 import gameEntity.*
 class Enemigo inherits GameEntity{

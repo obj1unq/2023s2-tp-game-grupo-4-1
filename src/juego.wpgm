@@ -3,7 +3,7 @@ import hud.*
 import jugador.*
 import entorno.*
 import enemigos.*
-import movimientoPersonaje.*
+import movimientoEntidades.*
 import mapa.*
 import generadorDeEnemigos.*
 

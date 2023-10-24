@@ -1,7 +1,7 @@
 import wollok.game.*
 import jugador.*
 import enemigos.*
-import movimientoPersonaje.*
+import movimientoEntidades.*
 
 class Entorno {
 	const property isSolid = false
