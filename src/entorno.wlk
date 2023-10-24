@@ -7,6 +7,7 @@ class Entorno {
 	const property isSolid = false
 	method collide(a){}
 	method comportamiento(){}
+	method parar(){}
 }
 
 
@@ -51,6 +52,7 @@ class SolidObject {
 	method collide(a){
 		a.cambiarSentido()
 	}
+	method parar(){}
 }
 class Pared inherits SolidObject{
 	/*

@@ -82,6 +82,7 @@ class Vida {
 	method vaciar(){state=empty}
 	method llenar(){state=full}
 	method envenenar(){state=poisoned}
+	method parar(){	}
 }
 
 object full {

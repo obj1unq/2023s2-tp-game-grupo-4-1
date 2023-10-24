@@ -19,14 +19,22 @@ object jugador {
 		self.position(direccion)
 	}
 
-	method morir() {
-		if (vida <= 0) estado = "muerto"
-	}
-
 	method recibirAtaque(gameObject) {
 		vida -= gameObject.poderDeAtaque()
 		hud.reducirVida()
-		game.say(self, "auch")
+		
+		self.pararJuegoSiElJugadorMuere()
+	}
+	
+	method pararJuegoSiElJugadorMuere(){
+		game.say(self, self.vida().toString())
+		if(vida <= 0){
+			game.allVisuals().forEach({element=>element.parar()})
+		}
+	}
+	
+	method parar(){
+		game.removeVisual(self)
 	}
 
 	method comportamiento() {
@@ -35,7 +43,7 @@ object jugador {
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
 		game.onCollideDo(self, { element => element.collide(self)})
+		
 	}
 
 }
-

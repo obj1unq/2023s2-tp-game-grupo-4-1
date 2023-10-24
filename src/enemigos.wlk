@@ -17,6 +17,7 @@ class Guardia inherits Enemigo {
 	 * a menos que el jugador tenga una moneda
 	 */
 	override method image() = "guardia.png"
+	override method parar(){}
 }
 
 class Vigilante inherits Enemigo {
@@ -33,6 +34,9 @@ class Vigilante inherits Enemigo {
 			self.position(estado.siguientePosicion(self.position()))
 			hitBox.updatePosition()
 		})
+	}
+	override method parar(){
+		game.removeTickEvent("avanzarVigilante")
 	}
 	method cambiarSentido() {
 		if (not estado.hayProximaCelda(self.position())) {

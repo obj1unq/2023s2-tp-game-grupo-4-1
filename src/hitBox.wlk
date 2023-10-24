@@ -36,6 +36,7 @@ class Box{
 		entity.collide(e)
 	}
 	method isSolid()=false
+	method parar(){}
 }
 
 class BoxTop inherits Box{
