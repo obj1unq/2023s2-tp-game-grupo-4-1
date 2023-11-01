@@ -27,7 +27,7 @@ class Vigilante inherits Enemigo {
 	 */
 	var direccion = caminadoAlaDerecha
 
-	override method image() = "vigilante.png"
+	override method image() = direccion.image("vigilante")
 	override method comportamiento() {
 		game.onTick(300, "avanzarVigilante", { 
 			self.cambiarSentido()
@@ -62,18 +62,22 @@ object direccionAleatoria {
 
 }
 object caminandoAlaIzquierda {
+	method image(img)= img + "_left.png"
 	method siguientePosicion(position) = position.left(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 object caminadoAlaDerecha {
+	method image(img)= img + "_right.png"
 	method siguientePosicion(position) = position.right(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 object caminadoArriba {
+	method image(img)= img + "_right.png"
 	method siguientePosicion(position) = position.up(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
 object caminadoAbajo {
+	method image(img)= img + "_right.png"
 	method siguientePosicion(position) = position.down(1)
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 }
