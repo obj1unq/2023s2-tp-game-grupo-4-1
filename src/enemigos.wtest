@@ -1,0 +1,21 @@
+import wollok.game.*
+import enemigos.*
+import jugador.*
+describe "Enemigos" {
+	const vigilante = new Vigilante();
+	method initialize(){
+    	game.clear()
+	}
+	test "Enemigo reduce la vida del Jugador al colisionar" {
+		const vidaInicial = 10
+		const dmgVigilante = vigilante.poderDeAtaque()
+		jugador.vida(vidaInicial)
+		game.addVisual(jugador)
+		game.addVisual(vigilante)
+				
+		vigilante.collide(jugador)
+		
+		assert.equals(vidaInicial-dmgVigilante, jugador.vida())
+
+	}
+}
