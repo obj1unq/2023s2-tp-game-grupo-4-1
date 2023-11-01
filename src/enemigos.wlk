@@ -25,13 +25,13 @@ class Vigilante inherits Enemigo {
 	 * Los Vigilantes son enemigos que 
 	 * rondan por todo el mapa
 	 */
-	var estado = caminadoAlaDerecha
+	var direccion = caminadoAlaDerecha
 
 	override method image() = "vigilante.png"
 	override method comportamiento() {
 		game.onTick(300, "avanzarVigilante", { 
 			self.cambiarSentido()
-			self.position(estado.siguientePosicion(self.position()))
+			self.position(direccion.siguientePosicion(self.position()))
 			hitBox.updatePosition()
 		})
 	}
@@ -39,8 +39,8 @@ class Vigilante inherits Enemigo {
 		game.removeTickEvent("avanzarVigilante")
 	}
 	method cambiarSentido() {
-		if (not estado.hayProximaCelda(self.position())) {
-			estado = direccionAleatoria.generarDireccion(self.position())
+		if (not direccion.hayProximaCelda(self.position())) {
+			direccion = direccionAleatoria.generarDireccion(self.position())
 		}
 	}
 }
