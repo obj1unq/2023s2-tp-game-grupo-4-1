@@ -23,6 +23,21 @@ class Guardia inherits Enemigo {
 
 	override method parar() {
 	}
+	method dejarPasarAlJugador(){
+		game.say(self, "Pasa")
+		self.position(
+				self.position().left(1)
+			)
+	}
+	override method collide(entity){
+		if(entity.tieneMoneda()){
+			entity.gastarMoneda()
+			self.dejarPasarAlJugador()
+			
+		}else{
+			super(entity)
+		}
+	}
 
 }
 

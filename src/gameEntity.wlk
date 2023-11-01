@@ -9,7 +9,7 @@ class GameEntity {
 	const property poderDeAtaque = 1
 	var property position = null
 	const property isSolid = false
-
+	method tieneMoneda()=false
 	method image()
 
 	method comportamiento() {

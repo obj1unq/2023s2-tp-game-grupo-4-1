@@ -12,13 +12,15 @@ object jugador {
 	var property poderDeAtaque = 5
 	var property position = game.at(1, 1)
 	var property vida = 3
+	var moneda = true
 	const property image = "Jugador.png"
 	const property isSolid = false
-
+	method tieneMoneda()=moneda
+	method gastarMoneda(){  moneda = false }
 	method mover(direccion) {
 		self.position(direccion)
 	}
-
+	
 	method recibirAtaque(gameObject) {
 		vida -= gameObject.poderDeAtaque()
 		hud.reducirVida()

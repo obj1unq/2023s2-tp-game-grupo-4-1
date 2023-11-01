@@ -47,7 +47,8 @@ object pr {
 
 	method generar(position) {
 		game.addVisual(new Piso(position = position))
-		game.addVisual(new Puerta(position = position))
+		puerta.position(position)
+		game.addVisual(puerta)
 	}
 
 }

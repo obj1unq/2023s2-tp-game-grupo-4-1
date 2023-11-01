@@ -141,28 +141,29 @@ class Obstaculo inherits SolidObject {
 
 }
 
-class Puerta inherits Entorno {
-
-	const property position = 0
-	const estado = puertaAbierta
-
+object puerta inherits Entorno {
+	var property position = 0
+	var estado = puertaCerrada
 	method poderDeAtaque() = 0
 
 	method image()= estado.image()
 
 	method recibirAtaque(a) {
 	}
-
+	override method isSolid()=estado.isSolid()
+	method abrirPuerta(){
+		estado = puertaAbierta
+	}
 }
 
 object puertaCerrada {
-
+	method isSolid()=true
 	method image() = "PuertaCerrada.png"
 
 }
 
 object puertaAbierta {
-
+	method isSolid()=false
 	method image() = "PuertaAbierta.png"
 
 }
