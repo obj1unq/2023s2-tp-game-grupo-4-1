@@ -8,12 +8,10 @@ import mapa.*
 import generadorDeEnemigos.*
 
 program juego {
-	game.title("Dungeon zx") 
+	game.title("Dungeon zx")
 	mapa.generar() // NO TOCAR
 	generadorDeEnemigos.generar()
 	hud.add()
-	game.allVisuals().forEach({element=>element.comportamiento()})
+	game.allVisuals().forEach({ element => element.comportamiento() })
 	game.start()
 }
-
-

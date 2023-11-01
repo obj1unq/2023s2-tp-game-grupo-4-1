@@ -22,18 +22,17 @@ object jugador {
 	method recibirAtaque(gameObject) {
 		vida -= gameObject.poderDeAtaque()
 		hud.reducirVida()
-		
 		self.pararJuegoSiElJugadorMuere()
 	}
-	
-	method pararJuegoSiElJugadorMuere(){
-		if(vida <= 0){
-			game.allVisuals().forEach({element=>element.parar()})
+
+	method pararJuegoSiElJugadorMuere() {
+		if (vida <= 0) {
+			game.allVisuals().forEach({ element => element.parar()})
 			hud.mostrarCartelDeDerrota()
 		}
 	}
-	
-	method parar(){
+
+	method parar() {
 		game.removeVisual(self)
 	}
 
@@ -43,7 +42,7 @@ object jugador {
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
 		game.onCollideDo(self, { element => element.collide(self)})
-		
 	}
 
 }
+

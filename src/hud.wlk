@@ -2,6 +2,7 @@ import wollok.game.*
 import jugador.*
 
 object hud {
+
 	/*
 	 * Esta es la clase encargada de mostrar los elementos del hud
 	 * y actualizarlos
@@ -17,24 +18,26 @@ object hud {
 	method aumentarVida() {
 		hud_HP.aumentarVida()
 	}
-	
-	method envenenarVida(){
+
+	method envenenarVida() {
 		hud_HP.envenenarVida()
 	}
-	
-	method mostrarCartelDeDerrota(){
-		game.addVisual(
-			derrota			
-		)
+
+	method mostrarCartelDeDerrota() {
+		game.addVisual(derrota)
 	}
+
 }
 
-object derrota{
-	const property position = game.at(0,game.width()/4 + 1)
-	const property image= "derrota.png"
+object derrota {
+
+	const property position = game.at(0, game.width() / 4 + 1)
+	const property image = "derrota.png"
+
 }
 
 object hud_HP {
+
 	/*
 	 * Esta es la clase crea los corazones en base a la 
 	 * vida del jugador al momento de llamar el metodo hpVisuals 
@@ -42,7 +45,7 @@ object hud_HP {
 	 * cuando el jugador pierde o recibe daño
 	 */
 	const vidas = self.hpVisuals()
-	var vidaActual = jugador.vida()-1
+	var vidaActual = jugador.vida() - 1
 
 	method mostrar() {
 		vidas.forEach({ hp => game.addVisual(hp)})
@@ -54,13 +57,10 @@ object hud_HP {
 		 *   
 		 */
 		const lista = []
-		(0..jugador.vida() - 1).forEach({ x => 
-			lista.add(
-				new Vida(position = game.at(x + 1, game.height() - 1))
-			)
-		})
+		(0 .. jugador.vida() - 1).forEach({ x => lista.add(new Vida(position = game.at(x + 1, game.height() - 1)))})
 		return lista
 	}
+
 	method reducirVida() {
 		self.validarQueElJugadorEstaVivo()
 		vidas.get(vidaActual).vaciar()
@@ -72,39 +72,65 @@ object hud_HP {
 		vidas.get(vidaActual).llenar()
 		vidaActual = vidaActual + 1
 	}
-	method envenenarVida(){
+
+	method envenenarVida() {
 		self.validarQueElJugadorEstaVivo()
-		vidas.forEach({vida=> vida.envenenar()})
+		vidas.forEach({ vida => vida.envenenar()})
 	}
-	
-	method validarQueElJugadorEstaVivo(){
-		if(vidaActual < 0 ){
+
+	method validarQueElJugadorEstaVivo() {
+		if (vidaActual < 0) {
 			self.error("El jugador deberia estar muerto")
 		}
 	}
 
 }
+
 class Vida {
+
 	const property position = null
 	var state = full
-	method image()= "hp" + state.image() + ".png"
-	method comportamiento(){}
-	method collide(x){}
-	method vaciar(){state=empty}
-	method llenar(){state=full}
-	method envenenar(){state=poisoned}
-	method parar(){	}
+
+	method image() = "hp" + state.image() + ".png"
+
+	method comportamiento() {
+	}
+
+	method collide(x) {
+	}
+
+	method vaciar() {
+		state = empty
+	}
+
+	method llenar() {
+		state = full
+	}
+
+	method envenenar() {
+		state = poisoned
+	}
+
+	method parar() {
+	}
+
 }
 
 object full {
-	method image()= "_full"
+
+	method image() = "_full"
+
 }
+
 object empty {
-	method image()="_empty"
+
+	method image() = "_empty"
+
 }
 
-object poisoned{
-	method image()="_poisoned"
-} 
+object poisoned {
 
+	method image() = "_poisoned"
+
+}
 

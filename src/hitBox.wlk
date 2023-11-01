@@ -1,61 +1,80 @@
 import wollok.game.*
+
 class HitBox {
+
 	const property entity = null
 	var position = entity.position()
-	const boxes = [
-			new BoxTop(position=position, entity=entity),
-			new BoxRight(position=position, entity=entity),
-			new BoxLeft(position=position, entity=entity),
-			new BoxBot(position=position, entity=entity)
-		]
+	const boxes = [ new BoxTop(position=position, entity=entity), new BoxRight(position=position, entity=entity), new BoxLeft(position=position, entity=entity), new BoxBot(position=position, entity=entity) ]
 	var generated = false
-	
-	method updatePosition(){
+
+	method updatePosition() {
 		self.generarHitbox()
 		position = entity.position()
 		boxes.forEach({ box => box.position(position)})
-		
 	}
-	method position()=position
-	method generarHitbox(){
-		if (not generated){
+
+	method position() = position
+
+	method generarHitbox() {
+		if (not generated) {
 			boxes.forEach({ box => game.addVisual(box)})
-			generated = true			
+			generated = true
 		}
 	}
+
 }
 
+class Box {
 
-class Box{
-	const entity= null
-	var position = null	
-	method image()= "hitboxPreview.png"
+	const entity = null
+	var position = null
+
+	method image() = "hitboxPreview.png"
+
 	method position(p)
-	method position()=position
-	method collide(e){
+
+	method position() = position
+
+	method collide(e) {
 		entity.collide(e)
 	}
-	method isSolid()=false
-	method parar(){}
+
+	method isSolid() = false
+
+	method parar() {
+	}
+
 }
 
-class BoxTop inherits Box{
-	override method position(p){
+class BoxTop inherits Box {
+
+	override method position(p) {
 		position = p.up(1)
 	}
+
 }
-class BoxRight inherits Box{
-	override method position(p){
+
+class BoxRight inherits Box {
+
+	override method position(p) {
 		position = p.right(1)
 	}
+
 }
-class BoxLeft inherits Box{
-	override method position(p){
+
+class BoxLeft inherits Box {
+
+	override method position(p) {
 		position = p.left(1)
 	}
+
 }
-class BoxBot inherits Box{
-	override method position(p){
+
+class BoxBot inherits Box {
+
+	override method position(p) {
 		position = p.down(1)
 	}
+
 }
+
