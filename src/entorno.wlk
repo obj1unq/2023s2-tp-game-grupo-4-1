@@ -148,7 +148,7 @@ class Puerta inherits Entorno {
 
 	method poderDeAtaque() = 0
 
-	method imagen() = estado.image()
+	method image()= estado.image()
 
 	method recibirAtaque(a) {
 	}

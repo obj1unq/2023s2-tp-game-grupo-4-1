@@ -94,7 +94,18 @@ object mapa {
 	 * g = Guardia
 	 * v = Vigilante
 	 */
-	const celdas = [ [p,p,p,p,p,p,p,p,p,p,p,p,p,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,o,op,o,_,_,_,_,_,_,_,_,p], [p,_,o,_,o,_,o,_,_,_,_,_,_,p], [p,_,op,_,op,_,op,_,_,_,_,_,_,pr], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,p,p,p,p,p,p,p,p,p,p,p,p,p] ].reverse() // reverse porque el y crece en el orden inverso
+	const celdas = [ 
+				[p,p,p,p,p,p,pr,p,p,p,p,p,p,p],
+				[p,_,_,_,_,_,g,_,_,_,_,_,_,p],
+				[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+				[p,_,o,op,o,_,_,_,_,_,_,_,_,p],
+				[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
+				[p,_,op,_,op,_,op,_,_,_,_,_,_,p],
+				[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+				[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+				[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
+				[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
+	].reverse() // reverse porque el y crece en el orden inverso
 
 	method generar() {
 		game.width(celdas.anyOne().size())
