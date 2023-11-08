@@ -20,7 +20,7 @@ class ObjetoAnimado {
 	var fotograma = 1
 	const recolector = jugador 
 	var property position = game.at(0,0)
-
+	method parar() {}
 	method isSolid() = false
 	method image() = nombre + fotograma + ".png"
 	
