@@ -15,14 +15,16 @@ object pildoraDeAltura {
 class ObjetoAnimado {
 	const property fotogramas 
 	const property nombre
-		
+	
+	
 	var fotograma = 1
 	const recolector = jugador 
 	var property position = game.at(0,0)
 
-	
+	method isSolid() = false
 	method image() = nombre + fotograma + ".png"
 	
+	method comportamiento() {}
 	
 	method animation(){
 		if (fotograma != fotogramas) {

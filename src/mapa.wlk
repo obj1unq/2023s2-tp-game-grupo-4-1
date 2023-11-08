@@ -107,10 +107,7 @@ object mapa {
 	 * g = Guardia
 	 * v = Vigilante
 	 */
-<<<<<<< HEAD
-	const celdas = [ [p,p,p,p,p,p,p,p,p,p,p,p,p,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,o,op,o,_,_,_,_,_,_,_,_,p], [p,_,o,_,o,_,o,_,_,_,_,_,_,p], [p,_,op,_,op,_,op,_,_,_,_,_,_,pr], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,_,_,_,_,_,_,_,_,_,_,_,_,p], [p,p,p,p,p,p,p,p,p,p,p,p,p,p] ].reverse() // reverse porque el y crece en el orden inverso
 
-=======
 	const celdas = [
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
@@ -124,15 +121,11 @@ object mapa {
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
 	
->>>>>>> origin/animaciones
 	method generar() {
 		game.width(celdas.anyOne().size())
 		game.height(celdas.size())
 		game.cellSize(96)
-<<<<<<< HEAD
-		(0 .. game.width() - 1).forEach({ x => (0 .. game.height() - 1).forEach({ y => self.generarCelda(x, y)})})
-		game.addVisual(jugador) // agrego al final por un tema del z index
-=======
+
 		(0..game.width() -1).forEach({x =>
 			(0..game.height() -1).forEach( {y =>
 				self.generarCelda(x,y)
@@ -141,7 +134,6 @@ object mapa {
 		game.addVisual(jugador) //agrego al final por un tema del z index
 		game.addVisual(moneda)
 		game.addVisual(posionMisteriosa)
->>>>>>> origin/animaciones
 	}
 
 	method generarCelda(x, y) {
