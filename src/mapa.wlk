@@ -6,12 +6,14 @@ import recolectables.*
 
 object m {
 	method generar(position) {
+		game.addVisual(new Piso(position = position))
 		moneda.position(position)
 	}
 }
 
 object po{
 	method generar(position) {
+		game.addVisual(new Piso(position = position))
 		posionMisteriosa.position(position)
 	}
 }
