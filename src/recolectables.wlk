@@ -24,7 +24,11 @@ class ObjetoAnimado {
 	method isSolid() = false
 	method image() = nombre + fotograma + ".png"
 	
-	method comportamiento() {}
+	method comportamiento() {
+		game.onTick(self.msFotogramas(),"animacion",{self.animation()})
+	}
+	
+	method msFotogramas() = 50
 	
 	method animation(){
 		if (fotograma != fotogramas) {
