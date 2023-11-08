@@ -7,9 +7,10 @@ import hud.*
 
 object jugador {
 
-	var property velocidad = 5
-	var property estado = "normal"
-	var property poderDeAtaque = 5
+	
+	//var property velocidad = 5
+	//var property estado = "normal"
+	//var property poderDeAtaque = 5
 	var property position = game.at(1, 1)
 	var property vida = 3
 	const property image = "Jugador.png"
@@ -19,8 +20,8 @@ object jugador {
 		self.position(direccion)
 	}
 
-	method recibirAtaque(gameObject) {
-		vida -= gameObject.poderDeAtaque()
+	method recibirAtaque(enemigo) {
+		vida -= enemigo.poderDeAtaque()
 		hud.reducirVida()
 		self.pararJuegoSiElJugadorMuere()
 	}
@@ -41,6 +42,7 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
+		
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
 

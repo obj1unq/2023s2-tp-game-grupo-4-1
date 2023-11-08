@@ -7,7 +7,7 @@ class Entorno {
 
 	const property isSolid = false
 
-	method collide(a) {
+	method collide(pj) {  
 	}
 
 	method comportamiento() {
@@ -60,7 +60,7 @@ object tableroPosition {
 
 class SolidObject {
 
-	method recibirAtaque(a) {
+	method recibirAtaque(pj) {
 	}
 
 	method isSolid() = true
@@ -68,8 +68,8 @@ class SolidObject {
 	method comportamiento() {
 	}
 
-	method collide(a) {
-		a.cambiarSentido()
+	method collide(pj) {
+		pj.cambiarSentido()
 	}
 
 	method parar() {
@@ -86,32 +86,39 @@ class Pared inherits SolidObject {
 	const property position = game.at(0, 0)
 
 	method image() {
+		return image +
+		
 		if (tableroPosition.esBordeInferiorIzquierdo(position)) {
-			return image + "BordeInferiorIzquierdo.png"
+			 "BordeInferiorIzquierdo"
 		}
-		if (tableroPosition.esBordeSuperiorIzquierdo(position)) {
-			return image + "BordeSuperiorIzquierdo.png"
+		else if (tableroPosition.esBordeSuperiorIzquierdo(position)) {
+			 "BordeSuperiorIzquierdo."
 		}
-		if (tableroPosition.esBordeInferiorDerecho(position)) {
-			return image + "BordeInferiorDerecho.png"
+		else if (tableroPosition.esBordeInferiorDerecho(position)) {
+			 "BordeInferiorDerecho"
 		}
-		if (tableroPosition.esBordeSuperiorDerecho(position)) {
-			return image + "BordeSuperiorDerecho.png"
+		else if (tableroPosition.esBordeSuperiorDerecho(position)) {
+			 "BordeSuperiorDerecho"
 		}
-		if (tableroPosition.esParedDerecha(position)) {
-			return image + "Derecha.png"
+		
+		
+		
+		else if (tableroPosition.esParedDerecha(position)) {
+			 "Derecha"
 		}
-		if (tableroPosition.esParedIzquierda(position)) {
-			return image + "Izquierda.png"
+		else if (tableroPosition.esParedIzquierda(position)) {
+			 "Izquierda"
 		}
-		if (tableroPosition.esParedSuperior(position)) {
-			return image + "Arriba.png"
+		else if (tableroPosition.esParedSuperior(position)) {
+			"Arriba"
 		}
-		if (tableroPosition.esParedInferior(position)) {
-			return image + "Abajo.png"
+		else if (tableroPosition.esParedInferior(position)) {
+			 "Abajo"
 		}
-		return "Muro.png" // En ningun caso tendría que llegar a cargar esta imagen
-	}
+		
+		
+		else self.error("404: TEXTYRA NO ENCONTRADA ")  
+	} 
 
 }
 
@@ -122,7 +129,7 @@ class Piso inherits Entorno {
 
 	method poderDeAtaque() = 0
 
-	method recibirAtaque(a) {
+	method recibirAtaque(pj) {
 	}
 
 }
