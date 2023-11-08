@@ -14,4 +14,5 @@ program juego {
 	hud.add()
 	game.allVisuals().forEach({ element => element.comportamiento() })
 	game.start()
+	
 }
