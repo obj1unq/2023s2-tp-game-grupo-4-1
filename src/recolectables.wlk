@@ -50,10 +50,9 @@ class ObjetoAnimado {
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
-
-
 	override method accion(pj) { 
 		const vidaAlterar = self.vidaAlterar(pj)
+		
 		#{	pj.subirVida(vidaAlterar), 
 			pj.bajarVida(vidaAlterar)
 		 }.anyOne()
