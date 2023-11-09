@@ -21,10 +21,15 @@ object jugador {
 	}
 
 	method recibirAtaque(enemigo) {
-		vida -= enemigo.poderDeAtaque()
+		self.alterarVida( - enemigo.poderDeAtaque() )
 		hud.reducirVida()
 		self.pararJuegoSiElJugadorMuere()
 	}
+
+	method alterarVida(valor) {
+		vida += valor
+	}
+	
 
 	method pararJuegoSiElJugadorMuere() {
 		if (vida <= 0) {

@@ -18,7 +18,6 @@ class ObjetoAnimado {
 	
 	
 	var fotograma = 1
-	const recolector = jugador 
 	var property position = game.at(0,0)
 	method parar() {}
 	method isSolid() = false
@@ -36,6 +35,14 @@ class ObjetoAnimado {
 		} else {fotograma = 1}
 	}
 	
+
+	
+	 method collide(pj) {
+		self.accion(pj)
+		game.removeVisual(self)
+	}
+	
+	method accion(pj)
 }
 
 
@@ -43,17 +50,27 @@ class ObjetoAnimado {
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
-	method serAgarrado() {
-		const vidaASumar = (-3 .. 3).anyOne()
-		recolector.alterarVida(vidaASumar) 
-		// Agregar el método alterarVida() al personaje e implementar o colideDo
+
+
+	override method accion(pj) { 
+		const vidaAlterar = self.vidaAlterar(pj)
+		#{	pj.subirVida(vidaAlterar), 
+			pj.bajarVida(vidaAlterar)
+		 }.anyOne()
 	}
+	
+	
+	method vidaAlterar(pj) = (0..3).anyOne()
+	
+	
 }
 
 
 // Recolectable que sirve apara sobornar al guardia
 object moneda inherits ObjetoAnimado(fotogramas = 10, nombre = "moneda_de_oro-rotacion-") { // Usa la validacion 
-
+	override method accion(pj) {
+		
+	}
 }
 
 // Equipabler que otorga velocidad
