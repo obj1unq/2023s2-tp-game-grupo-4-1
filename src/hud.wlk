@@ -91,7 +91,7 @@ class Vida {
 	const property position = null
 	var state = full
 
-	method image() = "hp" + state.image() + ".png"
+	method image() = "corazon-" + state.image() + ".png"
 
 	method comportamiento() {
 	}
@@ -118,13 +118,13 @@ class Vida {
 
 object full {
 
-	method image() = "_full"
+	method image() = "1"
 
 }
 
 object empty {
 
-	method image() = "_empty"
+	method image() = "0"
 
 }
 

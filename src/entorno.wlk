@@ -30,6 +30,7 @@ class Hud inherits Entorno{
 	method image() = "hud.png" 
 }
 
+
 object tableroPosition {
 
 	/*

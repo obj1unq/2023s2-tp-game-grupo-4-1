@@ -86,6 +86,8 @@ object h {
 	}
 }
 
+
+
 /*
  * object p {
  * 	//door
