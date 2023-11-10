@@ -4,11 +4,7 @@ import enemigos.*
 object generadorDeEnemigos {
 
 	var maximoEnemigos = 3
-	const limiteAltura = game.height() - 96
-	const limiteAncho = game.width() - 96
 	const dificultad = 1
-	const enemigos = []
-	
 	method generar() {
 		(0..maximoEnemigos).forEach({x =>
 			const enemigo = self.enemigoRandom()
@@ -20,9 +16,9 @@ object generadorDeEnemigos {
 		maximoEnemigos = 0
 	}
 	method enemigoRandom(){
-		return new Vigilante(position=self.validPosition())
+			return new Vigilante(position=self.validPosition())		
 	}
-	
+	method randomNumber() = (0..3).anyOne()
 	method randomPosition(){
 		return 	game.at( 
 					(0 .. game.width() - 1 ).anyOne(),
@@ -32,16 +28,10 @@ object generadorDeEnemigos {
 	
 	method validPosition(){
 		const position = self.randomPosition()
-		if(game.getObjectsIn(position).all({element => not element.isSolid() })){
-			return position
-		}else{
-			return self.validPosition()
-		}
+		return if(self.esUnaCeldaValida(position)){ position}else{self.validPosition()}
 	}
 	
-	method esUnaCeldaValida(){
-		
-	}
+	method esUnaCeldaValida(position)=game.getObjectsIn(position).all({element => not element.isSolid() })
 	
 	
 	
