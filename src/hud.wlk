@@ -93,9 +93,6 @@ class Vida {
 
 	method image() = "hp" + state.image() + ".png"
 
-	method comportamiento() {
-	}
-
 	method collide(x) {
 	}
 

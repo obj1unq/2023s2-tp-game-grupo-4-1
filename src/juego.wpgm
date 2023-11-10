@@ -14,7 +14,7 @@ program juego {
 	
 	generadorDeEnemigos.generar()
 	hud.add()
-	game.allVisuals().forEach({ element => element.comportamiento() })
+	jugador.comportamiento()
 	game.start()
 	
 }

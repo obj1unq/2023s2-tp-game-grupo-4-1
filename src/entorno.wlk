@@ -10,8 +10,6 @@ class Entorno {
 	method collide(pj) {
 	}
 
-	method comportamiento() {
-	}
 
 	method parar() {
 	}
@@ -46,13 +44,6 @@ class SolidObject {
 	}
 
 	method isSolid() = true
-
-	method comportamiento() {
-	}
-
-	method collide(pj) {
-		pj.cambiarSentido()
-	}
 
 	method parar() {
 	}

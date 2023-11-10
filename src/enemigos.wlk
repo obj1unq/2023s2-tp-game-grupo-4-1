@@ -37,7 +37,7 @@ class Vigilante inherits Enemigo {
 	override method image() = direccion.image("vigilante")
 
 	override method comportamiento() {
-		game.onTick(300, "avanzarVigilante", { self.cambiarSentido()
+		game.onTick(500, "avanzarVigilante", { self.cambiarSentido()
 			self.position(direccion.siguientePosicion(self.position()))
 			hitBox.updatePosition()
 		})
