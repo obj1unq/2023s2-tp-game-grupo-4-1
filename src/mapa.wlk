@@ -114,7 +114,7 @@ object mapa {
 	 */
 
 	const celdas = [
-		[h,h,h,h,h,h,h,h,h,h,h,h,h,h],
+		[p,h,h,h,h,h,h,h,h,h,h,h,h,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,o,op,o,_,_,_,_,_,_,_,_,p],
