@@ -60,7 +60,6 @@ object direccionAleatoria {
 	const direcctions = [ caminandoAlaIzquierda, caminadoAlaDerecha, caminadoArriba, caminadoAbajo ]
 
 	method generarDireccion(position) {
-		direcctions.reverse()
 		return self.direccionesValidas(position).anyOne()
 	}
 

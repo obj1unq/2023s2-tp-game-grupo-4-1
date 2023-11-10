@@ -65,7 +65,7 @@ class Pared inherits SolidObject {
 	 */
 	const property position = game.at(0, 0)
 
-	method image() = "pared_text2.png" 
+	method image() = "Pared.png" 
 }
 
 class Pasto inherits Entorno {

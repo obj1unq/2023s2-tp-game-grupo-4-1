@@ -59,7 +59,7 @@ object p {
 object pr {
 
 	method generar(position) {
-		game.addVisual(new Piso(position = position))
+		//game.addVisual(new Piso(position = position))
 		game.addVisual(new Puerta(position = position))
 	}
 
@@ -68,7 +68,7 @@ object pr {
 object g {
 
 	method generar(position) {
-		game.addVisual(new Piso(position = position))
+		//game.addVisual(new Piso(position = position))
 		game.addVisual(new Guardia(position = position))
 	}
 
@@ -77,7 +77,7 @@ object g {
 object v {
 
 	method generar(position) {
-		game.addVisual(new Piso(position = position))
+		//game.addVisual(new Piso(position = position))
 		game.addVisual(new Vigilante(position = position))
 	}
 

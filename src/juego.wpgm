@@ -11,6 +11,7 @@ program juego {
 	game.title("Dungeon zx")
 	game.ground("pasto-0.png")
 	mapa.generar() // NO TOCAR
+	
 	generadorDeEnemigos.generar()
 	hud.add()
 	game.allVisuals().forEach({ element => element.comportamiento() })
