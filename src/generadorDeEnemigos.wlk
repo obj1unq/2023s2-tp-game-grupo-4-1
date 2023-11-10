@@ -3,7 +3,7 @@ import enemigos.*
 
 object generadorDeEnemigos {
 
-	const maximoEnemigos = 3
+	var maximoEnemigos = 3
 	const limiteAltura = game.height() - 96
 	const limiteAncho = game.width() - 96
 	const dificultad = 1
@@ -23,6 +23,7 @@ object generadorDeEnemigos {
 		(0..maximoEnemigos).forEach({x =>
 			enemigos.add( self.enemigoRandom())
 		})
+		maximoEnemigos = 0
 	}
 	method enemigoRandom(){
 		return new Vigilante(position=game.center())
