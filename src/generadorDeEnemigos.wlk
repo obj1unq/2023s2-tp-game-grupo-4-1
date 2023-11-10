@@ -7,10 +7,25 @@ object generadorDeEnemigos {
 	const limiteAltura = game.height() - 96
 	const limiteAncho = game.width() - 96
 	const dificultad = 1
-
+	const enemigos = []
+	
 	method generar() {
-		game.addVisual(new Vigilante(position = game.center()))
+		self.generarEnemigos()
+		enemigos.forEach({enemigo =>
+			game.addVisual(enemigo)
+			game.onTick(500, "comportamientoEnemigo", {
+				enemigo.comportamiento()
+			})
+		})
 	}
-
+	
+	method generarEnemigos(){
+		(0..maximoEnemigos).forEach({x =>
+			enemigos.add( self.enemigoRandom())
+		})
+	}
+	method enemigoRandom(){
+		return new Vigilante(position=game.center())
+	}
 }
 
