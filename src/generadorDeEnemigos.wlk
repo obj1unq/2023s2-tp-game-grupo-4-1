@@ -10,23 +10,40 @@ object generadorDeEnemigos {
 	const enemigos = []
 	
 	method generar() {
-		self.generarEnemigos()
-		enemigos.forEach({enemigo =>
+		(0..maximoEnemigos).forEach({x =>
+			const enemigo = self.enemigoRandom()
 			game.addVisual(enemigo)
 			game.onTick(500, "comportamientoEnemigo", {
 				enemigo.comportamiento()
 			})
 		})
-	}
-	
-	method generarEnemigos(){
-		(0..maximoEnemigos).forEach({x =>
-			enemigos.add( self.enemigoRandom())
-		})
 		maximoEnemigos = 0
 	}
 	method enemigoRandom(){
-		return new Vigilante(position=game.center())
+		return new Vigilante(position=self.validPosition())
 	}
+	
+	method randomPosition(){
+		return 	game.at( 
+					(0 .. game.width() - 1 ).anyOne(),
+					(0..  game.height() - 1).anyOne()
+		) 
+	}
+	
+	method validPosition(){
+		const position = self.randomPosition()
+		if(game.getObjectsIn(position).all({element => not element.isSolid() })){
+			return position
+		}else{
+			return self.validPosition()
+		}
+	}
+	
+	method esUnaCeldaValida(){
+		
+	}
+	
+	
+	
 }
 
