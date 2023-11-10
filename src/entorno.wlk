@@ -15,6 +15,8 @@ class Entorno {
 
 	method parar() {
 	}
+	
+
 
 }
 
@@ -85,48 +87,59 @@ class Pared inherits SolidObject {
 	const image = "Pared"
 	const property position = game.at(0, 0)
 
-	method image() {
-		return image +
-		
-		if (tableroPosition.esBordeInferiorIzquierdo(position)) {
-			 "BordeInferiorIzquierdo"
-		}
-		else if (tableroPosition.esBordeSuperiorIzquierdo(position)) {
-			 "BordeSuperiorIzquierdo."
-		}
-		else if (tableroPosition.esBordeInferiorDerecho(position)) {
-			 "BordeInferiorDerecho"
-		}
-		else if (tableroPosition.esBordeSuperiorDerecho(position)) {
-			 "BordeSuperiorDerecho"
-		}
-		
-		
-		
-		else if (tableroPosition.esParedDerecha(position)) {
-			 "Derecha"
-		}
-		else if (tableroPosition.esParedIzquierda(position)) {
-			 "Izquierda"
-		}
-		else if (tableroPosition.esParedSuperior(position)) {
-			"Arriba"
-		}
-		else if (tableroPosition.esParedInferior(position)) {
-			 "Abajo"
-		}
-		
-		
-		else self.error("404: TEXTYRA NO ENCONTRADA ")  
-	} 
+	method image() = "pared_text2.png" 
+//	{
+//		return image +
+//		
+//		if (tableroPosition.esBordeInferiorIzquierdo(position)) {
+//			 "BordeInferiorIzquierdo"
+//		}
+//		else if (tableroPosition.esBordeSuperiorIzquierdo(position)) {
+//			 "BordeSuperiorIzquierdo."
+//		}
+//		else if (tableroPosition.esBordeInferiorDerecho(position)) {
+//			 "BordeInferiorDerecho"
+//		}
+//		else if (tableroPosition.esBordeSuperiorDerecho(position)) {
+//			 "BordeSuperiorDerecho"
+//		}
+//		
+//		
+//		
+//		else if (tableroPosition.esParedDerecha(position)) {
+//			 "_derecha"
+//		}
+//		else if (tableroPosition.esParedIzquierda(position)) {
+//			 "Izquierda"
+//		}
+//		else if (tableroPosition.esParedSuperior(position)) {
+//			"Arriba"
+//		}
+//		else if (tableroPosition.esParedInferior(position)) {
+//			 "Abajo"
+//		}
+//		
+//		
+//		else self.error("404: TEXTYRA NO ENCONTRADA ")  
+//	} 
 
 }
 
-class Piso inherits Entorno {
+class Pasto inherits Entorno {
 
 	const property position = game.at(0, 0)
-	const property image = "Piso.png"
+	const property image = "pasto-"+self.texturaRandom()+".png"
 
+
+	method texturaRandom() {
+		const valorRandom = (1..2).anyOne()
+		
+		return 
+			if (valorRandom == 1) 0
+			else (1..14).anyOne() 
+		
+	} 
+	
 	method poderDeAtaque() = 0
 
 	method recibirAtaque(pj) {
