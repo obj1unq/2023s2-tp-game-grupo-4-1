@@ -59,7 +59,6 @@ object p {
 object pr {
 
 	method generar(position) {
-		game.addVisual(new Piso(position = position))
 		game.addVisual(new Puerta(position = position))
 	}
 
@@ -68,7 +67,6 @@ object pr {
 object g {
 
 	method generar(position) {
-		game.addVisual(new Piso(position = position))
 		game.addVisual(new Guardia(position = position))
 	}
 
@@ -77,10 +75,15 @@ object g {
 object v {
 
 	method generar(position) {
-		game.addVisual(new Piso(position = position))
 		game.addVisual(new Vigilante(position = position))
 	}
 
+}
+
+object h {
+	method generar(position) {
+		game.addVisual(new Hud(position = position))
+	}
 }
 
 /*
@@ -109,7 +112,7 @@ object mapa {
 	 */
 
 	const celdas = [
-		[p,p,p,p,p,p,p,p,p,p,p,p,p,p],
+		[h,h,h,h,h,h,h,h,h,h,h,h,h,h],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,o,op,o,_,_,_,_,_,_,_,_,p],

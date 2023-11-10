@@ -20,6 +20,16 @@ class Entorno {
 
 }
 
+
+class Hud inherits Entorno{
+
+	const property position = game.at(0, 0)	
+	
+	override method isSolid() = true
+
+	method image() = "hud.png" 
+}
+
 object tableroPosition {
 
 	/*
