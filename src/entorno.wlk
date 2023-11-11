@@ -20,6 +20,45 @@ class Entorno {
 
 }
 
+object llave inherits Entorno {
+		const property position = game.at(0, 0)	
+		
+		method image() = "llave.png"
+}
+
+
+
+class Escotilla inherits Entorno {
+	
+	const property position = game.at(0, 0)	
+	var estado = cerrada
+	
+	method image() = "escotilla_" + estado.image() + ".png"
+	
+	method abrir() { 
+		self.validarApertura()
+		jugador.descartarItem(llave)
+		estado = abierta
+	}
+	
+	method validarApertura() {
+	if (not jugador.tiene(llave)) {
+		self.error("A donde vas mostro??!!! La llave papi, la llave")
+	}
+	}
+}
+
+
+
+object cerrada {
+	method image() = "cerrada"
+}
+
+object abierta {
+	method image() = "abierta"
+}
+
+
 
 class Hud inherits Entorno{
 
