@@ -137,7 +137,7 @@ object mapa {
 				self.generarCelda(x,y)
 			})
 		})
-		game.addVisual(jugador) //agrego al final por un tema del z index
+		 //agrego al final por un tema del z index
 		game.addVisual(moneda)
 		game.addVisual(posionMisteriosa)
 	}

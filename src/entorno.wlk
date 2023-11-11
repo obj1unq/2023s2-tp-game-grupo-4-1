@@ -3,21 +3,17 @@ import jugador.*
 import enemigos.*
 import movimientoEntidades.*
 
+class Cuarto{}
+
 class Entorno {
 
 	const property isSolid = false
-
-	method collide(pj) {
-	}
-
-	method comportamiento() {
-	}
 
 	method parar() {
 	}
 	
 
-
+	method collide(a){}
 }
 
 
@@ -93,11 +89,6 @@ class Pasto inherits Entorno {
 			else (1..14).anyOne() 
 		
 	} 
-	
-	method poderDeAtaque() = 0
-
-	method recibirAtaque(pj) {
-	}
 
 }
 
@@ -117,16 +108,11 @@ class Obstaculo inherits SolidObject {
 
 class Puerta inherits Entorno {
 
-	const property position = 0
+	const property position = game.center()
 	const estado = puertaAbierta
 
-	method poderDeAtaque() = 0
 
-	method imagen() = estado.image()
-
-	method recibirAtaque(a) {
-	}
-
+	method image() = "PuertaAbierta.png"
 }
 
 object puertaCerrada {
