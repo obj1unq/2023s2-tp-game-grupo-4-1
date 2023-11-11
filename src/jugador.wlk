@@ -52,6 +52,7 @@ object jugador {
 
 	method parar() {
 		game.removeVisual(self)
+		game.stop()
 	}
 
 	method comportamiento() {

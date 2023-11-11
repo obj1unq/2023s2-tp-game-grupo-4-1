@@ -114,16 +114,17 @@ object mapa {
 	 */
 
 	const celdas = [
-		[p,h,h,h,h,h,h,h,h,h,h,h,h,p],
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],
-		[p,_,o,op,o,_,_,_,_,_,_,_,_,p],
-		[p,_,o,_,o,_,o,_,_,_,_,_,_,p],
-		[p,_,op,_,op,_,op,_,_,_,_,_,_,p],
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
-		[p,_,_,_,_,_,_,_,m,_,po,_,_,p],
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,p],		
-		[p,p,p,p,p,p,p,p,p,p,p,p,p,p]
+		[h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h],
+		[p,_,_,_,_,_,_,_,p,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,p,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,p,_,_,_,_,_,_,p,_,_,_,_,_,p,p,p],
+		[p,_,_,_,_,p,_,p,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],		
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,m,_,_,p],
+		[p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,p,_,_,_,_,_,_,_,_,_,p],		
+		[p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() //reverse porque el y crece en el orden inverso
 	
 	method generar() {
@@ -136,7 +137,7 @@ object mapa {
 				self.generarCelda(x,y)
 			})
 		})
-		game.addVisual(jugador) //agrego al final por un tema del z index
+		 //agrego al final por un tema del z index
 		game.addVisual(moneda)
 		game.addVisual(posionMisteriosa)
 	}

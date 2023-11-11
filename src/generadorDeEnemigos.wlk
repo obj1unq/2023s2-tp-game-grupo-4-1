@@ -3,29 +3,37 @@ import enemigos.*
 
 object generadorDeEnemigos {
 
-	const maximoEnemigos = 3
-	const limiteAltura = game.height() - 96
-	const limiteAncho = game.width() - 96
+	var maximoEnemigos = 3
 	const dificultad = 1
-	const enemigos = []
-	
 	method generar() {
-		self.generarEnemigos()
-		enemigos.forEach({enemigo =>
+		(0..maximoEnemigos).forEach({x =>
+			const enemigo = self.enemigoRandom()
 			game.addVisual(enemigo)
 			game.onTick(500, "comportamientoEnemigo", {
 				enemigo.comportamiento()
 			})
 		})
-	}
-	
-	method generarEnemigos(){
-		(0..maximoEnemigos).forEach({x =>
-			enemigos.add( self.enemigoRandom())
-		})
+		maximoEnemigos = 0
 	}
 	method enemigoRandom(){
-		return new Vigilante(position=game.center())
+			return new Vigilante(position=self.validPosition())		
 	}
+	method randomNumber() = (0..3).anyOne()
+	method randomPosition(){
+		return 	game.at( 
+					(0 .. game.width() - 1 ).anyOne(),
+					(0..  game.height() - 1).anyOne()
+		) 
+	}
+	
+	method validPosition(){
+		const position = self.randomPosition()
+		return if(self.esUnaCeldaValida(position)){ position}else{self.validPosition()}
+	}
+	
+	method esUnaCeldaValida(position)=game.getObjectsIn(position).all({element => not element.isSolid() })
+	
+	
+	
 }
 

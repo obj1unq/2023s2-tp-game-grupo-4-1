@@ -6,14 +6,16 @@ import enemigos.*
 import movimientoEntidades.*
 import mapa.*
 import generadorDeEnemigos.*
-
+import generadorDeCuartos.*
 program juego {
 	game.title("Dungeon zx")
 	game.ground("pasto-0.png")
 	mapa.generar() // NO TOCAR
+	generadorDeCuartos.generar()
 	generadorDeEnemigos.generar()
+	game.addVisual(jugador)
+	jugador.comportamiento()
 	hud.add()
-	game.allVisuals().forEach({ element => element.comportamiento() })
 	game.start()
 	
 }
