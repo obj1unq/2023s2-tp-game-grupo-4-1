@@ -7,7 +7,7 @@ class Cuarto{}
 
 class Entorno {
 
-	const property isSolid = false
+	method isSolid() = false
 
 	method parar() {
 	}
@@ -38,7 +38,7 @@ class Escotilla inherits Entorno {
 	}
 	
 	method validarApertura() {
-	if (not jugador.tiene(llave)) {
+	if (not jugador.tieneItem(llave)) {
 		self.error("A donde vas mostro??!!! La llave papi, la llave")
 	}
 	}
@@ -150,18 +150,18 @@ class Puerta inherits Entorno {
 	const property position = game.center()
 	const estado = puertaCerrada
 
-
+	override method isSolid()=estado.isSolid()
 	method image() = estado.image()
 }
 
 object puertaCerrada {
 
 	method image() = "PuertaCerrada.png"
-
+	method isSolid()=true
 }
 
 object puertaAbierta {
-
+	method isSolid()=false
 	method image() = "PuertaAbierta.png"
 
 }

@@ -14,8 +14,7 @@ describe "Enemigos" {
 		game.addVisual(vigilante)
 				
 		vigilante.collide(jugador)
-		
 		assert.equals(vidaInicial-dmgVigilante, jugador.vida())
-
 	}
+	
 }

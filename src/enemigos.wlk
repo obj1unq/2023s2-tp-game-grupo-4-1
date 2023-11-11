@@ -10,6 +10,8 @@ class Enemigo inherits GameEntity {
 		entity.recibirAtaque(self)
 	}
 
+	method comportamiento()
+
 }
 
 class Guardia inherits Enemigo {
@@ -22,6 +24,45 @@ class Guardia inherits Enemigo {
 	override method image() = "guardia.png"
 
 	override method parar() {
+	}
+
+	override method comportamiento() {
+	}
+
+}
+
+class Kamikaze inherits Enemigo {
+
+	override method image() = "kamikaze.png"
+
+	override method parar() {
+	}
+
+	override method comportamiento() {
+		if(self.position() != jugador.position()){			
+			self.avanzarHaciaElJugador()
+		}
+	}
+
+	method avanzarHaciaElJugador() {
+		const jugadorP = jugador.position()
+		self.posicionEnXHastaElJugador(jugadorP.x())
+		self.posicionEnYHastaElJugador(jugadorP.y())
+	}
+	method posicionEnXHastaElJugador(posicionx) {
+		if (position.x() < posicionx) {
+			self.position(direcciones.derecha(self.position() ))
+		} else {
+			self.position(direcciones.izquierda(self.position() ))
+		}
+	}
+
+	method posicionEnYHastaElJugador(posiciony) {
+		if (position.y() < posiciony) {
+			self.position(direcciones.arriba(self.position() ))
+		} else {
+			self.position(direcciones.abajo(self.position() ))
+		}
 	}
 
 }

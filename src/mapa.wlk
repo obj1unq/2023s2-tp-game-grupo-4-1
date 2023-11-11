@@ -86,13 +86,12 @@ object h {
 	}
 }
 
-
-object pur {
+object e {
 	method generar(position){
-		game.addVisual(new Pasto(position=position))
-		game.addVisual(new Puerta(position=position))
+		game.addVisual(new Escotilla(position=position))
 	}
 }
+
 /*
  * object p {
  * 	//door
@@ -111,7 +110,7 @@ object pur {
  object levelTemplates{
 	method nivel1() = [
 		[h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h],
-		[p,_,_,_,_,_,_,_,p,_,_,_,_,_,_,_,p],
+		[p,_,_,_,_,_,_,_,p,_,_,_,e ,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,p,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,p,_,_,_,_,_,_,p,_,_,_,_,_,p,p,p],
@@ -129,16 +128,16 @@ object pur {
 		[p,_,_,_,p,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,p,_,p,p,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,p,_,p,p,_,_,_,_,_,_,_,p,p,p,p,p],
-		[p,_,_,_,_,_,_,_,_,_,_,_,p,_,_,_,p],		
+		[p,_,_,_,_,_,_,_,_,_,_,_,p,_,e,_,p],		
 		[p,_,_,_,_,_,_,_,_,_,_,_,p,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,p,_,_,_,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],		
 		[p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p]
 	].reverse() 
 	method nivel3() = [
-		[h,h,h,h,h,h,h,h,h,h,h,pur,h,h,h,h,h],
+		[h,h,h,h,h,h,h,h,h,h,h,p,h,h,h,h,h],
 		[p,_,_,_,_,_,_,_,p,_,_,_,_,_,_,_,p],
-		[p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
+		[p,e,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
 		[p,_,_,_,_,_,_,_,p,_,_,_,_,_,_,_,p],
 		[p,p,p,p,p,p,p,p,p,_,_,_,_,p,p,p,p],
 		[p,_,_,_,_,_,_,_,_,_,_,_,_,p,_,_,p],
