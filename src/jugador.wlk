@@ -20,6 +20,9 @@ object jugador {
 	method mover(direccion) {
 		self.position(direccion)
 	}
+	method agregar(item){
+		inventario.add(item)
+	}
 
 	method recibirAtaque(enemigo) {
 		self.alterarVida( - enemigo.poderDeAtaque() )
@@ -38,8 +41,8 @@ object jugador {
 		return inventario.contains(item)
 	}
 	method validarQueTieneItem(item){
-		if(not self.tieneItem(item)){
-			self.error("el item no esta en el inventario por lo tanto no se puede eliminar")
+		if(self.tieneItem(item)){
+			self.error("el item  esta en el inventario por lo tanto no se puede eliminar")
 		}
 	}
 

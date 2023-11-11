@@ -1,0 +1,73 @@
+import jugador.*
+import inventario.*
+
+describe"test del inventario"{
+	
+	
+      test"test 01 cuando el jugador agrega una llave al inventario "{
+      	jugador.agregar(llave)
+      	assert.that(jugador.tieneItem(llave))
+      	assert.equals(#{llave},jugador.inventario())
+      	
+      }
+      test"test 02 cuando el jugador agrega la espada al inventario "{
+      	jugador.agregar(espada)
+      	assert.that(jugador.tieneItem(espada))
+      	assert.equals(#{espada},jugador.inventario())
+      	
+      }
+      test"test 03 cuando el jugador agrega la posion al inventario "{
+      	jugador.agregar(posion)
+      	assert.that(jugador.tieneItem(posion))
+      	assert.equals(#{posion},jugador.inventario())
+      	
+      }
+      
+      test"test 04 cuando el jugador agrega la moneda al inventario "{
+      	jugador.agregar(moneda)
+      	assert.that(jugador.tieneItem(moneda))
+      	assert.equals(#{moneda},jugador.inventario())
+      	
+      }
+      test"test 05 cuando el jugador agrega la moneda , la llave ,
+            la posion y la espada   al inventario  quiere saber si tiene todo cargado"{
+      	jugador.agregar(moneda)
+      	jugador.agregar(posion)
+      	jugador.agregar(espada)
+      	jugador.agregar(llave)
+      	assert.that(jugador.tieneItem(moneda))
+      	assert.that(jugador.tieneItem(llave))
+      	assert.that(jugador.tieneItem(espada))
+      	assert.that(jugador.tieneItem(posion))
+      	assert.equals(#{moneda,posion,espada,llave},jugador.inventario())
+      }
+      test"test 06 cuando un jugador quiere agregar dos veces la moneda al inventario 
+            pero no se puede "{
+       
+       		jugador.agregar(moneda)
+       		jugador.agregar(moneda)	
+       		assert.throwsException{jugador.descartarItem(moneda)}
+      }
+	  test"test 07 cuando un jugador quiere agregar dos veces la espada al inventario 
+            pero no se puede "{
+       
+       		jugador.agregar(espada)
+       		jugador.agregar(espada)	
+       		assert.throwsException{jugador.descartarItem(espada)}
+      }
+      test"test 08 cuando un jugador quiere agregar dos veces la posion   al inventario 
+            pero no se puede "{
+       
+       		jugador.agregar(posion)
+       		jugador.agregar(posion)	
+       		assert.throwsException{jugador.descartarItem(posion)}
+      }
+      test"test 09 cuando el jugador quiere agregar la llave dos veces al 
+         inventario pero no se puede "{
+        	
+        	jugador.agregar(llave)
+        	jugador.agregar(llave)
+        	assert.throwsException{jugador.descartarItem(llave)}
+      }
+
+}
