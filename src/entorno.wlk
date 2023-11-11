@@ -148,10 +148,10 @@ class Obstaculo inherits SolidObject {
 class Puerta inherits Entorno {
 
 	const property position = game.center()
-	const estado = puertaAbierta
+	const estado = puertaCerrada
 
 
-	method image() = "PuertaAbierta.png"
+	method image() = estado.image()
 }
 
 object puertaCerrada {
