@@ -34,13 +34,13 @@ object jugador {
 		vida += valor
 	}
 	method descartarItem(item){
-		self.validarQueTieneItem(item)
+		self.validarSiPuedeAgregar(item)
 		inventario.remove(item)
 	}
 	method tieneItem(item){
 		return inventario.contains(item)
 	}
-	method validarQueTieneItem(item){
+	method validarSiPuedeAgregar(item){
 		if(self.tieneItem(item)){
 			self.error("el item  esta en el inventario por lo tanto no se puede eliminar")
 		}
