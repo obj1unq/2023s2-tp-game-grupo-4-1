@@ -30,7 +30,9 @@ object jugador {
 		hud.reducirVida()
 		self.pararJuegoSiElJugadorMuere()
 	}
-
+	method reducirVida(valor){
+		vida -= valor
+	}
 	method alterarVida(valor) {
 		vida += valor
 	}

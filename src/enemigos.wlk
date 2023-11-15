@@ -24,17 +24,12 @@ class Guardia inherits Enemigo {
 	 * a menos que el jugador tenga una moneda
 	 */
 	override method image() = "guardia.png"
-
-	override method parar() {
-	}
-
-	override method comportamiento() {
-	}
-
+	override method parar() {}
+	override method comportamiento() {}
 }
 
 class Kamikaze inherits Enemigo {
-
+	var pasos = 0
 	override method image() = "kamikaze.png"
 
 	override method parar() {
@@ -44,9 +39,13 @@ class Kamikaze inherits Enemigo {
 		if (self.position() != jugador.position()) {
 			self.avanzarHaciaElJugador()
 		}
+		if(pasos == 3){  
+			game.addVisual(new Trampa(position=self.position()))
+		}		
 	}
 
 	method avanzarHaciaElJugador() {
+		pasos++
 		const jugadorP = jugador.position()
 		self.posicionEnXHastaElJugador(jugadorP.x())
 		self.posicionEnYHastaElJugador(jugadorP.y())

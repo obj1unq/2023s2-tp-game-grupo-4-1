@@ -27,6 +27,15 @@ object llave inherits Entorno {
 	method image() = "llave.png"
 
 }
+class Trampa inherits Entorno {
+	const property position 
+	method image()= "trampa.png"
+	override method collide(pj) {
+		pj.reducirVida(1)
+		game.say(self, "boom")
+		game.removeVisual(self)
+	}
+} 
 
 class Escotilla inherits Entorno {
 
