@@ -11,7 +11,7 @@ class Enemigo inherits GameEntity {
 	}
 
 	method comportamiento()
-
+	override method isSolid() = true
 }
 
 class Guardia inherits Enemigo {
@@ -34,7 +34,7 @@ class Guardia inherits Enemigo {
 class Kamikaze inherits Enemigo {
 
 	override method image() = "kamikaze.png"
-	override method isSolid() = true
+	
 	override method parar() {
 	}
 

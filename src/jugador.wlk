@@ -7,25 +7,27 @@ import hud.*
 
 object jugador {
 
-	
-	//var property velocidad = 5
-	//var property estado = "normal"
-	//var property poderDeAtaque = 5
+	// var property velocidad = 5
+	// var property estado = "normal"
+	// var property poderDeAtaque = 5
 	var property position = game.at(1, 1)
 	var property vida = 3
 	const property image = "Jugador.png"
 	const property isSolid = false
-	const property inventario=#{}
+	const property inventario = #{}
 
 	method mover(direccion) {
-		self.position(direccion)
+		if (vida > 0) {
+			self.position(direccion)
+		}
 	}
-	method agregar(item){
+
+	method agregar(item) {
 		inventario.add(item)
 	}
 
 	method recibirAtaque(enemigo) {
-		self.alterarVida( - enemigo.poderDeAtaque() )
+		self.alterarVida(-enemigo.poderDeAtaque())
 		hud.reducirVida()
 		self.pararJuegoSiElJugadorMuere()
 	}
@@ -33,29 +35,30 @@ object jugador {
 	method alterarVida(valor) {
 		vida += valor
 	}
-	method descartarItem(item){
+
+	method descartarItem(item) {
 		self.validarQueTieneItem(item)
 		inventario.remove(item)
 	}
-	method tieneItem(item){
+
+	method tieneItem(item) {
 		return inventario.contains(item)
 	}
-	method validarQueTieneItem(item){
-		if(self.tieneItem(item)){
+
+	method validarQueTieneItem(item) {
+		if (self.tieneItem(item)) {
 			self.error("el item  esta en el inventario por lo tanto no se puede eliminar")
 		}
 	}
 
 	method pararJuegoSiElJugadorMuere() {
 		if (vida <= 0) {
-			game.allVisuals().forEach({ element => element.parar()})
 			hud.mostrarCartelDeDerrota()
 		}
 	}
 
 	method parar() {
 		game.removeVisual(self)
-		game.stop()
 	}
 
 	method comportamiento() {

@@ -2,7 +2,7 @@ import wollok.game.*
 import jugador.*
 
 object hud {
-
+	
 	/*
 	 * Esta es la clase encargada de mostrar los elementos del hud
 	 * y actualizarlos
