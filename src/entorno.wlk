@@ -2,8 +2,11 @@ import wollok.game.*
 import jugador.*
 import enemigos.*
 import movimientoEntidades.*
+import gameManager.*
 
-class Cuarto{}
+class Cuarto {
+
+}
 
 class Entorno {
 
@@ -11,60 +14,63 @@ class Entorno {
 
 	method parar() {
 	}
-	
 
-	method collide(a){}
+	method collide(a) {
+	}
+	method abrir(){}
 }
 
 object llave inherits Entorno {
-		const property position = game.at(0, 0)	
-		
-		method image() = "llave.png"
+
+	const property position = game.at(0, 0)
+
+	method image() = "llave.png"
+
 }
 
-
-
 class Escotilla inherits Entorno {
-	
-	const property position = game.at(0, 0)	
+
+	const property position = game.at(0, 0)
 	var estado = cerrada
-	
+
 	method image() = "escotilla_" + estado.image() + ".png"
-	
-	method abrir() { 
+
+	override method abrir() {
 		self.validarApertura()
 		jugador.descartarItem(llave)
 		estado = abierta
+		gameManager.nivelCompletado()
 	}
-	
+
 	method validarApertura() {
-	if (not jugador.tieneItem(llave)) {
-		self.error("A donde vas mostro??!!! La llave papi, la llave")
+		if (not jugador.tieneItem(llave)) {
+			self.error("A donde vas mostro??!!! La llave papi, la llave")
+		}
 	}
-	}
+
 }
 
-
-
 object cerrada {
+	
 	method image() = "cerrada"
+	
 }
 
 object abierta {
+
 	method image() = "abierta"
+
 }
 
+class Hud inherits Entorno {
 
+	const property position = game.at(0, 0)
 
-class Hud inherits Entorno{
-
-	const property position = game.at(0, 0)	
-	
 	override method isSolid() = true
 
-	method image() = "hud.png" 
-}
+	method image() = "hud.png"
 
+}
 
 object tableroPosition {
 
@@ -81,9 +87,11 @@ object tableroPosition {
 			return false
 		}
 	}
-	
-	method esLadoDerecho(position)=position.x() > game.width()  / 2
-	method esLadoSuperior(position)=position.y() > game.height() / 2
+
+	method esLadoDerecho(position) = position.x() > game.width() / 2
+
+	method esLadoSuperior(position) = position.y() > game.height() / 2
+
 }
 
 class SolidObject {
@@ -106,28 +114,25 @@ class SolidObject {
 }
 
 class Pared inherits SolidObject {
+
 	/*
 	 * Determina la imagen segun la propiedad position
 	 */
 	const property position = game.at(0, 0)
 
-	method image() = "Pared.png" 
+	method image() = "Pared.png"
+
 }
 
 class Pasto inherits Entorno {
 
 	const property position = game.at(0, 0)
-	const property image = "pasto-"+self.texturaRandom()+".png"
-
+	const property image = "pasto-" + self.texturaRandom() + ".png"
 
 	method texturaRandom() {
-		const valorRandom = (1..2).anyOne()
-		
-		return 
-			if (valorRandom == 1) 0
-			else (1..14).anyOne() 
-		
-	} 
+		const valorRandom = (1 .. 2).anyOne()
+		return if (valorRandom == 1) 0 else (1 .. 14).anyOne()
+	}
 
 }
 
@@ -150,18 +155,24 @@ class Puerta inherits Entorno {
 	const property position = game.center()
 	const estado = puertaCerrada
 
-	override method isSolid()=estado.isSolid()
+	override method isSolid() = estado.isSolid()
+
 	method image() = estado.image()
+
 }
 
 object puertaCerrada {
 
 	method image() = "PuertaCerrada.png"
-	method isSolid()=true
+
+	method isSolid() = true
+
 }
 
 object puertaAbierta {
-	method isSolid()=false
+
+	method isSolid() = false
+
 	method image() = "PuertaAbierta.png"
 
 }

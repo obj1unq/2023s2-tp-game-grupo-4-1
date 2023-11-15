@@ -6,8 +6,8 @@ import gameEntity.*
 
 class Enemigo inherits GameEntity {
 
-	override method collide(entity) {
-		entity.recibirAtaque(self)
+	override method collide(jugador) {
+		jugador.recibirAtaque(self)
 	}
 
 	method comportamiento()

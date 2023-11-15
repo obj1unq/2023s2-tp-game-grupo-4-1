@@ -18,6 +18,6 @@ class GameEntity {
 	}
 
 	method parar()
-
+	method abrir() {}
 }
 

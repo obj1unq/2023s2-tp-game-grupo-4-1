@@ -174,6 +174,7 @@ object mapa {
 		 //agrego al final por un tema del z index
 		game.addVisual(moneda)
 		game.addVisual(posionMisteriosa)
+		niveles.remove(nivel)
 	}
 
 	method generarCelda(x, y,nivel) {

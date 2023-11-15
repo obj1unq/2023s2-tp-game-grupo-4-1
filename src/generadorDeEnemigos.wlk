@@ -12,7 +12,7 @@ object generadorDeEnemigos {
 			game.addVisual(enemigo)
 			game.onTick(750, "comportamientoEnemigo", { enemigo.comportamiento()})
 		})
-		maximoEnemigos = 0
+		maximoEnemigos = 3
 	}
 
 	method enemigoRandom() {
