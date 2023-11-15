@@ -1,0 +1,9 @@
+import gameManager.*
+describe "GameManager test" {
+
+	test "No se puede recargar el nivel sí no esta completo" {
+		gameManager.generar()
+		assert.notThat(gameManager.estaCompletoElNivel())
+		assert.throwsException({gameManager.cambiarNivelSiEstaCompleto()})
+	}
+}

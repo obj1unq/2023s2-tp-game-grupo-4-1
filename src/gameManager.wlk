@@ -10,18 +10,24 @@ import generadorDeEnemigos.*
 object gameManager {
 	var estaCompleto = true
 	method generar() {
+		estaCompleto = false
 		game.clear()
 		mapa.generar() // NO TOCAR
 		game.addVisual(jugador)
 		generadorDeEnemigos.generar()
 		jugador.comportamiento()
 		hud.add()
-		estaCompleto = false
 	}
 	
 	method cambiarNivelSiEstaCompleto(){
-		if(estaCompleto){ 
-			self.generar()
+		self.validarSiEstaCompleto()
+		self.generar()
+		
+	}
+	
+	method validarSiEstaCompleto() {
+		if(not estaCompleto){
+			self.error("No se puede cambiar de nivel si no esta completo")
 		}
 	}
 	
