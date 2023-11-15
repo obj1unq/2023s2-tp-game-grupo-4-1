@@ -27,5 +27,6 @@ object gameManager {
 	
 	method nivelCompletado(){estaCompleto=true}
 	
+	method estaCompletoElNivel() = estaCompleto
 }
 

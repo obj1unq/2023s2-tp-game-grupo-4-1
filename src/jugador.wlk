@@ -12,7 +12,7 @@ object jugador {
 	var property vida = 3
 	const property image = "Jugador.png"
 	const property isSolid = false
-	const property inventario = #{llave}
+	const property inventario = #{}
 	
 	method abrir(){}
 	method mover(direccion) {

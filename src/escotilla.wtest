@@ -1,0 +1,35 @@
+import wollok.game.*
+import enemigos.*
+import jugador.*
+import entorno.*
+import gameManager.*
+
+describe "Escotilla" {
+	const escotilla = new Escotilla(position=game.at(0,0))
+	method initialize() {
+		game.clear()
+		jugador.position(game.at(0,0))
+		game.addVisual(jugador)
+		game.addVisual(escotilla)
+	}
+	
+	test "Si el jugador intenta abrir la escotilla sin la llave tira un error" {
+		assert.throwsException({escotilla.abrir()})
+		
+	}
+	
+	test "Cuando el jugador abre la escotilla el nivel se completa"{
+		jugador.agregar(llave)
+		escotilla.abrir()
+		
+		assert.that(gameManager.estaCompletoElNivel())
+	}
+	
+	test "El jugador pierde la llave al abrir la escotilla"{
+		jugador.agregar(llave)
+		assert.that(jugador.tieneItem(llave))
+		escotilla.abrir()
+		
+		assert.notThat(jugador.tieneItem(llave))
+	}
+}
