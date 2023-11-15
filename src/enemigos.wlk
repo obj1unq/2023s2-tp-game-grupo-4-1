@@ -77,12 +77,13 @@ class Vigilante inherits Enemigo {
 	 * rondan por todo el mapa
 	 */
 	var direccion = caminadoAlaDerecha
-
+	var cantidadDePasos = 0
 	override method image() = direccion.image("vigilante")
 
 	override method comportamiento() {
 		self.cambiarSentido()
 		self.position(direccion.siguientePosicion(self.position()))
+		cantidadDePasos++
 		hitBox.updatePosition()
 	}
 
@@ -91,7 +92,8 @@ class Vigilante inherits Enemigo {
 	}
 
 	method cambiarSentido() {
-		if (not direccion.hayProximaCelda(self.position())) {
+		if (not direccion.hayProximaCelda(self.position()) or cantidadDePasos > 3) {
+			cantidadDePasos = 0
 			direccion = direccionAleatoria.generarDireccion(self.position())
 		}
 	}
@@ -110,6 +112,7 @@ object direccionAleatoria {
 		/*Toma una lista de direcciones y devuelve unicamente las direcciones
 		 * en las que el existe 1 celda en x direccion
 		 */
+		
 		return trayectorias.filter({ dir => dir.hayProximaCelda(position) })
 	}
 
