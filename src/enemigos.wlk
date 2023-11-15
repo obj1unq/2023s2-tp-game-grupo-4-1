@@ -11,7 +11,9 @@ class Enemigo inherits GameEntity {
 	}
 
 	method comportamiento()
+
 	override method isSolid() = true
+
 }
 
 class Guardia inherits Enemigo {
@@ -34,12 +36,12 @@ class Guardia inherits Enemigo {
 class Kamikaze inherits Enemigo {
 
 	override method image() = "kamikaze.png"
-	
+
 	override method parar() {
 	}
 
 	override method comportamiento() {
-		if(self.position() != jugador.position()){			
+		if (self.position() != jugador.position()) {
 			self.avanzarHaciaElJugador()
 		}
 	}
@@ -49,19 +51,20 @@ class Kamikaze inherits Enemigo {
 		self.posicionEnXHastaElJugador(jugadorP.x())
 		self.posicionEnYHastaElJugador(jugadorP.y())
 	}
+
 	method posicionEnXHastaElJugador(posicionx) {
 		if (position.x() < posicionx) {
-			self.position(direcciones.derecha(self.position() ))
+			self.position(direcciones.derecha(self.position()))
 		} else {
-			self.position(direcciones.izquierda(self.position() ))
+			self.position(direcciones.izquierda(self.position()))
 		}
 	}
 
 	method posicionEnYHastaElJugador(posiciony) {
 		if (position.y() < posiciony) {
-			self.position(direcciones.arriba(self.position() ))
+			self.position(direcciones.arriba(self.position()))
 		} else {
-			self.position(direcciones.abajo(self.position() ))
+			self.position(direcciones.abajo(self.position()))
 		}
 	}
 
@@ -97,10 +100,9 @@ class Vigilante inherits Enemigo {
 
 object direccionAleatoria {
 
-	const direcctions = [ caminandoAlaIzquierda, caminadoAlaDerecha, caminadoArriba, caminadoAbajo ]
+	const trayectorias = [ caminandoAlaIzquierda, caminadoAlaDerecha, caminadoArriba, caminadoAbajo ]
 
 	method generarDireccion(position) {
-		direcctions.reverse()
 		return self.direccionesValidas(position).anyOne()
 	}
 
@@ -108,48 +110,45 @@ object direccionAleatoria {
 		/*Toma una lista de direcciones y devuelve unicamente las direcciones
 		 * en las que el existe 1 celda en x direccion
 		 */
-		return direcctions.filter({ dir => dir.hayProximaCelda(position) })
+		return trayectorias.filter({ dir => dir.hayProximaCelda(position) })
 	}
 
 }
-
-object caminandoAlaIzquierda {
-
-	method image(img) = img + "_left.png"
-
-	method siguientePosicion(position) = position.left(1)
-
+class Dirrecion {
+	method image(img) = img + self.dirrecion()
+	method dirrecion()
+	method siguientePosicion(position) 
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
+}
+object caminandoAlaIzquierda inherits Dirrecion {
+
+	override method dirrecion() = "_left.png"
+
+	override method siguientePosicion(position) = position.left(1)
 
 }
 
-object caminadoAlaDerecha {
+object caminadoAlaDerecha  inherits Dirrecion {
 
-	method image(img) = img + "_right.png"
+	override method dirrecion() = "_right.png"
 
-	method siguientePosicion(position) = position.right(1)
+	override method siguientePosicion(position) = position.right(1)
+ 
+}
 
-	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
+object caminadoArriba  inherits Dirrecion {
+
+	override method dirrecion() = "_right.png"
+
+	override method siguientePosicion(position) = position.up(1)
 
 }
 
-object caminadoArriba {
+object caminadoAbajo  inherits Dirrecion {
 
-	method image(img) = img + "_right.png"
+	override method dirrecion() =  "_right.png"
 
-	method siguientePosicion(position) = position.up(1)
-
-	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
-
-}
-
-object caminadoAbajo {
-
-	method image(img) = img + "_right.png"
-
-	method siguientePosicion(position) = position.down(1)
-
-	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
+	override method siguientePosicion(position) = position.down(1)
 
 }
 
