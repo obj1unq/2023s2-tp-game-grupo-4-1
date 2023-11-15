@@ -29,7 +29,7 @@ class Box {
 	const entity = null
 	var position = null
 
-	method image() = "hitboxPreview.png"
+	method image() = "danger.png"
 
 	method position(p)
 

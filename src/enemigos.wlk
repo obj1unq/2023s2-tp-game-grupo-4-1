@@ -78,6 +78,7 @@ class Vigilante inherits Enemigo {
 	 */
 	var direccion = caminadoAlaDerecha
 	var cantidadDePasos = 0
+
 	override method image() = direccion.image("vigilante")
 
 	override method comportamiento() {
@@ -112,17 +113,23 @@ object direccionAleatoria {
 		/*Toma una lista de direcciones y devuelve unicamente las direcciones
 		 * en las que el existe 1 celda en x direccion
 		 */
-		
 		return trayectorias.filter({ dir => dir.hayProximaCelda(position) })
 	}
 
 }
+
 class Dirrecion {
+
 	method image(img) = img + self.dirrecion()
+
 	method dirrecion()
-	method siguientePosicion(position) 
+
+	method siguientePosicion(position)
+
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
+
 }
+
 object caminandoAlaIzquierda inherits Dirrecion {
 
 	override method dirrecion() = "_left.png"
@@ -131,15 +138,15 @@ object caminandoAlaIzquierda inherits Dirrecion {
 
 }
 
-object caminadoAlaDerecha  inherits Dirrecion {
+object caminadoAlaDerecha inherits Dirrecion {
 
 	override method dirrecion() = "_right.png"
 
 	override method siguientePosicion(position) = position.right(1)
- 
+
 }
 
-object caminadoArriba  inherits Dirrecion {
+object caminadoArriba inherits Dirrecion {
 
 	override method dirrecion() = "_right.png"
 
@@ -147,9 +154,9 @@ object caminadoArriba  inherits Dirrecion {
 
 }
 
-object caminadoAbajo  inherits Dirrecion {
+object caminadoAbajo inherits Dirrecion {
 
-	override method dirrecion() =  "_right.png"
+	override method dirrecion() = "_right.png"
 
 	override method siguientePosicion(position) = position.down(1)
 

@@ -12,7 +12,6 @@ class GameEntity {
 
 	method image()
 
-
 	method collide(a)
 
 	method recibirAtaque(a) {
