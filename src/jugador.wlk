@@ -63,7 +63,6 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
-		
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
 

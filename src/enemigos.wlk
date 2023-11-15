@@ -34,7 +34,7 @@ class Guardia inherits Enemigo {
 class Kamikaze inherits Enemigo {
 
 	override method image() = "kamikaze.png"
-
+	override method isSolid() = true
 	override method parar() {
 	}
 
