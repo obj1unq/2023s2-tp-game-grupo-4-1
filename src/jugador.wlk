@@ -9,14 +9,14 @@ import gameManager.*
 object jugador {
 
 	var property position = game.at(1, 1)
-	var property vida = 3
+	var property vida = 3 // Despues probar sacar el setter
 	const property image = "Jugador.png"
 	const property isSolid = false
-	const property inventario = #{}
+	const property inventario = #{llave}
 	
 	method abrir(){}
 	method mover(direccion) {
-		if (vida > 0) {
+		if (vida > 0) { // Posible cambio a validacion
 			self.position(direccion)
 		}
 	}
@@ -25,17 +25,23 @@ object jugador {
 		inventario.add(item)
 	}
 
-	method recibirAtaque(enemigo) {
-		self.alterarVida(-enemigo.poderDeAtaque())
-		hud.reducirVida()
+	method recibirAtaque() {
+		self.bajarVida()
+		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
+			
 	}
-	method reducirVida(valor){
-		vida -= valor
+	
+	method recibirCuracion() {
+		self.subirVida()
+		self.subirVida()
 	}
-	method alterarVida(valor) {
-		vida += valor
+	
+
+	method bajarVida() {
+		vida--
 	}
+
 
 	method validarSiElItemEstaEnElInventario(item){
 		if(not inventario.contains(item)){
@@ -44,8 +50,15 @@ object jugador {
 	}
 	method descartarItem(item) {
 		self.validarSiElItemEstaEnElInventario(item)
-		inventario.remove(item)
+
 	}
+	
+	method subirVida() {
+		vida++
+	}	
+	
+	
+
 
 	method tieneItem(item) {
 		return inventario.contains(item)

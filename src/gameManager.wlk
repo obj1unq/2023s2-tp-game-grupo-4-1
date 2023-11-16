@@ -22,7 +22,6 @@ object gameManager {
 	method cambiarNivelSiEstaCompleto(){
 		self.validarSiEstaCompleto()
 		self.generar()
-		
 	}
 	
 	method validarSiEstaCompleto() {

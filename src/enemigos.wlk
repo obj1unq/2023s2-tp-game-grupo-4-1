@@ -6,9 +6,11 @@ import gameEntity.*
 
 class Enemigo inherits GameEntity {
 
-	override method collide(jugador) {
-		jugador.recibirAtaque(self)
+
+	override method collide(entity) {
+		entity.recibirAtaque() 
 	}
+
 
 	method comportamiento()
 
@@ -32,13 +34,14 @@ class Kamikaze inherits Enemigo {
 	var pasos = 0
 	override method image() = "kamikaze.png"
 
-	override method parar() {
-	}
+
 
 	override method comportamiento() {
+		
 		if (self.position() != jugador.position()) {
 			self.avanzarHaciaElJugador()
 		}
+		
 		if(pasos == 3){  
 			game.addVisual(new Trampa(position=self.position()))
 		}		
