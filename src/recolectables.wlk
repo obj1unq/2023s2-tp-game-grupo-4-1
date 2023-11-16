@@ -1,13 +1,9 @@
 import wollok.game.*
 import jugador.*
 
-object capaDeInvisibilidad {
-	
-}
 
-object pildoraDeAltura {
-	
-}
+
+
 
 
 
@@ -45,21 +41,22 @@ class ObjetoAnimado {
 	method accion(pj)
 }
 
+class ObjetoRecolectable inherits ObjetoAnimado {
 
+	method colide(pj) {
+		pj.agregar(self)
+	}
+}
 
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
 	override method accion(pj) { 
-		const vidaAlterar = self.vidaAlterar(pj)
-		
-		#{	pj.subirVida(vidaAlterar), 
-			pj.bajarVida(vidaAlterar)
+
+		#{	pj.subirVida(), 
+			pj.bajarVida()
 		 }.anyOne()
 	}
-	
-	
-	method vidaAlterar(pj) = (0..3).anyOne()
 	
 	
 }

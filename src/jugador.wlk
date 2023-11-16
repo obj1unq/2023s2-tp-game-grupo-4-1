@@ -11,13 +11,13 @@ object jugador {
 	// var property estado = "normal"
 	// var property poderDeAtaque = 5
 	var property position = game.at(1, 1)
-	var property vida = 3
+	var property vida = 3 // Despues probar sacar el setter
 	const property image = "Jugador.png"
 	const property isSolid = false
 	const property inventario = #{}
 
 	method mover(direccion) {
-		if (vida > 0) {
+		if (vida > 0) { // Posible cambio a validacion
 			self.position(direccion)
 		}
 	}
@@ -26,17 +26,28 @@ object jugador {
 		inventario.add(item)
 	}
 
-	method recibirAtaque(enemigo) {
-		self.alterarVida(-enemigo.poderDeAtaque())
-		hud.reducirVida()
+	method recibirAtaque() {
+		self.bajarVida()
+		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
+			
+	}
+	
+	method recibirCuracion() {
+		self.subirVida()
+		self.subirVida()
+	}
+	
+
+	method bajarVida() {
+		vida--
 	}
 
-	method alterarVida(valor) {
-		vida += valor
-	}
-
-
+	
+	method subirVida() {
+		vida++
+	}	
+	
 	
 	method descartarItem(item){
 		self.validarSiPuedeAgregar(item)

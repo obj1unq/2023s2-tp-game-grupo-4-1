@@ -15,6 +15,7 @@ program juego {
 	jugador.comportamiento()
 	hud.add()
 	game.start()
+	//game.onTick(100,"actualizar hud",{hud.actualizarHUD()})
 	
 }
 

@@ -6,16 +6,21 @@ object espada {
 		
 	
 }
-object llave{
+
+object llave {
 	
 	
 	
 }
-object posion{
+
+object posion {
 	
 	
 	
 }
-object moneda{
+
+object moneda {
+	
 	
 }
+
