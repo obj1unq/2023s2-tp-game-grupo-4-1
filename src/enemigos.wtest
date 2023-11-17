@@ -4,7 +4,7 @@ import jugador.*
 
 describe "Enemigos" {
 
-	const vigilante = new Vigilante()
+	const vigilante = new Slime()
 
 	;
 	method initialize() {
