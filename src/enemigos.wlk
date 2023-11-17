@@ -106,6 +106,7 @@ class Slime inherits Enemigo {
 		if (not direccion.hayProximaCelda(self.position()) or cantidadDePasos > 3) {
 			cantidadDePasos = 0
 			direccion = direccionAleatoria.generarDireccion(self.position())
+			animatedImg.nameImage("slime"+direccion.dirrecion())
 		}
 	}
 
@@ -130,19 +131,17 @@ object direccionAleatoria {
 
 class Dirrecion {
 
-	method image(img) = img + self.dirrecion()
 
-	method dirrecion()
+	method dirrecion()="_derecha"
 
 	method siguientePosicion(position)
-
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 
 }
 
 object caminandoAlaIzquierda inherits Dirrecion {
 
-	override method dirrecion() = "_left.png"
+	override method dirrecion() = "_izquierda"
 
 	override method siguientePosicion(position) = position.left(1)
 
@@ -150,7 +149,6 @@ object caminandoAlaIzquierda inherits Dirrecion {
 
 object caminadoAlaDerecha inherits Dirrecion {
 
-	override method dirrecion() = "_right.png"
 
 	override method siguientePosicion(position) = position.right(1)
 
@@ -158,15 +156,12 @@ object caminadoAlaDerecha inherits Dirrecion {
 
 object caminadoArriba inherits Dirrecion {
 
-	override method dirrecion() = "_right.png"
-
 	override method siguientePosicion(position) = position.up(1)
 
 }
 
 object caminadoAbajo inherits Dirrecion {
 
-	override method dirrecion() = "_right.png"
 
 	override method siguientePosicion(position) = position.down(1)
 
