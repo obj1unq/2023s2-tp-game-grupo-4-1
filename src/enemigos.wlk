@@ -81,7 +81,7 @@ class Vigilante inherits Enemigo {
 	var direccion = caminadoAlaDerecha
 	var cantidadDePasos = 0
 
-	override method image() = direccion.image("vigilante")
+	override method image() = "slime_king.png"
 
 	override method comportamiento() {
 		self.cambiarSentido()
