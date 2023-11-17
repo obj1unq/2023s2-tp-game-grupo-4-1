@@ -4,6 +4,7 @@ import jugador.*
 import movimientoEntidades.*
 import gameEntity.*
 import hitBox.*
+import animatedImage.*
 
 class Enemigo inherits GameEntity {
 
@@ -33,9 +34,12 @@ class Guardia inherits Enemigo {
 
 class Kamikaze inherits Enemigo {
 	var pasos = 0
-	override method image() = "kamikaze.png"
-
-
+	const animatedImg = new AnimatedImage(
+		nameImage = "kamikaze",
+		frames = 3,
+		delay=10
+	)
+	override method image() = animatedImg.image()
 
 	override method comportamiento() {
 		
@@ -57,8 +61,10 @@ class Kamikaze inherits Enemigo {
 
 	method posicionEnXHastaElJugador(posicionx) {
 		if (position.x() < posicionx) {
+			animatedImg.nameImage("kamikaze_derecha")
 			self.position(direcciones.derecha(self.position()))
 		} else {
+			animatedImg.nameImage("kamikaze_izquierda")
 			self.position(direcciones.izquierda(self.position()))
 		}
 	}
@@ -74,6 +80,7 @@ class Kamikaze inherits Enemigo {
 }
 
 class Slime inherits Enemigo {
+	// Agregar una pequeña animacion
 	var direccion = caminadoAlaDerecha
 	var cantidadDePasos = 0
 	const hitBox = new HitBox(entity = self, image="little_slime")
