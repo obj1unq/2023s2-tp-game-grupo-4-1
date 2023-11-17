@@ -5,19 +5,21 @@ import movimientoEntidades.*
 import gameEntity.*
 import hitBox.*
 import animatedImage.*
+import efectos.*
 
 class Enemigo inherits GameEntity {
 
-
 	override method collide(entity) {
-		entity.recibirAtaque() 
+		entity.recibirAtaque()
 	}
-
 
 	method comportamiento()
 
 	override method isSolid() = true
-	override method parar(){}
+
+	override method parar() {
+	}
+
 }
 
 class Guardia inherits Enemigo {
@@ -28,32 +30,31 @@ class Guardia inherits Enemigo {
 	 * a menos que el jugador tenga una moneda
 	 */
 	override method image() = "guardia.png"
-	override method parar() {}
-	override method comportamiento() {}
+
+	override method parar() {
+	}
+
+	override method comportamiento() {
+	}
+
 }
 
 class Kamikaze inherits Enemigo {
-	var pasos = 0
-	const animatedImg = new AnimatedImage(
-		nameImage = "kamikaze",
-		frames = 3,
-		delay=10
-	)
+
+	const animatedImg = new AnimatedImage(nameImage = "kamikaze", frames = 4, delay = 10)
+
 	override method image() = animatedImg.image()
 
+	override method collide(e) {
+		e.explotar(self)
+	}
 	override method comportamiento() {
-		
 		if (self.position() != jugador.position()) {
 			self.avanzarHaciaElJugador()
 		}
-		
-		if(pasos == 3){  
-			game.addVisual(new Trampa(position=self.position()))
-		}		
 	}
 
 	method avanzarHaciaElJugador() {
-		pasos++
 		const jugadorP = jugador.position()
 		self.posicionEnXHastaElJugador(jugadorP.x())
 		self.posicionEnYHastaElJugador(jugadorP.y())
@@ -80,10 +81,12 @@ class Kamikaze inherits Enemigo {
 }
 
 class Slime inherits Enemigo {
+
 	// Agregar una pequeña animacion
 	var direccion = caminadoAlaDerecha
 	var cantidadDePasos = 0
-	const hitBox = new HitBox(entity = self, image="little_slime")
+	const hitBox = new HitBox(entity = self, image = "little_slime")
+
 	override method image() = "slime_king.png"
 
 	override method comportamiento() {

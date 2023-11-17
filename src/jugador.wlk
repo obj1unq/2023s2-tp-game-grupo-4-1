@@ -5,6 +5,7 @@ import movimientoEntidades.*
 import mapa.*
 import hud.*
 import gameManager.*
+import efectos.*
 
 object jugador {
 
@@ -23,6 +24,11 @@ object jugador {
 		}
 	}
 
+	method explotar(explosion){
+		const positionToExplosion = explosion.position()
+		game.removeVisual(explosion)
+		game.addVisual(new Explosion(position = positionToExplosion))
+	}
 	method trapped(trap) {
 		self.bajarVida()
 	}
