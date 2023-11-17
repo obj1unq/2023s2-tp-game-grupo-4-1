@@ -19,5 +19,6 @@ class GameEntity {
 
 	method parar()
 	method abrir() {}
+	method trapped(trap){}
 }
 

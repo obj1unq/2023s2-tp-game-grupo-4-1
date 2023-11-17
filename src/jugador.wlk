@@ -12,13 +12,19 @@ object jugador {
 	var property vida = 3 // Despues probar sacar el setter
 	const property image = "Jugador.png"
 	const property isSolid = false
-	const property inventario = #{llave}
-	
-	method abrir(){}
+	const property inventario = #{ llave }
+
+	method abrir() {
+	}
+
 	method mover(direccion) {
 		if (vida > 0) { // Posible cambio a validacion
 			self.position(direccion)
 		}
+	}
+
+	method trapped(trap) {
+		self.bajarVida()
 	}
 
 	method agregar(item) {
@@ -29,36 +35,33 @@ object jugador {
 		self.bajarVida()
 		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
-			
 	}
-	
+
 	method recibirCuracion() {
 		self.subirVida()
 		self.subirVida()
 	}
-	
 
 	method bajarVida() {
 		vida--
+		hud_HP.mostrarCorazonesSanos()
+		self.pararJuegoSiElJugadorMuere()
 	}
 
-
-	method validarSiElItemEstaEnElInventario(item){
-		if(not inventario.contains(item)){
+	method validarSiElItemEstaEnElInventario(item) {
+		if (not inventario.contains(item)) {
 			self.error("El item no esta en el inventario")
 		}
 	}
+
 	method descartarItem(item) {
 		self.validarSiElItemEstaEnElInventario(item)
-
 	}
-	
+
 	method subirVida() {
 		vida++
-	}	
-	
-	
-
+		hud_HP.mostrarCorazonesSanos()
+	}
 
 	method tieneItem(item) {
 		return inventario.contains(item)
@@ -85,14 +88,8 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
-		keyboard.a().onPressDo({ 
-			game.getObjectsIn(self.position()).forEach({
-				elemento => elemento.abrir()
-			})
-		})
-		keyboard.space().onPressDo({ 
-			gameManager.cambiarNivelSiEstaCompleto()
-		})
+		keyboard.a().onPressDo({ game.getObjectsIn(self.position()).forEach({ elemento => elemento.abrir()})})
+		keyboard.space().onPressDo({ gameManager.cambiarNivelSiEstaCompleto()})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
 

@@ -32,8 +32,6 @@ class Trampa inherits Entorno {
 	method image()= "trampa.png"
 	
 	override method collide(alguien) {
-		//pj.reducirVida()
-		//TERMINAR
 		alguien.trapped(self)
 		
 		game.say(self, "boom")
