@@ -3,8 +3,9 @@ import wollok.game.*
 class HitBox {
 
 	const property entity = null
+	const image 
 	var position = entity.position()
-	const boxes = [ new BoxTop(position=position, entity=entity), new BoxRight(position=position, entity=entity), new BoxLeft(position=position, entity=entity), new BoxBot(position=position, entity=entity) ]
+	const boxes = [ new BoxTop(position=position, entity=entity, image=image ), new BoxRight(position=position, entity=entity,image=image), new BoxLeft(position=position, entity=entity, image=image), new BoxBot(position=position, image=image,entity=entity) ]
 	var generated = false
 
 	method updatePosition() {
@@ -28,8 +29,8 @@ class Box {
 
 	const entity = null
 	var position = null
-
-	method image() = "danger.png"
+	const image 
+	method image() = image + ".png"
 
 	method position(p)
 

@@ -3,6 +3,7 @@ import entorno.*
 import jugador.*
 import movimientoEntidades.*
 import gameEntity.*
+import hitBox.*
 
 class Enemigo inherits GameEntity {
 
@@ -80,7 +81,7 @@ class Vigilante inherits Enemigo {
 	 */
 	var direccion = caminadoAlaDerecha
 	var cantidadDePasos = 0
-
+	const hitbox = const hitBox = new HitBox(entity = self, image="little_slime")
 	override method image() = "slime_king.png"
 
 	override method comportamiento() {
