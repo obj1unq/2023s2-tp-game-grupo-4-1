@@ -16,7 +16,7 @@ class Enemigo inherits GameEntity {
 	method comportamiento()
 
 	override method isSolid() = true
-
+	override method parar(){}
 }
 
 class Guardia inherits Enemigo {
@@ -73,15 +73,10 @@ class Kamikaze inherits Enemigo {
 
 }
 
-class Vigilante inherits Enemigo {
-
-	/*
-	 * Los Vigilantes son enemigos que 
-	 * rondan por todo el mapa
-	 */
+class Slime inherits Enemigo {
 	var direccion = caminadoAlaDerecha
 	var cantidadDePasos = 0
-	const hitbox = const hitBox = new HitBox(entity = self, image="little_slime")
+	const hitBox = new HitBox(entity = self, image="little_slime")
 	override method image() = "slime_king.png"
 
 	override method comportamiento() {
