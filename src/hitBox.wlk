@@ -40,6 +40,10 @@ class Box {
 
 	method parar() {
 	}
+	
+	method collide(e) {
+		entity.collide(e)
+	}
 
 }
 
