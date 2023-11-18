@@ -51,6 +51,11 @@ class ObjetoRecolectable inherits ObjetoAnimado {
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
+	override method collide(pj) {
+		super(pj)
+		self.accion(pj)
+	}
+
 	override method accion(pj) { 
 
 		#{	pj.subirVida(), 
