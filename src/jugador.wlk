@@ -65,9 +65,18 @@ object jugador {
 	}
 
 	method subirVida() {
+		self.validarTopeDeVida()
 		vida++
 		hud_HP.mostrarCorazonesSanos()
 	}
+
+	method validarTopeDeVida() {
+		if (self.vidaAlMaximo()) {
+			game.say(self,"Vida al maximo!!")
+		}
+	}
+	
+	method vidaAlMaximo() = vida == 3
 
 	method tieneItem(item) {
 		return inventario.contains(item)

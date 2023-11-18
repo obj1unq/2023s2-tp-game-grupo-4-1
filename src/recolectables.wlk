@@ -52,15 +52,21 @@ class ObjetoRecolectable inherits ObjetoAnimado {
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
 	override method collide(pj) {
-		super(pj)
+		game.removeVisual(self)
 		self.accion(pj)
 	}
 
 	override method accion(pj) { 
 
-		#{	pj.subirVida(), 
-			pj.bajarVida()
-		 }.anyOne()
+		#{	
+			{
+				pj.subirVida()
+				game.say(jugador,"Vida subida!!")
+			},{
+				pj.bajarVida()
+				game.say(jugador,"Has recibido daño!!")
+			}
+		 }.anyOne().apply()
 	}
 	
 	
