@@ -41,13 +41,14 @@ class Guardia inherits Enemigo {
 
 class Kamikaze inherits Enemigo {
 
-	const animatedImg = new AnimatedImage(nameImage = "kamikaze", frames = 4, delay = 10)
+	const animatedImg = new AnimatedImage(nameImage = "kamikaze", frames = 3, delay = 10)
 
 	override method image() = animatedImg.image()
 
 	override method collide(e) {
 		e.explotar(self)
 	}
+
 	override method comportamiento() {
 		if (self.position() != jugador.position()) {
 			self.avanzarHaciaElJugador()
@@ -56,25 +57,29 @@ class Kamikaze inherits Enemigo {
 
 	method avanzarHaciaElJugador() {
 		const jugadorP = jugador.position()
-		self.posicionEnXHastaElJugador(jugadorP.x())
 		self.posicionEnYHastaElJugador(jugadorP.y())
+		self.posicionEnXHastaElJugador(jugadorP.x())
 	}
 
 	method posicionEnXHastaElJugador(posicionx) {
-		if (position.x() < posicionx) {
-			animatedImg.nameImage("kamikaze_derecha")
-			self.position(direcciones.derecha(self.position()))
-		} else {
-			animatedImg.nameImage("kamikaze_izquierda")
-			self.position(direcciones.izquierda(self.position()))
+		if (position.x() != posicionx) {
+			if (position.x() < posicionx) {
+				animatedImg.nameImage("kamikaze_derecha")
+				self.position(direcciones.derecha(self.position()))
+			} else {
+				animatedImg.nameImage("kamikaze_izquierda")
+				self.position(direcciones.izquierda(self.position()))
+			}
 		}
 	}
 
 	method posicionEnYHastaElJugador(posiciony) {
-		if (position.y() < posiciony) {
-			self.position(direcciones.arriba(self.position()))
-		} else {
-			self.position(direcciones.abajo(self.position()))
+		if (position.y() != posiciony) {
+			if (position.y() < posiciony) {
+				self.position(direcciones.arriba(self.position()))
+			} else {
+				self.position(direcciones.abajo(self.position()))
+			}
 		}
 	}
 
@@ -105,7 +110,7 @@ class Slime inherits Enemigo {
 		if (not direccion.hayProximaCelda(self.position()) or cantidadDePasos > 3) {
 			cantidadDePasos = 0
 			direccion = direccionAleatoria.generarDireccion(self.position())
-			animatedImg.nameImage("slime"+direccion.dirrecion())
+			animatedImg.nameImage("slime" + direccion.dirrecion())
 		}
 	}
 
@@ -130,10 +135,10 @@ object direccionAleatoria {
 
 class Dirrecion {
 
-
-	method dirrecion()="_derecha"
+	method dirrecion() = "_derecha"
 
 	method siguientePosicion(position)
+
 	method hayProximaCelda(position) = movementValidator.canMove(self.siguientePosicion(position))
 
 }
@@ -148,7 +153,6 @@ object caminandoAlaIzquierda inherits Dirrecion {
 
 object caminadoAlaDerecha inherits Dirrecion {
 
-
 	override method siguientePosicion(position) = position.right(1)
 
 }
@@ -160,7 +164,6 @@ object caminadoArriba inherits Dirrecion {
 }
 
 object caminadoAbajo inherits Dirrecion {
-
 
 	override method siguientePosicion(position) = position.down(1)
 
