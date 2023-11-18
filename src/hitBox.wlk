@@ -29,16 +29,12 @@ class Box {
 
 	const entity = null
 	var position = null
-	const image 
-	method image() = image + ".png"
+	var image 
+	method image() = if(game.getObjectsIn(position).any({element => element.isSolid() })) { "empty" } else { image } + ".png"
 
 	method position(p)
 
 	method position() = position
-
-	method collide(e) {
-		entity.collide(e)
-	}
 
 	method isSolid() = false
 
