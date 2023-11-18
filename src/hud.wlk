@@ -48,6 +48,8 @@ object hud_HP {
 	const property vidas = self.hpVisuals()
 	//var vidaActual = jugador.vida() - 1
 
+	var property position 
+
 	
 	
 	 
@@ -71,8 +73,6 @@ object hud_HP {
 			(0 .. (jugador.vida() -1).max(0)).forEach({ a => self.vidas().get(a).llenar()})
 	 	}
 	 }	 
-	 
-	 
 	 
 	 
 	 

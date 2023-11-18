@@ -3,6 +3,8 @@ import enemigos.*
 import jugador.*
 import entorno.*
 import gameManager.*
+import recolectables.*
+import hud.*
 
 describe "Escotilla" {
 	const escotilla = new Escotilla(position=game.at(0,0))
@@ -33,3 +35,33 @@ describe "Escotilla" {
 		assert.notThat(jugador.tieneItem(llave))
 	}
 }
+
+
+describe "Posion misteriosa" {
+	method initialize() {
+		game.clear()
+		game.addVisual(jugador)
+		game.addVisual(posionMisteriosa)
+		game.addVisual(hud_HP)
+		hud_HP.position(game.at(3,0))
+		posionMisteriosa.position(game.at(1,0))
+		
+	}
+	
+	test "Posion se remueve al ser tocada" {
+		assert.that(game.getObjectsIn(game.at(1,0)).contains(posionMisteriosa))
+		posionMisteriosa.collide(jugador)
+		assert.notThat(game.getObjectsIn(game.at(1,0)).contains(posionMisteriosa))
+		
+	}
+	
+	test "Posion cura al jugador" {
+		jugador.bajarVida()
+		assert.equals(2, jugador.vida())
+		posionMisteriosa.curar()
+		assert.equals(3, jugador.vida())
+	}
+	
+}
+
+
