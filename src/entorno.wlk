@@ -50,7 +50,7 @@ class Escotilla inherits Entorno {
 		self.validarApertura()
 		jugador.descartarItem(llave)
 		estado = abierta
-		gameManager.nivelCompletado()
+		gameManager.completarNivel()
 	}
 
 	method validarApertura() {

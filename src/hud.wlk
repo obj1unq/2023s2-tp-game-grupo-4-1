@@ -11,6 +11,7 @@ object hud {
 	
 	method add() {
 		hud_HP.mostrar()
+
 	}
 	
 //	method actualizarHUD() {
@@ -19,7 +20,7 @@ object hud {
 //	}
 //	
 	method eventoMuerte(){
-		jugador.morir()
+		//jugador.morir()
 		self.mostrarCartelDeDerrota()
 	}
 	
