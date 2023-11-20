@@ -21,6 +21,24 @@ class Enemigo inherits GameEntity {
 	}
 
 }
+
+class Guardia inherits Enemigo {
+
+	/*
+	 * Los guardias son enemigos que no se 
+	 * mueven de la puerta y atacan al jugador
+	 * a menos que el jugador tenga una moneda
+	 */
+	override method image() = "guardia.png"
+
+	override method parar() {
+	}
+
+	override method comportamiento() {
+	}
+
+}
+
 class Kamikaze inherits Enemigo {
 
 	const animatedImg = new AnimatedImage(nameImage = "kamikaze", frames = 3, delay = 10)
@@ -28,6 +46,7 @@ class Kamikaze inherits Enemigo {
 	override method image() = animatedImg.image()
 
 	override method collide(e) {
+		super(e)
 		e.explotar(self)
 	}
 
