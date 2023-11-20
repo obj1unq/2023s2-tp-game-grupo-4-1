@@ -12,4 +12,11 @@ describe "Portal test" {
 		
 		assert.throwsException({jugador.pasarPortal(portal)})
 	}
+	test "El nivel actual del juego cambia al pasar por el portal"{
+		const nivelInicial = gameManager.nivelActual()
+		gameManager.completarNivel()
+		jugador.pasarPortal(portal)
+		
+		assert.that(gameManager.nivelActual() != nivelInicial)
+	}
 }

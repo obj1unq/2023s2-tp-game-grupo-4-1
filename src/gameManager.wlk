@@ -29,8 +29,19 @@ object gameManager {
 			self.error("No se puede cambiar de nivel si no esta completo")
 		}
 	}
-	
-	method nivelCompletado(){estaCompleto=true}
+	method completarNivel(){
+		estaCompleto = true
+		levelManager.siguienteNivel()
+	}
 	method estaCompletoElNivel() = estaCompleto
+	method nivelActual() = levelManager.numeroDeNivel()
+}
+
+object levelManager{
+	const niveles = []
+	var nivelActual = 0
+	method numeroDeNivel() = nivelActual
+	
+	method siguienteNivel() { nivelActual++}
 }
 
