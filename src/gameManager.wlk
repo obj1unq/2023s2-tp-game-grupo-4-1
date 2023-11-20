@@ -41,6 +41,7 @@ object gameManager {
 
 	method generarPortal() {
 		game.addVisualIn(portal, generadorDeEnemigos.validPosition())
+		portal.play()
 	}
 
 	method estaCompletoElNivel() = estaCompleto

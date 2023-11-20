@@ -12,7 +12,9 @@ class Cuarto {
 object portal inherits Entorno{
 	const img = new AnimatedImage(nameImage = "Portal", frames=10, delay=5)
 	method image()= img.image()
-	
+	method play(){
+		game.sound("portal_thunder.mp3").play()
+	}
 	method collide(entidad){
 		entidad.pasarPortal(self)
 	}
