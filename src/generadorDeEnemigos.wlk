@@ -16,11 +16,7 @@ object generadorDeEnemigos {
 	}
 
 	method enemigoRandom() {
-		return if ((0 .. 2 ).anyOne() > 1) {
-			new Slime(position = self.validPosition())
-		} else {
-			new Kamikaze(position = self.validPosition())
-		}
+		return new Guardian(position=self.validPosition())
 	}
 
 	method randomNumber() = (0 .. 3).anyOne()
