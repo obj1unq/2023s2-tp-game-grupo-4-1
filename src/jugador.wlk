@@ -13,7 +13,7 @@ object jugador {
 	var property vida = 3 // Despues probar sacar el setter
 	const property image = "Jugador.png"
 	const property isSolid = false
-	const property inventario = #{ llave }
+	const property inventario = #{  }
 
 	method abrir() {
 	}
@@ -102,6 +102,10 @@ object jugador {
 		keyboard.a().onPressDo({ game.getObjectsIn(self.position()).forEach({ elemento => elemento.abrir()})})
 		keyboard.space().onPressDo({ gameManager.cambiarNivelSiEstaCompleto()})
 		game.onCollideDo(self, { element => element.collide(self)})
+	}
+	method pasarPortal(portal) {
+		gameManager.validarSiEstaCompleto()
+		 
 	}
 
 }
