@@ -43,16 +43,6 @@ object jugador {
 		self.pararJuegoSiElJugadorMuere()
 	}
 
-	method recibirCuracion() {
-		self.subirVida()
-		self.subirVida()
-	}
-
-	method bajarVida() {
-		vida--
-		hud_HP.mostrarCorazonesSanos()
-		self.pararJuegoSiElJugadorMuere()
-	}
 
 	method validarSiElItemEstaEnElInventario(item) {
 		if (not inventario.contains(item)) {
@@ -70,6 +60,12 @@ object jugador {
 		hud_HP.mostrarCorazonesSanos()
 	}
 
+	method bajarVida() {
+		vida--
+		hud_HP.mostrarCorazonesSanos()
+		self.pararJuegoSiElJugadorMuere()
+	}
+	
 	method validarTopeDeVida() {
 		if (self.vidaAlMaximo()) {
 			game.say(self,"Vida al maximo!!")

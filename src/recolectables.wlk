@@ -51,25 +51,30 @@ class ObjetoRecolectable inherits ObjetoAnimado {
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
+	
 	override method collide(pj) {
 		game.removeVisual(self)
 		self.accion(pj)
 	}
 
 	override method accion(pj) { 
-
+		
 		#{	
-			{
-				pj.subirVida()
-				game.say(jugador,"Vida subida!!")
-			},{
-				pj.bajarVida()
-				game.say(jugador,"Has recibido daño!!")
-			}
+			{self.curar()},
+			{self.daniar()}
+			
 		 }.anyOne().apply()
 	}
 	
+	method curar() {
+		jugador.subirVida()
+		game.say(jugador,"Vida subida!!")
+	}
 	
+	method daniar() {
+		jugador.bajarVida()
+		game.say(jugador,"Has recibido daño!!")
+	}
 }
 
 
