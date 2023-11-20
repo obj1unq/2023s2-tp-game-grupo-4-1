@@ -14,10 +14,7 @@ object jugador {
 	const property image = "Jugador.png"
 	const property isSolid = false
 	const property inventario = #{  }
-
-	method abrir() {
-	}
-
+	
 	method mover(direccion) {
 		if (vida > 0) { // Posible cambio a validacion
 			self.position(direccion)
@@ -99,13 +96,10 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
-		keyboard.a().onPressDo({ game.getObjectsIn(self.position()).forEach({ elemento => elemento.abrir()})})
-		keyboard.space().onPressDo({ gameManager.cambiarNivelSiEstaCompleto()})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
 	method pasarPortal(portal) {
 		gameManager.validarSiEstaCompleto()
-		 
 	}
 
 }

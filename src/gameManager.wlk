@@ -13,13 +13,13 @@ object gameManager {
 	var estaCompleto = false
 
 	method generar() {
+		estaCompleto = false
 		game.clear()
 		mapa.generar(levelManager.nivelActual())
 		game.addVisual(jugador)
 		generadorDeEnemigos.generar()
 		jugador.comportamiento()
 		hud.add()
-		estaCompleto = false
 	}
 
 	method cambiarAsiguienteNivel() {
@@ -36,8 +36,12 @@ object gameManager {
 	method completarNivel() {
 		estaCompleto = true
 		levelManager.aumentarNivelActual()
+		self.generarPortal()
 	}
 
+	method generarPortal(){
+		game.addVisualIn(portal, generadorDeEnemigos.validPosition())
+	}
 	method estaCompletoElNivel() = estaCompleto
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()

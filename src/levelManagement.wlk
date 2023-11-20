@@ -73,9 +73,6 @@ object levelManager {
 	}
 
 	method aumentarNivelActual() {
-		if (nivelActual == niveles.size()) {
-			self.error("No existe un nivel" + nivelActual + 1)
-		}
 		nivelActual++
 	}
 
