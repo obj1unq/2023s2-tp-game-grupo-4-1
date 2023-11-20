@@ -100,6 +100,7 @@ object jugador {
 	}
 	method pasarPortal(portal) {
 		gameManager.validarSiEstaCompleto()
+		gameManager.cambiarAsiguienteNivel()
 	}
 
 }

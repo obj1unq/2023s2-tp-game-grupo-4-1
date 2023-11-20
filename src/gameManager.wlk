@@ -23,7 +23,7 @@ object gameManager {
 	}
 
 	method cambiarAsiguienteNivel() {
-		self.validarSiEstaCompleto()
+		//self.validarSiEstaCompleto()
 		self.generar()
 	}
 
