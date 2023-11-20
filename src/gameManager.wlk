@@ -39,9 +39,10 @@ object gameManager {
 		self.generarPortal()
 	}
 
-	method generarPortal(){
+	method generarPortal() {
 		game.addVisualIn(portal, generadorDeEnemigos.validPosition())
 	}
+
 	method estaCompletoElNivel() = estaCompleto
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()

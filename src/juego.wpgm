@@ -7,10 +7,14 @@ import movimientoEntidades.*
 import mapa.*
 import generadorDeEnemigos.*
 import gameManager.*
+
 program juego {
 	game.title("Dungeon zx")
 	game.ground("pasto-0.png")
 	gameManager.generar() // NO TOCAR
+	
+	keyboard.c().onPressDo({
+		gameManager.completarNivel()
+	})
 	game.start()
 }
-

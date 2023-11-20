@@ -37,8 +37,6 @@ object generadorDeEnemigos {
 			self.validPosition()
 		}
 	}
-	
-
 
 	method esUnaCeldaValida(position) = game.getObjectsIn(position).all({ element => not element.isSolid() })
 

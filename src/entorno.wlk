@@ -3,11 +3,21 @@ import jugador.*
 import enemigos.*
 import movimientoEntidades.*
 import gameManager.*
+import animatedImage.*
 
 class Cuarto {
 
 }
-object portal{}
+
+object portal inherits Entorno{
+	const img = new AnimatedImage(nameImage = "Portal", frames=10, delay=5)
+	method image()= img.image()
+	
+	method collide(entidad){
+		entidad.pasarPortal(self)
+	}
+}
+
 class Entorno {
 
 	method isSolid() = false
@@ -17,7 +27,10 @@ class Entorno {
 
 	method collide(a) {
 	}
-	method abrir(){}
+
+	method abrir() {
+	}
+
 }
 
 object llave inherits Entorno {
@@ -27,17 +40,20 @@ object llave inherits Entorno {
 	method image() = "llave.png"
 
 }
+
 class Trampa inherits Entorno {
-	const property position 
-	method image()= "trampa.png"
-	
+
+	const property position
+
+	method image() = "trampa.png"
+
 	override method collide(alguien) {
 		alguien.trapped(self)
-		
 		game.say(self, "boom")
 		game.removeVisual(self)
 	}
-} 
+
+}
 
 class Escotilla inherits Entorno {
 
@@ -62,9 +78,9 @@ class Escotilla inherits Entorno {
 }
 
 object cerrada {
-	
+
 	method image() = "cerrada"
-	
+
 }
 
 object abierta {

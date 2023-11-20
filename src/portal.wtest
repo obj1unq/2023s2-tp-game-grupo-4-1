@@ -2,28 +2,30 @@ import wollok.game.*
 import entorno.*
 import gameManager.*
 import jugador.*
+
 describe "Portal test" {
-	method initialize(){
+
+	method initialize() {
 		game.clear()
 	}
+
 	test "El jugador no puede entrar al portal sí no completo el nivel" {
 		assert.notThat(gameManager.estaCompletoElNivel())
-		
-		assert.throwsException({jugador.pasarPortal(portal)})
+		assert.throwsException({ jugador.pasarPortal(portal)})
 	}
-	test "El nivel actual del juego cambia al pasar por el portal"{
+
+	test "El nivel actual del juego cambia al pasar por el portal" {
 		const nivelInicial = gameManager.numeroDeNivel()
 		gameManager.completarNivel()
 		jugador.pasarPortal(portal)
-		
 		assert.that(gameManager.numeroDeNivel() != nivelInicial)
 	}
-	
-	test "El portal aparece al momento de completar el nivel"{
+
+	test "El portal aparece al momento de completar el nivel" {
 		assert.notThat(game.allVisuals().contains(portal))
-		
 		gameManager.completarNivel()
-		
 		assert.that(game.allVisuals().contains(portal))
 	}
+
 }
+
