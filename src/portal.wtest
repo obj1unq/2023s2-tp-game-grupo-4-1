@@ -1,0 +1,15 @@
+import wollok.game.*
+import entorno.*
+import gameManager.*
+import jugador.*
+describe "Portal test" {
+	const portal = new Portal()
+	method initialize(){
+		game.clear()
+	}
+	test "El jugador no puede entrar al portal sí no completo el nivel" {
+		assert.notThat(gameManager.estaCompletoElNivel())
+		
+		assert.throwsException({jugador.pasarPortal(portal)})
+	}
+}

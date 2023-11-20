@@ -8,7 +8,7 @@ import mapa.*
 import generadorDeEnemigos.*
 
 object gameManager {
-	var estaCompleto = true
+	var estaCompleto = false
 	method generar() {
 		estaCompleto = false
 		game.clear()
@@ -31,7 +31,6 @@ object gameManager {
 	}
 	
 	method nivelCompletado(){estaCompleto=true}
-	
 	method estaCompletoElNivel() = estaCompleto
 }
 

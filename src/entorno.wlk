@@ -7,7 +7,7 @@ import gameManager.*
 class Cuarto {
 
 }
-
+class Portal{}
 class Entorno {
 
 	method isSolid() = false
