@@ -12,7 +12,8 @@ class Efecto inherits gameEntity.GameEntity {
 class Explosion inherits Efecto {
 
 	const animatedImg = new AnimatedImage(nameImage = "explosion", frames = 3, delay = 5, temporal = true)
-	
-	override method calcularImagen()=animatedImg.image()
+
+	override method calcularImagen() = animatedImg.image()
+
 }
 

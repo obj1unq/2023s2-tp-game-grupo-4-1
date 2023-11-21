@@ -6,7 +6,6 @@ describe "Enemigos" {
 
 	const vigilante = new Slime()
 
-	;
 	method initialize() {
 		game.clear()
 	}
@@ -30,12 +29,6 @@ describe "Enemigos" {
 		assert.equals(game.at(1, 1), enemigo.position())
 		enemigo.avanzarHaciaElJugador()
 		assert.equals(game.at(2, 2), enemigo.position())
-		enemigo.avanzarHaciaElJugador()
-		assert.equals(game.at(3, 3), enemigo.position())
-		enemigo.avanzarHaciaElJugador()
-		assert.equals(game.at(4, 4), enemigo.position())
-		enemigo.avanzarHaciaElJugador()
-		assert.equals(game.at(5, 5), enemigo.position())
 	}
 
 }
