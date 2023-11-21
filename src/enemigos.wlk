@@ -24,19 +24,7 @@ class Enemigo inherits GameEntity {
 }
 
 class Guardia inherits Enemigo {
-
-	/*
-	 * Los guardias son enemigos que no se 
-	 * mueven de la puerta y atacan al jugador
-	 * a menos que el jugador tenga una moneda
-	 */
 	override method image() = "guardia.png"
-
-	override method parar() {
-	}
-
-	override method comportamiento() {
-	}
 
 }
 
