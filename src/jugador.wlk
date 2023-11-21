@@ -11,20 +11,24 @@ object jugador {
 
 	var property position = game.at(1, 1)
 	var vida = 3 // Despues probar sacar el setter
-	const property image = "Jugador.png"
-	const property isSolid = false
 	const property inventario = #{  }
+
+	method image() = "Jugador.png"
+
+	method isSolid() = false
+
 	method vida() = vida
+
 	method mover(direccion) {
 		if (vida > 0) { // Posible cambio a validacion
 			self.position(direccion)
 		}
 	}
 
-	method explotar(explosion){
+	method explotar(explosion) {
 		explosion.explotar()
-		
 	}
+
 	method trapped(trap) {
 		self.bajarVida()
 	}
@@ -38,7 +42,6 @@ object jugador {
 		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
 	}
-
 
 	method validarSiElItemEstaEnElInventario(item) {
 		if (not inventario.contains(item)) {
@@ -61,13 +64,13 @@ object jugador {
 		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
 	}
-	
+
 	method validarTopeDeVida() {
 		if (self.vidaAlMaximo()) {
-			game.say(self,"Vida al maximo!!")
+			game.say(self, "Vida al maximo!!")
 		}
 	}
-	
+
 	method vidaAlMaximo() = vida == 3
 
 	method tieneItem(item) {
@@ -97,6 +100,7 @@ object jugador {
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
+
 	method pasarPortal() {
 		gameManager.validarSiEstaCompleto()
 		gameManager.cambiarAsiguienteNivel()
