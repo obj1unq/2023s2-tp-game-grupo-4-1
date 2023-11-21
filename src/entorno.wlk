@@ -124,9 +124,13 @@ object tableroPosition {
 
 }
 
-class SolidObject inherits Entorno{
+class SolidObject inherits Entorno {
+
 	override method isSolid() = true
-	method comportamiento() {}
+
+	method comportamiento() {
+	}
+
 }
 
 class Pared inherits SolidObject {
