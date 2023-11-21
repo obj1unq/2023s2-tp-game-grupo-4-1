@@ -97,7 +97,7 @@ object jugador {
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
-	method pasarPortal(portal) {
+	method pasarPortal() {
 		gameManager.validarSiEstaCompleto()
 		gameManager.cambiarAsiguienteNivel()
 	}

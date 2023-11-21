@@ -12,13 +12,13 @@ describe "Portal test" {
 
 	test "El jugador no puede entrar al portal sí no completo el nivel" {
 		assert.notThat(gameManager.estaCompletoElNivel())
-		assert.throwsException({ jugador.pasarPortal(portal)})
+		assert.throwsException({ jugador.pasarPortal()})
 	}
 
 	test "El nivel actual del juego cambia al pasar por el portal" {
 		const nivelInicial = gameManager.numeroDeNivel()
 		gameManager.eliminarEnemigo()
-		jugador.pasarPortal(portal)
+		jugador.pasarPortal()
 		assert.that(gameManager.numeroDeNivel() > nivelInicial)
 	}
 
