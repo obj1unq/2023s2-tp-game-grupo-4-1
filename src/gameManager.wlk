@@ -3,7 +3,6 @@ import hud.*
 import jugador.*
 import entorno.*
 import enemigos.*
-import movimientoEntidades.*
 import mapa.*
 import generadorDePosiciones.*
 import generadorDeEnemigos.*
@@ -11,18 +10,19 @@ import levelManagement.*
 
 object gameManager {
 
-	var estaCompleto = false
-
+	var cantDeEnemigosVivos = 1
+	var cantEnemigos = 1
 	method generar() {
-		estaCompleto = false
 		game.clear()
 		mapa.generar(levelManager.nivelActual())
 		game.addVisual(jugador)
 		jugador.position(game.at(1,1))
-		generadorDeEnemigos.generar()
+		generadorDeEnemigos.generar(cantEnemigos)
+		cantDeEnemigosVivos = cantEnemigos
+		cantEnemigos++
 		jugador.comportamiento()
 		hud.add()
-		keyboard.c().onPressDo({ self.completarNivel()})
+		keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
 
 	method cambiarAsiguienteNivel() {
@@ -37,7 +37,6 @@ object gameManager {
 	}
 
 	method completarNivel() {
-		estaCompleto = true
 		levelManager.aumentarNivelActual()
 		self.generarPortal()
 	}
@@ -46,9 +45,14 @@ object gameManager {
 		game.addVisualIn(portal, generadorDePosiciones.validPosition({ position => generadorDeEnemigos.estaVaciaLaCelda(position)}))
 	}
 
-	method estaCompletoElNivel() = estaCompleto
+	method estaCompletoElNivel() = cantDeEnemigosVivos == 0
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()
-
+	method eliminarEnemigo() {
+		cantDeEnemigosVivos--
+		if(cantDeEnemigosVivos <= 0){
+			self.completarNivel()
+		}
+	}
 }
 
