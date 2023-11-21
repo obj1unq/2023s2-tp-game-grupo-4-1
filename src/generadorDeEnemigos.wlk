@@ -1,8 +1,9 @@
 import wollok.game.*
 import enemigos.*
 import jugador.*
+import generadorDePosiciones.*
 
-object generadorDeEnemigos {
+object generadorDeEnemigos  {
 
 	var maximoEnemigos = 3
 
@@ -17,28 +18,13 @@ object generadorDeEnemigos {
 
 	method enemigoRandom() {
 		return if ((0 .. 2 ).anyOne() > 1) {
-			new Slime(position = self.validPosition())
+			new Slime(position = generadorDePosiciones.validPosition({position => self.estaVaciaLaCelda(position)}))
 		} else {
-			new Kamikaze(position = self.validPosition())
+			new Kamikaze(position = generadorDePosiciones.validPosition({position => self.estaVaciaLaCelda(position)}))
 		}
 	}
 
-	method randomNumber() = (0 .. 3).anyOne()
-
-	method randomPosition() {
-		return game.at((3 .. game.width() - 1 ).anyOne(), (4 .. game.height() - 1).anyOne())
-	}
-
-	method validPosition() {
-		const position = self.randomPosition()
-		return if (self.esUnaCeldaValida(position)) {
-			position
-		} else {
-			self.validPosition()
-		}
-	}
-
-	method esUnaCeldaValida(position) = game.getObjectsIn(position).all({ element => not element.isSolid() })
+	method estaVaciaLaCelda(position) = game.getObjectsIn(position).all({ element => not element.isSolid() })
 
 }
 

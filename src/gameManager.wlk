@@ -5,6 +5,7 @@ import entorno.*
 import enemigos.*
 import movimientoEntidades.*
 import mapa.*
+import generadorDePosiciones.*
 import generadorDeEnemigos.*
 import levelManagement.*
 
@@ -20,10 +21,11 @@ object gameManager {
 		generadorDeEnemigos.generar()
 		jugador.comportamiento()
 		hud.add()
+		keyboard.c().onPressDo({ self.completarNivel()})
 	}
 
 	method cambiarAsiguienteNivel() {
-		//self.validarSiEstaCompleto()
+		self.validarSiEstaCompleto()
 		self.generar()
 	}
 
@@ -40,7 +42,7 @@ object gameManager {
 	}
 
 	method generarPortal() {
-		game.addVisualIn(portal, generadorDeEnemigos.validPosition())
+		game.addVisualIn(portal, generadorDePosiciones.validPosition({position => generadorDeEnemigos.estaVaciaLaCelda(position)}))
 		portal.play()
 	}
 
