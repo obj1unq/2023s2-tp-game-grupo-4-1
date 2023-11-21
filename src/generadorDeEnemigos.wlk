@@ -5,15 +5,12 @@ import generadorDePosiciones.*
 
 object generadorDeEnemigos  {
 
-	var maximoEnemigos = 3
-
-	method generar() {
-		(0 .. maximoEnemigos).forEach({ x =>
+	method generar(maximoEnemigos) {
+		(1.. maximoEnemigos).forEach({ x =>
 			const enemigo = self.enemigoRandom()
 			game.addVisual(enemigo)
 			game.onTick(750, "comportamientoEnemigo", { enemigo.comportamiento()})
 		})
-		maximoEnemigos = 3
 	}
 
 	method enemigoRandom() {
