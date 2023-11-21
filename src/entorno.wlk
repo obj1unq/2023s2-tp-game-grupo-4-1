@@ -31,7 +31,7 @@ object portal inherits Entorno {
 	}
 
 	override method collide(entidad) {
-		entidad.pasarPortal(self)
+		entidad.pasarPortal()
 	}
 
 }

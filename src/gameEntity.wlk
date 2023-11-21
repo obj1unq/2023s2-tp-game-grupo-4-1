@@ -16,6 +16,6 @@ class GameEntity {
 	method explotar(x){}
 	method parar(){}
 	method abrir() {}
-	method pasarPortal(e){}
+	method pasarPortal(){}
 }
 
