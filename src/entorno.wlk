@@ -5,21 +5,6 @@ import movimientoEntidades.*
 import gameManager.*
 import animatedImage.*
 
-class Cuarto {
-
-}
-
-object portal inherits Entorno{
-	const img = new AnimatedImage(nameImage = "Portal", frames=10, delay=5)
-	method image()= img.image()
-	method play(){
-		game.sound("portal_thunder.mp3").play()
-	}
-	method collide(entidad){
-		entidad.pasarPortal(self)
-	}
-}
-
 class Entorno {
 
 	method isSolid() = false
@@ -31,6 +16,22 @@ class Entorno {
 	}
 
 	method abrir() {
+	}
+
+}
+
+object portal inherits Entorno {
+
+	const img = new AnimatedImage(nameImage = "Portal", frames = 10, delay = 5)
+
+	method image() = img.image()
+
+	method play() {
+		game.sound("portal_thunder.mp3").play()
+	}
+
+	override method collide(entidad) {
+		entidad.pasarPortal(self)
 	}
 
 }
@@ -123,23 +124,9 @@ object tableroPosition {
 
 }
 
-class SolidObject {
-
-	method recibirAtaque(pj) {
-	}
-
-	method isSolid() = true
-
-	method comportamiento() {
-	}
-
-	method collide(pj) {
-		pj.cambiarSentido()
-	}
-
-	method parar() {
-	}
-
+class SolidObject inherits Entorno{
+	override method isSolid() = true
+	method comportamiento() {}
 }
 
 class Pared inherits SolidObject {
