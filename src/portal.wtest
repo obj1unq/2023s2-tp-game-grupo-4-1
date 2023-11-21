@@ -18,7 +18,7 @@ describe "Portal test" {
 		const nivelInicial = gameManager.numeroDeNivel()
 		gameManager.completarNivel()
 		jugador.pasarPortal(portal)
-		assert.that(gameManager.numeroDeNivel() != nivelInicial)
+		assert.that(gameManager.numeroDeNivel() > nivelInicial)
 	}
 
 	test "El portal aparece al momento de completar el nivel" {
