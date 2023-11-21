@@ -84,11 +84,6 @@ object jugador {
 			gameManager.derrota()
 		}
 	}
-
-	method parar() {
-		game.removeVisual(self)
-	}
-
 	method comportamiento() {
 		keyboard.up().onPressDo({ self.mover(direcciones.arriba(self.position()))})
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
@@ -98,7 +93,6 @@ object jugador {
 	}
 
 	method pasarPortal() {
-		gameManager.validarSiEstaCompleto()
 		gameManager.cambiarAsiguienteNivel()
 	}
 
