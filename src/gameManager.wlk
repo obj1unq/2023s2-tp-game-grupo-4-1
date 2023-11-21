@@ -18,6 +18,7 @@ object gameManager {
 		game.clear()
 		mapa.generar(levelManager.nivelActual())
 		game.addVisual(jugador)
+		jugador.position(game.at(1,1))
 		generadorDeEnemigos.generar()
 		jugador.comportamiento()
 		hud.add()
@@ -30,7 +31,7 @@ object gameManager {
 	}
 
 	method validarSiEstaCompleto() {
-		if (not estaCompleto) {
+		if (not self.estaCompletoElNivel()) {
 			self.error("No se puede cambiar de nivel si no esta completo")
 		}
 	}
@@ -42,8 +43,7 @@ object gameManager {
 	}
 
 	method generarPortal() {
-		game.addVisualIn(portal, generadorDePosiciones.validPosition({position => generadorDeEnemigos.estaVaciaLaCelda(position)}))
-		portal.play()
+		game.addVisualIn(portal, generadorDePosiciones.validPosition({ position => generadorDeEnemigos.estaVaciaLaCelda(position)}))
 	}
 
 	method estaCompletoElNivel() = estaCompleto
