@@ -6,18 +6,27 @@ import mapa.*
 import hud.*
 import gameManager.*
 import efectos.*
+import recolectables.*
 
 object jugador {
 
 	var property position = game.at(1, 1)
-	var vida = 3 // Despues probar sacar el setter
-	const property inventario = #{  }
+	var property vida = 3 // Despues probar sacar el setter
+	const property isSolid = false
+	const inventario = #{}
 
-	method image() = "Jugador.png"
 
-	method isSolid() = false
+	method image() = "personaje_" + self.equipamento() + self.estado() + ".png"
 
-	method vida() = vida
+	method equipamento() = self.visualAtaque() + self.visualDefensa()
+
+	method visualAtaque() =  if (self.tieneEspada()) "conEspada_" else "sinEspada_"
+	method visualDefensa() = if (self.tieneEscudo()) "conEscudo_" else "sinEscudo_"
+
+	method tieneEspada() = inventario.contains(espada)
+	method tieneEscudo() = inventario.contains(escudo)
+
+	method estado() = "idle"
 
 	method mover(direccion) {
 		if (vida > 0) { 

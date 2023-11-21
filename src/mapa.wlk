@@ -4,85 +4,15 @@ import enemigos.*
 import entorno.*
 import recolectables.*
 
-object m {
+object _ { method generar(position) { game.addVisual(new Pasto(position = position)) }			}
+object p { method generar(position) { game.addVisual(new Pared(position = position)) } 			}
+object h { method generar(position) { game.addVisual(new Hud(position = position)) }			}
 
-	method generar(position) {
-		moneda.position(position)
-	}
-
-}
-
-object po {
-
-	method generar(position) {
-		posionMisteriosa.position(position)
-	}
-
-}
-
-object _ {
-
-	method generar(position) {
-		game.addVisual(new Pasto(position = position))
-	}
-
-}
-
-object op {
-
-	method generar(position) {
-		game.addVisual(new ObstaculoPared(position = position))
-	}
-
-}
-
-object o {
-
-	method generar(position) {
-		game.addVisual(new Obstaculo(position = position))
-	}
-
-}
-
-object p {
-
-	method generar(position) {
-		game.addVisual(new Pared(position = position))
-	}
-
-}
-
-object pr {
-
-	method generar(position) {
-		game.addVisual(new Puerta(position = position))
-	}
-
-}
-
-object g {
-
-	method generar(position) {
-		game.addVisual(new Guardia(position = position))
-	}
-
-}
-
-object h {
-
-	method generar(position) {
-		game.addVisual(new Hud(position = position))
-	}
-
-}
-
-object e {
-
-	method generar(position) {
-		game.addVisual(new Escotilla(position = position))
-	}
-
-}
+object c { method generar(position) { moneda.position(position) }   							}
+object m { method generar(position) { posionMisteriosa.position(position) }						}
+object j { method generar(position) { jugador.position(position) }								}
+object d { method generar(position) { escudo.position(position) }								}
+object a { method generar(position) { espada.position(position) }								}
 
 /*
  * object p {
