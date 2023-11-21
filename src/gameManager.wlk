@@ -9,7 +9,7 @@ import generadorDeEnemigos.*
 import levelManagement.*
 
 object gameManager {
-
+	var sounds = true
 	var cantDeEnemigosVivos = 1
 	var cantEnemigos = 1
 	method generar() {
@@ -43,6 +43,7 @@ object gameManager {
 
 	method generarPortal() {
 		game.addVisualIn(portal, generadorDePosiciones.validPosition({ position => generadorDeEnemigos.estaVaciaLaCelda(position)}))
+		if(sounds){portal.play()}
 	}
 
 	method estaCompletoElNivel() = cantDeEnemigosVivos == 0
@@ -54,5 +55,6 @@ object gameManager {
 			self.completarNivel()
 		}
 	}
+	method sounds(v){ sounds= v}
 }
 

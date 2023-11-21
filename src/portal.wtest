@@ -4,9 +4,10 @@ import gameManager.*
 import jugador.*
 
 describe "Portal test" {
-
+	
 	method initialize() {
 		game.clear()
+		gameManager.sounds(false)
 	}
 
 	test "El jugador no puede entrar al portal sí no completo el nivel" {
