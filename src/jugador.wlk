@@ -10,11 +10,11 @@ import efectos.*
 object jugador {
 
 	var property position = game.at(1, 1)
-	var property vida = 3 // Despues probar sacar el setter
+	var vida = 3 // Despues probar sacar el setter
 	const property image = "Jugador.png"
 	const property isSolid = false
 	const property inventario = #{  }
-	
+	method vida() = vida
 	method mover(direccion) {
 		if (vida > 0) { // Posible cambio a validacion
 			self.position(direccion)
