@@ -6,6 +6,7 @@ import gameEntity.*
 import hitBox.*
 import animatedImage.*
 import efectos.*
+import gameManager.*
 
 class Enemigo inherits GameEntity {
 
@@ -55,7 +56,12 @@ class Kamikaze inherits Enemigo {
 			self.avanzarHaciaElJugador()
 		}
 	}
-
+	method explotar(){
+		const positionToExplosion = self.position()
+		game.removeVisual(self)
+		game.addVisual(new Explosion(position = positionToExplosion))
+		gameManager.eliminarEnemigo()
+	}
 	method avanzarHaciaElJugador() {
 		const jugadorP = jugador.position()
 		self.posicionEnYHastaElJugador(jugadorP.y())

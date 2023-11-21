@@ -22,9 +22,8 @@ object jugador {
 	}
 
 	method explotar(explosion){
-		const positionToExplosion = explosion.position()
-		game.removeVisual(explosion)
-		game.addVisual(new Explosion(position = positionToExplosion))
+		explosion.explotar()
+		
 	}
 	method trapped(trap) {
 		self.bajarVida()
