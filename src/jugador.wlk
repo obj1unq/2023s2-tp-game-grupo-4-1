@@ -20,17 +20,13 @@ object jugador {
 	method vida() = vida
 
 	method mover(direccion) {
-		if (vida > 0) { // Posible cambio a validacion
+		if (vida > 0) { 
 			self.position(direccion)
 		}
 	}
 
 	method explotar(explosion) {
 		explosion.explotar()
-	}
-
-	method trapped(trap) {
-		self.bajarVida()
 	}
 
 	method agregar(item) {
@@ -85,7 +81,7 @@ object jugador {
 
 	method pararJuegoSiElJugadorMuere() {
 		if (vida <= 0) {
-			hud.mostrarCartelDeDerrota()
+			gameManager.derrota()
 		}
 	}
 

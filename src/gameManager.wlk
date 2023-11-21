@@ -24,7 +24,10 @@ object gameManager {
 		hud.add()
 		keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
-
+	method derrota(){
+		game.clear()
+		hud.mostrarCartelDeDerrota()
+	}
 	method cambiarAsiguienteNivel() {
 		self.validarSiEstaCompleto()
 		self.generar()
