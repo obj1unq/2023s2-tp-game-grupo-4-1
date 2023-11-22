@@ -1,5 +1,7 @@
 import wollok.game.*
 import jugador.*
+import recolectables.*
+
 
 object hud {
 	
@@ -31,12 +33,31 @@ object hud {
 
 }
 
-object derrota {
 
-	const property position = game.at(0, game.width() / 4 + 1)
-	const property image = "derrota.png"
-
+object hud_inventario {
+	var slotsOcupados = 0
+	
+	method actualizar(item) {
+		if (self.quedaEspacioEnInventario()) {
+			item.position(self.primerSlotLibre())
+			slotsOcupados++
+		} else {
+			game.say(jugador, "No puedo cargar con más!!")
+		} 
+	}
+	
+	//method primerSlotLibre() = game.at(game.width()-1, 13 + slotsOcupados)
+	method primerSlotLibre() = game.at(12+slotsOcupados ,game.height()-1)
+		
+	method quedaEspacioEnInventario() = slotsOcupados != 3
 }
+
+
+
+
+
+
+
 
 object hud_HP {
 
@@ -141,10 +162,6 @@ class Vida {
 		state = full
 	}
 
-	method envenenar() {
-		state = poisoned
-	}
-
 	method parar() {
 	}
 
@@ -162,9 +179,11 @@ object empty {
 
 }
 
-object poisoned {
 
-	method image() = "_poisoned"
+
+object derrota {
+
+	const property position = game.at(0, game.width() / 4 + 1)
+	const property image = "derrota.png"
 
 }
-

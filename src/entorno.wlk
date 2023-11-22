@@ -73,12 +73,20 @@ object abierta {
 
 class Hud inherits Entorno {
 
-	const property position = game.at(0, 0)
+	const property position 
 
 	override method isSolid() = true
 
 	method image() = "hud.png"
 
+}
+
+
+
+class Hud_slot inherits SolidObject {
+	const property position 
+	
+	method image() = "hud_i.png"
 }
 
 object tableroPosition {

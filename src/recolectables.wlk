@@ -1,21 +1,19 @@
 import wollok.game.*
 import jugador.*
-
+import hud.*
 
 
 class ObjetoRecolectable {
 	var property position = game.at(0,0)
 	method collide(pj) {
 		self.accion(self)
-		game.removeVisual(self)
-		
 	}
 	
 	method isSolid() = false
 	
 	method accion(item) {
 		jugador.agregar(item)
-		// hud_invbentario.actualizar()
+		hud_inventario.actualizar(item)
 	}
 	method recibirAtaque(x){}
 }
@@ -54,7 +52,10 @@ class ObjetoAnimado inherits ObjetoRecolectable{
 object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
 	
-
+	override method collide(pj) {
+		super(pj)
+		game.removeVisual(self)
+	}
 
 	override method accion(pj) { 
 		
@@ -79,9 +80,7 @@ object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_
 
 // Recolectable que sirve apara sobornar al guardia
 object moneda inherits ObjetoAnimado(fotogramas = 10, nombre = "moneda_de_oro-rotacion-") { // Usa la validacion 
-	override method accion(pj) {
-		
-	}
+	 
 }
 
 object escudo inherits ObjetoRecolectable{ 
