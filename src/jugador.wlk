@@ -13,7 +13,7 @@ object jugador {
 	var property position = game.at(1, 1)
 	var property vida = 3 // Despues probar sacar el setter
 	const property isSolid = false
-	const inventario = #{}
+	const inventario = #{espada}
 
 
 	method image() = "personaje_" + self.equipamento() + self.estado() + ".png"
