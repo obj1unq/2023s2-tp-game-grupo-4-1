@@ -197,14 +197,14 @@ object empty {
 
 object victoria {
 
-	const property position = game.at(0, game.width() / 4 + 1)
+	const property position = game.at(0, 0)
 	const property image = "mensaje_win.png"
 
 }
 
 object derrota {
 
-	const property position = game.at(0, game.width() / 4 + 1)
+	const property position = game.at(0, 0)
 	const property image = "derrota.png"
 
 }
