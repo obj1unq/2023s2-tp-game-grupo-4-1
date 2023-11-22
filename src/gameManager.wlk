@@ -16,14 +16,22 @@ object gameManager {
 	method generar() {
 		game.clear()
 		mapa.generar(levelManager.nivelActual())
+		self.agregarJugador()
+		self.generarEnemigosYAumentarDificultad()
+		hud.add()
+		keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
+	}
+	
+	method agregarJugador() {
 		game.addVisual(jugador)
 		jugador.position(game.at(1,1))
+		jugador.comportamiento()
+	}
+	
+	method generarEnemigosYAumentarDificultad(){
 		generadorDeEnemigos.generar(cantEnemigos)
 		cantDeEnemigosVivos = cantEnemigos
 		cantEnemigos++
-		jugador.comportamiento()
-		hud.add()
-		keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
 	method derrota(){
 		game.clear()
