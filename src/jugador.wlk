@@ -14,9 +14,10 @@ object jugador {
 	var property vida = 3 // Despues probar sacar el setter
 	const property isSolid = false
 	const property  inventario = #{}
+	var dir = "derecha_"
 
-	method image() = "personaje_" + self.equipamento() + self.estado() + ".png"
-
+	method image() = "personaje_" + self.direccion() +self.equipamento() + self.estado() + ".png"
+	method direccion() = dir
 	method equipamento() = self.visualAtaque() + self.visualDefensa()
 
 	method visualAtaque() = if (self.tieneEspada()) "conEspada_" else "sinEspada_"
@@ -102,15 +103,21 @@ object jugador {
 	method comportamiento() {
 		keyboard.up().onPressDo({ self.mover(direcciones.arriba(self.position()))})
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
-		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
-		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
+		keyboard.left().onPressDo({
+			dir = "izquierda_" 
+			self.mover(direcciones.izquierda(self.position()))
+		})
+		keyboard.right().onPressDo({
+			dir = "derecha_"  
+			self.mover(direcciones.derecha(self.position()))
+		})
 		keyboard.a().onPressDo({ self.atacar()})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
 
 	method atacar() {
 		self.validarSiPuedeAtacar()
-		[ arriba, abajo, izquierda, derecha ].forEach({ dir => self.atacarTodosLosPersonajesEnLaDireccion(dir)})
+		[ arriba, abajo, izquierda, derecha ].forEach({ direc => self.atacarTodosLosPersonajesEnLaDireccion(direc)})
 	}
 
 	method validarSiPuedeAtacar() {
