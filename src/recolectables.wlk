@@ -17,37 +17,6 @@ class ObjetoRecolectable {
 	}
 	method recibirAtaque(x){}
 }
-
-
-
-
-class ObjetoAnimado inherits ObjetoRecolectable{
-	const property fotogramas 
-	const property nombre
-	
-	
-	var fotograma = 1
-	//method parar() {}
-	method image() = nombre + fotograma + ".png"
-	
-	method comportamiento() {
-		game.onTick(self.msFotogramas(),"animacion",{self.animation()})
-	}
-	
-	method msFotogramas() = 50
-	
-	method animation(){
-		if (fotograma != fotogramas) {
-			fotograma++
-		} else {fotograma = 1}
-	}
-	
-
-
-}
-
-
-
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
 object posionMisteriosa inherits ObjetoRecolectable { 
 	const imagA = new AnimatedImage(nameImage = "posion_misteriosa", frames = 7, delay = 5)
