@@ -7,7 +7,7 @@ import mapa.*
 import generadorDePosiciones.*
 import generadorDeEnemigos.*
 import levelManagement.*
-import inventario.*
+import recolectables.*
 
 object gameManager {
 	var sounds = true
