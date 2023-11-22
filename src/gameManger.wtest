@@ -10,7 +10,7 @@ describe "GameManager test" {
 		assert.throwsException({ gameManager.cambiarNivelSiEstaCompleto()})
 	}
 
-	test "recagar el nivel cuando sí  esta completo" {
+	test "recargar el nivel cuando sí  esta completo" {
 		gameManager.generar()
 		gameManager.eliminarEnemigo()
 		jugador.agregar(moneda)
