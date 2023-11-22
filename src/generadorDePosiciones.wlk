@@ -1,4 +1,5 @@
 import wollok.game.*
+
 object generadorDePosiciones {
 	method randomPosition() {
 		return game.at((3 .. game.width() - 1 ).anyOne(), (4 .. game.height() - 1).anyOne())
