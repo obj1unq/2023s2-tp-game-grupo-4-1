@@ -38,7 +38,7 @@ object gameManager {
 		hud.mostrarCartelDeDerrota()
 	}
 	method cambiarAsiguienteNivel() {
-		self.validarSiEstaCompleto()
+		//self.validarSiEstaCompleto()
 		self.generar()
 	}
 

@@ -37,6 +37,10 @@ object hud {
 object hud_inventario {
 	var slotsOcupados = 0
 	
+	method liberarEspacio() {
+		slotsOcupados = 0
+	}
+	
 	method actualizar(item) {
 		if (self.quedaEspacioEnInventario()) {
 			item.position(self.primerSlotLibre())

@@ -126,8 +126,14 @@ object jugador {
 	}
 
 	method pasarPortal() {
-		inventario.clear()
+		self.vaciarInventario()
+		
 		gameManager.cambiarAsiguienteNivel()
+	}
+	
+	method vaciarInventario() {
+		inventario.clear()
+		hud_inventario.liberarEspacio()
 	}
 
 }
