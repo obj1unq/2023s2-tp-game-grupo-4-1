@@ -24,6 +24,9 @@ class Enemigo inherits GameEntity {
 	override method recibirAtaque(jugador){
 		gameManager.eliminarEnemigo()
 		game.removeVisual(self)
+		gameManager.validarSiEstaCompleto()
+		gameManager.completarNivel()
+		
 	}
 
 }

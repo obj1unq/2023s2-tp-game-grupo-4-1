@@ -53,7 +53,7 @@ object jugador {
 
 	method ataqueBloqueado() = self.chanceDeBloqueo() and self.tieneEscudo()
 
-	method chanceDeBloqueo() = (0 .. 2).anyOne() == 0
+	method chanceDeBloqueo() = (0 .. 2).anyOne() >= 1
 
 	method validarSiElItemEstaEnElInventario(item) {
 		if (self.tieneItem(item)) {
@@ -126,8 +126,14 @@ object jugador {
 	}
 
 	method pasarPortal() {
-		inventario.clear()
+		self.vaciarInventario()
+		
 		gameManager.cambiarAsiguienteNivel()
+	}
+	
+	method vaciarInventario() {
+		inventario.clear()
+		hud_inventario.liberarEspacio()
 	}
 
 }

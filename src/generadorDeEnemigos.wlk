@@ -14,7 +14,7 @@ object generadorDeEnemigos  {
 	}
 
 	method enemigoRandom() {
-		return	if ((0 .. 2 ).anyOne() > 1) {
+		return if ((0 .. 2 ).anyOne() > 1) {
 			new Slime(position = generadorDePosiciones.validPosition({position => self.estaVaciaLaCelda(position)}))
 		} else {
 			new Kamikaze(position = generadorDePosiciones.validPosition({position => self.estaVaciaLaCelda(position)}))
