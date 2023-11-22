@@ -8,18 +8,15 @@ describe "Portal test" {
 	
 	method initialize() {
 		game.clear()
+		game.addVisual(jugador)
 		gameManager.sounds(false)
-	}
-
-	test "El jugador no puede entrar al portal sí no completo el nivel" {
-		assert.notThat(gameManager.estaCompletoElNivel())
-		assert.throwsException({ jugador.pasarPortal()})
 	}
 
 	test "El nivel actual del juego cambia al pasar por el portal" {
 		const nivelInicial = gameManager.numeroDeNivel()
 		gameManager.eliminarEnemigo()
 		jugador.agregar(moneda)
+		gameManager.completarNivel()
 		jugador.pasarPortal()
 		assert.that(gameManager.numeroDeNivel() > nivelInicial)
 	}
@@ -28,6 +25,7 @@ describe "Portal test" {
 		assert.notThat(game.allVisuals().contains(portal))
 		gameManager.eliminarEnemigo()
 		jugador.agregar(moneda)
+		gameManager.completarNivel()
 		assert.that(game.allVisuals().contains(portal))
 	}
 

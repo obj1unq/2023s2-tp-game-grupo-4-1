@@ -23,7 +23,7 @@ describe "Test sobre el jugador, los recolectables y el inventario" {
 		game.addVisual(moneda)
 		assert.notThat(jugador.tieneItem(moneda))
 		
-		assert.throwsException{moneda.collide(jugador)}
+		moneda.collide(jugador)
 		assert.that(jugador.tieneItem(moneda))
 	}
 	

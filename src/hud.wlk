@@ -2,74 +2,62 @@ import wollok.game.*
 import jugador.*
 import recolectables.*
 
-
 object hud {
-	
+
 	/*
 	 * Esta es la clase encargada de mostrar los elementos del hud
 	 * y actualizarlos
 	 */
-	 
-	method reset(){
+	method reset() {
 		hud_HP.reset()
 		hud_inventario.reset()
 	}
+
 	method add() {
 		hud_HP.mostrar()
-
 	}
-	
-//	method actualizarHUD() {
-//		hud_HP.mostrarCorazonesSanos()
-//		//hud_Inventario.mostrarItems()
-//	}
-//	
-	method eventoMuerte(){
-		//jugador.morir()
+
+	method eventoMuerte() {
 		self.mostrarCartelDeDerrota()
 	}
-	
 
 	method mostrarCartelDeDerrota() {
 		game.addVisual(derrota)
 	}
-	
-	method mostrarCartelDeVictoria(){
+
+	method mostrarCartelDeVictoria() {
 		game.addVisual(victoria)
 	}
 
 }
 
-
 object hud_inventario {
+
 	var slotsOcupados = 0
-	
+
 	method liberarEspacio() {
 		slotsOcupados = 0
 	}
+
 	method actualizar(item) {
 		if (self.quedaEspacioEnInventario()) {
 			item.position(self.primerSlotLibre())
 			slotsOcupados++
 		} else {
 			game.say(jugador, "No puedo cargar con más!!")
-		} 
+		}
 	}
-	method reset(){
+
+	method reset() {
 		slotsOcupados = 0
 	}
-	//method primerSlotLibre() = game.at(game.width()-1, 13 + slotsOcupados)
-	method primerSlotLibre() = game.at(12+slotsOcupados ,game.height()-1)
-		
+
+	// method primerSlotLibre() = game.at(game.width()-1, 13 + slotsOcupados)
+	method primerSlotLibre() = game.at(12 + slotsOcupados, game.height() - 1)
+
 	method quedaEspacioEnInventario() = slotsOcupados != 3
+
 }
-
-
-
-
-
-
-
 
 object hud_HP {
 
@@ -80,41 +68,19 @@ object hud_HP {
 	 * cuando el jugador pierde o recibe daño
 	 */
 	const property vidas = self.hpVisuals()
-	//var vidaActual = jugador.vida() - 1
+	// var vidaActual = jugador.vida() - 1
+	var property position
 
-	var property position 
-
-	
-	method reset(){
+	method reset() {
 		self.mostrarCorazonesSanos()
 	}
-	 
-//	 method mostrarCorazonesSanos() {
-//		var contador = jugador.vida() 
-//		
-//		vidas.forEach({ vida => if (contador >= 0) 
-//									{vida.llenar() contador--} 
-//								else vida.vaciar()
-//					}
-//			)
-//	 	 
-//	 }
 
-
-	 method mostrarCorazonesSanos() {
-		
-		 vidas.forEach({vida => vida.vaciar()})
-			
+	method mostrarCorazonesSanos() {
+		vidas.forEach({ vida => vida.vaciar()})
 		if (jugador.vida() > 0) {
-			(0 .. (jugador.vida() -1).max(0)).forEach({ a => self.vidas().get(a).llenar()})
-	 	}
-	 }	 
-	 
-	 
-	 
-	 
-	 
-
+			(0 .. (jugador.vida() - 1).max(0)).forEach({ a => self.vidas().get(a).llenar()})
+		}
+	}
 
 	method mostrar() {
 		vidas.forEach({ hp => game.addVisual(hp)})
@@ -129,24 +95,7 @@ object hud_HP {
 		(0 .. jugador.vida() - 1).forEach({ x => lista.add(new Vida(position = game.at(x + 1, game.height() - 1)))})
 		return lista
 	}
-//
-//	method reducirVida() {
-//		self.validarQueElJugadorEstaVivo()
-//		vidas.get(vidaActual).vaciar()
-//		vidaActual = vidaActual - 1
-//	}
-//
-//	method aumentarVida() {
-//		self.validarQueElJugadorEstaVivo()
-//		vidas.get(vidaActual).llenar()
-//		vidaActual = vidaActual + 1
-//	}
-//
-//	method envenenarVida() {
-//		self.validarQueElJugadorEstaVivo()
-//		vidas.forEach({ vida => vida.envenenar()})
-//	}
-//
+
 	method validarQueElJugadorEstaVivo() {
 		if (jugador.vida() < 0) {
 			self.error("El jugador deberia estar muerto")
@@ -193,18 +142,17 @@ object empty {
 
 }
 
-
-
 object victoria {
 
-	const property position = game.at(0, game.width() / 4 + 1)
+	const property position = game.at(0, 0)
 	const property image = "mensaje_win.png"
 
 }
 
 object derrota {
 
-	const property position = game.at(0, game.width() / 4 + 1)
+	const property position = game.at(0,0)
 	const property image = "derrota.png"
 
 }
+
