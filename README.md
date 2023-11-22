@@ -8,7 +8,10 @@ Karottupullolil  Ezequiel
 Dominguez Tomas 
 
 ## Capturas
-
+![Descripción](URL del archivo)
+![Descripción](URL del archivo)
+![Descripción](URL del archivo)
+![Descripción](URL del archivo)
 (agregar)
 
 ##  Instrucciones
