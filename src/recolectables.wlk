@@ -49,9 +49,9 @@ class ObjetoAnimado inherits ObjetoRecolectable{
 
 
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
-object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
-
-	
+object posionMisteriosa inherits ObjetoRecolectable { 
+	const imagA = new AnimatedImage(nameImage = "posion_misteriosa", frames = 7, delay = 5)
+	method image() = imagA.image()
 	override method collide(pj) {
 		super(pj)
 		game.removeVisual(self)
