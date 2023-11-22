@@ -2,7 +2,7 @@ import wollok.game.*
 import entorno.*
 import gameManager.*
 import jugador.*
-import inventario.*
+import recolectables.*
 
 describe "Portal test" {
 	
