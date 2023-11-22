@@ -76,17 +76,17 @@ object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_
 
 // Recolectable que sirve apara sobornar al guardia
 object moneda inherits ObjetoAnimado(fotogramas = 10, nombre = "moneda_de_oro-rotacion-") { // Usa la validacion 
-	override method accion(pj) {}
+	override method accion(pj) {
+		
+	}
 }
 
 object escudo inherits ObjetoRecolectable{ 
-	override method accion(pj) {}
 	method image() = "escudo.png"
 }
 
 
 object espada inherits ObjetoRecolectable{ 
-	override method accion(pj) {}
 	method image() = "espada.png"
 }
 

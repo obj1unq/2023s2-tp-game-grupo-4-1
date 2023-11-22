@@ -14,21 +14,8 @@ object j { method generar(position) { jugador.position(position) }								}
 object d { method generar(position) { escudo.position(position) }								}
 object a { method generar(position) { espada.position(position) }								}
 
-/*
- * object p {
- * 	//door
- * 	method generar(position) {
- * 		game.addVisual(puerta)
- * 	}	
- * }
- * object e{
- * 	method generar(position) {
- * 		game.addVisual(vigilanteJoven)
- * 		//silvestre calcula solo su posicion
- * 	}		
- * }
 
- */
+
 object mapa {
 
 	method generar(nivel) {
@@ -38,6 +25,8 @@ object mapa {
 		(0 .. game.width() - 1).forEach({ x => (0 .. game.height() - 1).forEach({ y => self.generarCelda(x, y, nivel)})})
 		game.addVisual(moneda)
 		game.addVisual(posionMisteriosa)
+		game.addVisual(espada)
+		game.addVisual(escudo)
 	}
 
 	method generarCelda(x, y, nivel) {
