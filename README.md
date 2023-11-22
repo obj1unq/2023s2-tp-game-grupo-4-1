@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+Dungeon zx
 
 ## Equipo de desarrollo
 Raffin Francisco  Karottupullolil  Ezequiel   Dominguez Tomas 
@@ -6,13 +6,12 @@ Raffin Francisco  Karottupullolil  Ezequiel   Dominguez Tomas
 
 (agregar)
 
-## Reglas de Juego / Instrucciones
-
-(Escribirlas)
+##  Instrucciones
+Llegar a la moneda , atravesar el portal y  luego pasar el nivel 
 
 
 ## Otros
 
 - UNQ
 - Desarrollado con Wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Una vez terminado, no tenemos problemas en que el repositorio sea público 
