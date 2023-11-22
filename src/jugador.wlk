@@ -66,22 +66,20 @@ object jugador {
 	}
 
 	method subirVida() {
-		self.validarTopeDeVida()
-		vida++
-		hud_HP.mostrarCorazonesSanos()
+		if not self.vidaAlMaximo() {
+			vida++
+			hud_HP.mostrarCorazonesSanos()
+		} else {
+			game.say(self, "Vida al maximo!!")
+		}
 	}
-
+	
 	method bajarVida() {
 		vida--
 		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
 	}
 
-	method validarTopeDeVida() {
-		if (self.vidaAlMaximo()) {
-			game.say(self, "Vida al maximo!!")
-		}
-	}
 
 	method vidaAlMaximo() = vida == 3
 
@@ -127,7 +125,7 @@ object jugador {
 
 	method pasarPortal() {
 		self.vaciarInventario()
-		
+		self.subirVida()
 		gameManager.cambiarAsiguienteNivel()
 	}
 	
