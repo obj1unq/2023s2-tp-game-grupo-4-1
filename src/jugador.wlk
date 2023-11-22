@@ -43,15 +43,17 @@ object jugador {
 	}
 
 	method recibirAtaque() {
-		if self.ataqueBloqueado() {
+		if (not self.ataqueBloqueado()) {
 			self.bajarVida()
 			hud_HP.mostrarCorazonesSanos()
 			self.pararJuegoSiElJugadorMuere()
 		}
 	}
 	
-	method ataqueBloqueado() = if (self.tieneEscudo()) {#{true, false}.anyOne()} else {false}
-
+	method ataqueBloqueado() = self.chanceDeBloqueo() and self.tieneEscudo()
+	
+	method chanceDeBloqueo() = (0..2).anyOne() == 0
+	
 	method validarSiElItemEstaEnElInventario(item) {
 		if (not inventario.contains(item)) {
 			self.error("El item no esta en el inventario")
