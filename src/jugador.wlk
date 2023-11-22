@@ -121,13 +121,16 @@ object jugador {
 	}
 
 	method validarSiPuedeAtacar() {
-		if (not inventario.contains(espada)) {
-			game.say(self, "Necesitas la espada para pegar")
-		}
+		
 	}
 
 	method atacarTodosLosPersonajesEnLaDireccion(dir) {
-		game.getObjectsIn(dir.direccion(self.position())).forEach({ enemigo => enemigo.recibirAtaque(self)})
+		if (inventario.contains(espada)) {
+			game.getObjectsIn(dir.direccion(self.position())).forEach({ enemigo => enemigo.recibirAtaque(self)})
+		}else{
+			game.say(self, "Necesitas la espada para pegar")
+			
+		}
 	}
 
 	method pasarPortal() {
