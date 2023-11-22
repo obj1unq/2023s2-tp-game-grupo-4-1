@@ -12,7 +12,6 @@ Dominguez Tomas
 ![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_1.png)
 ![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_2.png)
 ![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_3.png)
-(agregar)
 
 ##  Instrucciones
 Llegar a la moneda , atravesar el portal y  luego pasar el nivel 
