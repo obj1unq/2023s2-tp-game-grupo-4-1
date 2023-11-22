@@ -8,7 +8,7 @@ Karottupullolil  Ezequiel
 Dominguez Tomas 
 
 ## Capturas
-![Descripción](URL del archivo)
+![Descripción]([URL del archivo](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/Dungeon_wk.png))
 ![Descripción](URL del archivo)
 ![Descripción](URL del archivo)
 ![Descripción](URL del archivo)
