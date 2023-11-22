@@ -88,7 +88,7 @@ class Kamikaze inherits Enemigo {
 class Slime inherits Enemigo {
 
 	// Agregar una pequeña animacion
-	var direccion = caminadoAlaDerecha
+	var dir = caminadoAlaDerecha
 	var cantidadDePasos = 0
 	const animatedImg = new AnimatedImage(nameImage = "slime_derecha", frames = 7, delay = 6)
 	const hitBox = new HitBox(entity = self, image = "little_slime")
@@ -97,7 +97,7 @@ class Slime inherits Enemigo {
 
 	override method comportamiento() {
 		self.cambiarSentido()
-		self.position(direccion.siguientePosicion(self.position()))
+		self.position(dir.siguientePosicion(self.position()))
 		cantidadDePasos++
 		hitBox.updatePosition()
 	}
@@ -107,10 +107,11 @@ class Slime inherits Enemigo {
 	}
 
 	method cambiarSentido() {
-		if (not direccion.hayProximaCelda(self.position()) or cantidadDePasos > 3) {
+		if (not dir.hayProximaCelda(self.position()) or cantidadDePasos > 3) {
 			cantidadDePasos = 0
-			direccion = direccionAleatoria.generarDireccion(self.position())
-			animatedImg.nameImage("slime" + direccion.dirrecion())
+			dir = direccionAleatoria.generarDireccion(self.position())
+			animatedImg.nameImage("slime" + dir.direccion())
+			hitBox.actualizarImageDeBoxes("little_slime"+ dir.direccion())
 		}
 	}
 
@@ -135,7 +136,7 @@ object direccionAleatoria {
 
 class Dirrecion {
 
-	method dirrecion() = "_derecha"
+	method direccion() = "_derecha"
 
 	method siguientePosicion(position)
 
@@ -145,7 +146,7 @@ class Dirrecion {
 
 object caminandoAlaIzquierda inherits Dirrecion {
 
-	override method dirrecion() = "_izquierda"
+	override method direccion() = "_izquierda"
 
 	override method siguientePosicion(position) = position.left(1)
 

@@ -1,9 +1,10 @@
 import wollok.game.*
+import animatedImage.*
 
 class HitBox {
 
 	const property entity = null
-	const image 
+	const image
 	var position = entity.position()
 	const boxes = [ new BoxTop(position=position, entity=entity, image=image ), new BoxRight(position=position, entity=entity,image=image), new BoxLeft(position=position, entity=entity, image=image), new BoxBot(position=position, image=image,entity=entity) ]
 	var generated = false
@@ -22,17 +23,24 @@ class HitBox {
 			generated = true
 		}
 	}
-	
-	
+	method actualizarImageDeBoxes(img){
+		boxes.forEach({box=>box.image(img)})
+	}
 }
 
 class Box {
 
 	const entity = null
 	var position = null
-	var image 
-	method image() = if(game.getObjectsIn(position).any({element => element.isSolid() })) { "empty" } else { image } + ".png"
+	var image
+	var img = new AnimatedImage(nameImage = image, frames = 7, delay = 6)
 
+	method image() = if (game.getObjectsIn(position).any({ element => element.isSolid() })) {
+		"empty.png"
+	} else {
+		img.image()
+	}
+	method image(nImg) {img.nameImage(nImg)}
 	method position(p)
 
 	method position() = position
@@ -41,9 +49,11 @@ class Box {
 
 	method parar() {
 	}
-	method recibirAtaque(jugador){
+
+	method recibirAtaque(jugador) {
 		entity.recibirAtaque(jugador)
 	}
+
 	method collide(e) {
 		game.removeVisual(self)
 		entity.collide(e)
