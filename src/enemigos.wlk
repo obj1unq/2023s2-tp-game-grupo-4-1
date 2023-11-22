@@ -52,12 +52,14 @@ class Kamikaze inherits Enemigo {
 			self.avanzarHaciaElJugador()
 		}
 	}
-	method explotar(){
+
+	method explotar() {
 		const positionToExplosion = self.position()
 		game.removeVisual(self)
 		game.addVisual(new Explosion(position = positionToExplosion))
 		gameManager.eliminarEnemigo()
 	}
+
 	method avanzarHaciaElJugador() {
 		const jugadorP = jugador.position()
 		self.posicionEnYHastaElJugador(jugadorP.y())
@@ -114,10 +116,13 @@ class Slime inherits Enemigo {
 			cantidadDePasos = 0
 			dir = direccionAleatoria.generarDireccion(self.position())
 			animatedImg.nameImage("slime" + dir.direccion())
-			hitBox.actualizarImageDeBoxes("little_slime"+ dir.direccion())
+			hitBox.actualizarImageDeBoxes("little_slime" + dir.direccion())
 		}
 	}
-
+	override method recibirAtaque(pj){
+		hitBox.remove()
+		super(pj)
+	}
 }
 
 object direccionAleatoria {

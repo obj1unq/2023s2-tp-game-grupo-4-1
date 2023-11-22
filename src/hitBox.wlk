@@ -3,18 +3,19 @@ import animatedImage.*
 
 class HitBox {
 
-	const property entity = null
+	var entity = null
 	const image
 	var position = entity.position()
 	const boxes = [ new BoxTop(position=position, entity=entity, image=image ), new BoxRight(position=position, entity=entity,image=image), new BoxLeft(position=position, entity=entity, image=image), new BoxBot(position=position, image=image,entity=entity) ]
 	var generated = false
-
+	method entity()=entity
 	method updatePosition() {
-		self.generarHitbox()
-		position = entity.position()
-		boxes.forEach({ box => box.position(position)})
+		if(entity != null){
+			self.generarHitbox()
+			position = entity.position()
+			boxes.forEach({ box => box.position(position)})			
+		}
 	}
-
 	method position() = position
 
 	method generarHitbox() {
@@ -26,19 +27,32 @@ class HitBox {
 	method actualizarImageDeBoxes(img){
 		boxes.forEach({box=>box.image(img)})
 	}
+	method remove(){
+		entity = null
+		boxes.forEach({box=> 
+			box.remove()
+		})
+		boxes.clear()
+	}
 }
 
 class Box {
 
-	const entity = null
+	var entity = null
 	var position = null
 	var image
 	var img = new AnimatedImage(nameImage = image, frames = 7, delay = 6)
-
+	method entity()=entity
 	method image() = if (game.getObjectsIn(position).any({ element => element.isSolid() })) {
 		"empty.png"
 	} else {
 		img.image()
+	}
+	method remove(){
+		if(entity != null){			
+			entity = null
+			game.removeVisual(self)
+		}
 	}
 	method image(nImg) {img.nameImage(nImg)}
 	method position(p)

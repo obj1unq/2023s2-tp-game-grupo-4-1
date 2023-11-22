@@ -1,7 +1,12 @@
 Dungeon zx
 
 ## Equipo de desarrollo
-Raffin Francisco  Karottupullolil  Ezequiel   Dominguez Tomas 
+Raffin Francisco 
+   
+Karottupullolil  Ezequiel  
+
+Dominguez Tomas 
+
 ## Capturas
 
 (agregar)
