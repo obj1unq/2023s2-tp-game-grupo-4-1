@@ -43,10 +43,14 @@ object jugador {
 	}
 
 	method recibirAtaque() {
-		self.bajarVida()
-		hud_HP.mostrarCorazonesSanos()
-		self.pararJuegoSiElJugadorMuere()
+		if self.ataqueBloqueado() {
+			self.bajarVida()
+			hud_HP.mostrarCorazonesSanos()
+			self.pararJuegoSiElJugadorMuere()
+		}
 	}
+	
+	method ataqueBloqueado() = if (self.tieneEscudo()) {#{true, false}.anyOne()} else {false}
 
 	method validarSiElItemEstaEnElInventario(item) {
 		if (not inventario.contains(item)) {
