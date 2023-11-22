@@ -13,7 +13,7 @@ object jugador {
 	var property position = game.at(1, 1)
 	var property vida = 3 // Despues probar sacar el setter
 	const property isSolid = false
-	const inventario = #{}
+	const property  inventario = #{}
 
 
 	method image() = "personaje_" + self.equipamento() + self.estado() + ".png"
@@ -55,7 +55,7 @@ object jugador {
 	method chanceDeBloqueo() = (0..2).anyOne() == 0
 	
 	method validarSiElItemEstaEnElInventario(item) {
-		if (not inventario.contains(item)) {
+		if (self.tieneItem(item)) {
 			self.error("El item no esta en el inventario")
 		}
 	}
