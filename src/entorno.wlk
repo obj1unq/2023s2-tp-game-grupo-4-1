@@ -17,7 +17,7 @@ class Entorno {
 
 	method abrir() {
 	}
-
+	method recibirAtaque(e){}
 }
 
 object portal inherits Entorno {
@@ -58,27 +58,6 @@ class Trampa inherits Entorno {
 
 }
 
-class Escotilla inherits Entorno {
-
-	const property position = game.at(0, 0)
-	var estado = cerrada
-
-	method image() = "escotilla_" + estado.image() + ".png"
-
-	override method abrir() {
-		self.validarApertura()
-		jugador.descartarItem(llave)
-		estado = abierta
-		gameManager.completarNivel()
-	}
-
-	method validarApertura() {
-		if (not jugador.tieneItem(llave)) {
-			self.error("A donde vas mostro??!!! La llave papi, la llave")
-		}
-	}
-
-}
 
 object cerrada {
 

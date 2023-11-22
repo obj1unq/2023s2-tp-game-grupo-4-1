@@ -42,7 +42,7 @@ object jugador {
 		inventario.add(item)
 	}
 
-	method recibirAtaque() {
+	method recibirAtaqueDeEnemigo() {
 		if (not self.ataqueBloqueado()) {
 			self.bajarVida()
 			hud_HP.mostrarCorazonesSanos()
@@ -105,12 +105,34 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
+		keyboard.a().onPressDo({
+			self.atacar()
+		})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
-
+	
+	method atacar(){
+		self.validarSiPuedeAtacar()
+		[arriba,abajo,izquierda,derecha].forEach({dir=>
+			self.atacarTodosLosPersonajesEnLaDireccion(dir)
+			
+		})
+	}
+	
+	method validarSiPuedeAtacar(){
+		if(not inventario.contains(espada)){
+			game.say(self, "Necesitas la espada para pegar")
+		}
+	}
+	method atacarTodosLosPersonajesEnLaDireccion(dir){
+		game.getObjectsIn(dir.direccion(self.position())).forEach({enemigo=>
+			enemigo.recibirAtaque(self)
+		})
+	}
 	method pasarPortal() {
 		gameManager.cambiarAsiguienteNivel()
 	}
 
 }
+
 

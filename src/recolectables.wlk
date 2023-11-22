@@ -13,8 +13,11 @@ class ObjetoRecolectable {
 	
 	method isSolid() = false
 	
-	method accion(item) {jugador.agregar(item)}
-	
+	method accion(item) {
+		jugador.agregar(item)
+		// hud_invbentario.actualizar()
+	}
+	method recibirAtaque(x){}
 }
 
 

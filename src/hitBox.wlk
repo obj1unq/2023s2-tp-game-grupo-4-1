@@ -22,7 +22,8 @@ class HitBox {
 			generated = true
 		}
 	}
-
+	
+	
 }
 
 class Box {
@@ -40,8 +41,11 @@ class Box {
 
 	method parar() {
 	}
-	
+	method recibirAtaque(jugador){
+		entity.recibirAtaque(jugador)
+	}
 	method collide(e) {
+		game.removeVisual(self)
 		entity.collide(e)
 	}
 
