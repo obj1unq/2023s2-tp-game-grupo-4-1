@@ -9,9 +9,9 @@ Dominguez Tomas
 
 ## Capturas
 ![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/Dungeon_wk.png)
-![Descripción][URL del archivo](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_1.png)
-![Descripción][URL del archivo](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_2.png)
-![Descripción]([URL del archivo](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_3.png)
+![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_1.png)
+![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_2.png)
+![Descripción](https://github.com/obj1unq/2023s2-tp-game-grupo-4-1/blob/master/assets/imagen_3.png)
 (agregar)
 
 ##  Instrucciones
