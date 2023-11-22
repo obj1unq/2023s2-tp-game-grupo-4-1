@@ -30,8 +30,8 @@ object portal inherits Entorno {
 		game.sound("portal_thunder.mp3").play()
 	}
 
-	override method collide(entidad) {
-		entidad.pasarPortal()
+	override method collide(jugador) {
+		jugador.pasarPortal()
 	}
 
 }
