@@ -102,6 +102,9 @@ object levelManager {
 		}
 	}
 	method quedanNiveles()= nivelActual < niveles.size()
+	method reset() {
+		nivelActual = 0
+	}
 
 }
 

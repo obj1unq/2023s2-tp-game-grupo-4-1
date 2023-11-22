@@ -133,6 +133,9 @@ object jugador {
 		inventario.clear()
 		hud_inventario.liberarEspacio()
 	}
+	method reset() {
+		vida = 3
+	}
 
 }
 

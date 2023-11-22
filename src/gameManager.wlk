@@ -14,6 +14,7 @@ object gameManager {
 	var cantDeEnemigosVivos = 1
 	var cantEnemigos = 1
 	method generar() {
+
 		if(levelManager.quedanNiveles()){
 			game.clear()			
 			mapa.generar(levelManager.nivelActual())
@@ -24,6 +25,12 @@ object gameManager {
 			self.victoria()
 		}
 		//keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
+	}
+	method reset(){
+		
+		jugador.reset()
+		levelManager.reset()
+		self.generar()
 	}
 	method victoria(){
 		game.clear()
@@ -42,6 +49,9 @@ object gameManager {
 	}
 	method derrota(){
 		game.clear()
+		keyboard.r().onPressDo({
+			self.reset()
+		})
 		hud.mostrarCartelDeDerrota()
 	}
 	method cambiarAsiguienteNivel() {
