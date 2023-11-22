@@ -14,14 +14,21 @@ object gameManager {
 	var cantDeEnemigosVivos = 1
 	var cantEnemigos = 1
 	method generar() {
-		game.clear()
-		mapa.generar(levelManager.nivelActual())
-		self.agregarJugador()
-		self.generarEnemigosYAumentarDificultad()
-		hud.add()
+		if(levelManager.quedanNiveles()){
+			game.clear()			
+			mapa.generar(levelManager.nivelActual())
+			self.agregarJugador()
+			self.generarEnemigosYAumentarDificultad()
+			hud.add()
+		}else{
+			self.victoria()
+		}
 		//keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
-	
+	method victoria(){
+		game.clear()
+		hud.mostrarCartelDeVictoria()
+	}
 	method agregarJugador() {
 		game.addVisual(jugador)
 		jugador.position(game.at(1,1))
@@ -49,6 +56,7 @@ object gameManager {
 	}
 
 	method completarNivel() {
+		self.validarSiEstaCompleto()
 		levelManager.aumentarNivelActual()
 		self.generarPortal()
 	}
@@ -63,7 +71,6 @@ object gameManager {
 	method numeroDeNivel() = levelManager.numeroDeNivel()
 	method eliminarEnemigo() {
 		cantDeEnemigosVivos--
-		
 	}
 	method sounds(v){ sounds= v}
 }

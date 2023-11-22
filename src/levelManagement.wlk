@@ -101,6 +101,7 @@ object levelManager {
 			self.error("No existen más niveles")
 		}
 	}
+	method quedanNiveles()= nivelActual < niveles.size()
 
 }
 

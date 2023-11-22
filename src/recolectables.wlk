@@ -53,7 +53,6 @@ object moneda inherits ObjetoRecolectable{ // Usa la validacion
 	method image() = imagA.image()
 	override method collide(e){
 		super(e)
-		gameManager.validarSiEstaCompleto()
 		gameManager.completarNivel()
 	}
 }

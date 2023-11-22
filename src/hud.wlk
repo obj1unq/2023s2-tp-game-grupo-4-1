@@ -30,6 +30,10 @@ object hud {
 	method mostrarCartelDeDerrota() {
 		game.addVisual(derrota)
 	}
+	
+	method mostrarCartelDeVictoria(){
+		game.addVisual(victoria)
+	}
 
 }
 
@@ -184,6 +188,13 @@ object empty {
 }
 
 
+
+object victoria {
+
+	const property position = game.at(0, game.width() / 4 + 1)
+	const property image = "mensaje_win.png"
+
+}
 
 object derrota {
 
