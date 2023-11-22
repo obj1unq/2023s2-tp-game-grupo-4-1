@@ -1,0 +1,29 @@
+import wollok.game.*
+import jugador.*
+import recolectables.*
+import gameManager.*
+
+describe "Test sobre el jugador, los recolectables y el inventario" {
+
+	method initialize() {
+		game.clear()
+		game.addVisual(jugador)
+		gameManager.sounds(false)
+	}
+
+	test "Cuando el jugador colisiona con la espada la agrega al inventario" {
+		game.addVisual(espada)
+		assert.notThat(jugador.tieneItem(espada))
+		espada.collide(jugador)
+		assert.that(jugador.tieneItem(espada))
+	}
+
+	test "Cuando el jugador colisiona con la moneda la agrega al inventario" {
+		game.addVisual(moneda)
+		assert.notThat(jugador.tieneItem(moneda))
+		moneda.collide(jugador)
+		assert.that(jugador.tieneItem(moneda))
+	}
+
+}
+

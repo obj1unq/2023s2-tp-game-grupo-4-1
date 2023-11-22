@@ -1,0 +1,16 @@
+import wollok.game.*
+import hud.*
+import jugador.*
+import entorno.*
+import enemigos.*
+import movimientoEntidades.*
+import mapa.*
+import generadorDeEnemigos.*
+import gameManager.*
+
+program juego {
+	game.title("Dungeon zx")
+	game.ground("pasto-0.png")
+	gameManager.generar() // NO TOCAR
+	game.start()
+}

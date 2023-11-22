@@ -1,0 +1,33 @@
+import wollok.game.*
+import entorno.*
+import gameManager.*
+import jugador.*
+import recolectables.*
+
+describe "Portal test" {
+	
+	method initialize() {
+		game.clear()
+		game.addVisual(jugador)
+		gameManager.sounds(false)
+	}
+
+	test "El nivel actual del juego cambia al pasar por el portal" {
+		const nivelInicial = gameManager.numeroDeNivel()
+		gameManager.eliminarEnemigo()
+		jugador.agregar(moneda)
+		gameManager.completarNivel()
+		jugador.pasarPortal()
+		assert.that(gameManager.numeroDeNivel() > nivelInicial)
+	}
+
+	test "El portal aparece al momento de completar el nivel" {
+		assert.notThat(game.allVisuals().contains(portal))
+		gameManager.eliminarEnemigo()
+		jugador.agregar(moneda)
+		gameManager.completarNivel()
+		assert.that(game.allVisuals().contains(portal))
+	}
+
+}
+

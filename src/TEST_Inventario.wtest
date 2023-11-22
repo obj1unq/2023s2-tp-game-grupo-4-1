@@ -1,0 +1,55 @@
+import jugador.*
+import recolectables.*
+
+describe"test de recoletables"{
+	
+	
+	
+      test"test 01 cuando el jugador agrega la espada al inventario "{
+      	
+      	
+      	jugador.agregar(espada)
+      	assert.that(jugador.tieneItem(espada))
+      	assert.equals(#{espada},jugador.inventario())
+      	
+      }
+      
+      test"test 02 cuando el jugador agrega la moneda al inventario "{
+      	jugador.agregar(moneda)
+      	assert.that(jugador.tieneItem(moneda))
+      	assert.equals(#{moneda},jugador.inventario())
+      	
+      }
+      test"test 03 cuando el jugador agrega la moneda , la llave ,
+            la posion y la espada   al inventario  quiere saber si tiene todo cargado"{
+      	jugador.agregar(moneda)
+      	jugador.agregar(posionMisteriosa)
+      	jugador.agregar(espada)
+      	assert.that(jugador.tieneItem(moneda))
+      	assert.that(jugador.tieneItem(espada))
+      	assert.that(jugador.tieneItem(posionMisteriosa))
+      	assert.equals(#{moneda,posionMisteriosa,espada},jugador.inventario())
+      }
+      test"test 04 cuando un jugador quiere agregar dos veces la moneda al inventario 
+            pero no se puede "{
+       
+       		jugador.agregar(moneda)
+       		jugador.agregar(moneda)	
+       		assert.throwsException{jugador.descartarItem(moneda)}
+      }
+	  test"test 05 cuando un jugador quiere agregar dos veces la espada al inventario 
+            pero no se puede "{
+       
+       		jugador.agregar(espada)
+       		jugador.agregar(espada)	
+       		assert.throwsException{jugador.descartarItem(espada)}
+      }
+      test"test 06 cuando un jugador quiere agregar dos veces la posion   al inventario 
+            pero no se puede "{
+       
+       		jugador.agregar(posionMisteriosa)
+       		jugador.agregar(posionMisteriosa)	
+       		assert.throwsException{jugador.descartarItem(posionMisteriosa)}
+      }
+
+}
