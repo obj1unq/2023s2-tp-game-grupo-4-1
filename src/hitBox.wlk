@@ -52,6 +52,7 @@ class Box {
 
 	method recibirAtaque(jugador) {
 		entity.recibirAtaque(jugador)
+		game.removeVisual(self)
 	}
 
 	method collide(e) {

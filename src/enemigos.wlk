@@ -91,7 +91,7 @@ class Slime inherits Enemigo {
 	var dir = caminadoAlaDerecha
 	var cantidadDePasos = 0
 	const animatedImg = new AnimatedImage(nameImage = "slime_derecha", frames = 7, delay = 6)
-	const hitBox = new HitBox(entity = self, image = "little_slime")
+	const hitBox = new HitBox(entity = self, image = "little_slime_derecha")
 
 	override method image() = animatedImg.image()
 

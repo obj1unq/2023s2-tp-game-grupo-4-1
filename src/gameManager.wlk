@@ -63,9 +63,6 @@ object gameManager {
 	method numeroDeNivel() = levelManager.numeroDeNivel()
 	method eliminarEnemigo() {
 		cantDeEnemigosVivos--
-		if(cantDeEnemigosVivos <= 0){
-			self.completarNivel()
-		}
 	}
 	method sounds(v){ sounds= v}
 }
