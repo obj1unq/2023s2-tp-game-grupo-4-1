@@ -1,4 +1,4 @@
-Dungeon zx
+Dungeon W
 
 ## Equipo de desarrollo
 Raffin Francisco 
@@ -8,7 +8,10 @@ Karottupullolil  Ezequiel
 Dominguez Tomas 
 
 ## Capturas
-
+![Descripción](URL del archivo)
+![Descripción](URL del archivo)
+![Descripción](URL del archivo)
+![Descripción](URL del archivo)
 (agregar)
 
 ##  Instrucciones

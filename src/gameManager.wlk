@@ -60,6 +60,8 @@ object gameManager {
 	method derrota() {
 		game.clear()
 		self.opcionDeReset()
+		cantEnemigos = 1
+		cantDeEnemigosVivos = 1
 		hud.mostrarCartelDeDerrota()
 	}
 
