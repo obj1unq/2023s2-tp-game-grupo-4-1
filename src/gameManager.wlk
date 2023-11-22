@@ -58,11 +58,12 @@ object gameManager {
 		if(sounds){portal.play()}
 	}
 
-	method estaCompletoElNivel() = jugador.tieneItem(moneda)
+	method estaCompletoElNivel() = cantDeEnemigosVivos == 0 && jugador.tieneItem(moneda)
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()
 	method eliminarEnemigo() {
 		cantDeEnemigosVivos--
+		
 	}
 	method sounds(v){ sounds= v}
 }

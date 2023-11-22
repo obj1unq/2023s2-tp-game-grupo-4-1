@@ -2,6 +2,7 @@ import wollok.game.*
 import jugador.*
 import hud.*
 import gameManager.*
+import animatedImage.*
 class ObjetoRecolectable {
 	var property position = game.at(0,0)
 	method collide(pj) {
@@ -78,7 +79,9 @@ object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_
 
 
 // Recolectable que sirve apara sobornar al guardia
-object moneda inherits ObjetoAnimado(fotogramas = 10, nombre = "moneda_de_oro-rotacion-") { // Usa la validacion 
+object moneda inherits ObjetoRecolectable{ // Usa la validacion 
+	const imagA = new AnimatedImage(nameImage = "moneda_de_oro-rotacion", frames = 9, delay = 5)
+	method image() = imagA.image()
 	override method collide(e){
 		super(e)
 		gameManager.completarNivel()

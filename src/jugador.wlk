@@ -15,15 +15,16 @@ object jugador {
 	const property isSolid = false
 	const property  inventario = #{}
 
-
 	method image() = "personaje_" + self.equipamento() + self.estado() + ".png"
 
 	method equipamento() = self.visualAtaque() + self.visualDefensa()
 
-	method visualAtaque() =  if (self.tieneEspada()) "conEspada_" else "sinEspada_"
+	method visualAtaque() = if (self.tieneEspada()) "conEspada_" else "sinEspada_"
+
 	method visualDefensa() = if (self.tieneEscudo()) "conEscudo_" else "sinEscudo_"
 
 	method tieneEspada() = inventario.contains(espada)
+
 	method tieneEscudo() = inventario.contains(escudo)
 
 	method estado() = "idle"
@@ -49,11 +50,11 @@ object jugador {
 			self.pararJuegoSiElJugadorMuere()
 		}
 	}
-	
+
 	method ataqueBloqueado() = self.chanceDeBloqueo() and self.tieneEscudo()
-	
-	method chanceDeBloqueo() = (0..2).anyOne() == 0
-	
+
+	method chanceDeBloqueo() = (0 .. 2).anyOne() == 0
+
 	method validarSiElItemEstaEnElInventario(item) {
 		if (self.tieneItem(item)) {
 			self.error("El item no esta en el inventario")
@@ -105,34 +106,29 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
-		keyboard.a().onPressDo({
-			self.atacar()
-		})
+		keyboard.a().onPressDo({ self.atacar()})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
-	
-	method atacar(){
+
+	method atacar() {
 		self.validarSiPuedeAtacar()
-		[arriba,abajo,izquierda,derecha].forEach({dir=>
-			self.atacarTodosLosPersonajesEnLaDireccion(dir)
-			
-		})
+		[ arriba, abajo, izquierda, derecha ].forEach({ dir => self.atacarTodosLosPersonajesEnLaDireccion(dir)})
 	}
-	
-	method validarSiPuedeAtacar(){
-		if(not inventario.contains(espada)){
+
+	method validarSiPuedeAtacar() {
+		if (not inventario.contains(espada)) {
 			game.say(self, "Necesitas la espada para pegar")
 		}
 	}
-	method atacarTodosLosPersonajesEnLaDireccion(dir){
-		game.getObjectsIn(dir.direccion(self.position())).forEach({enemigo=>
-			enemigo.recibirAtaque(self)
-		})
+
+	method atacarTodosLosPersonajesEnLaDireccion(dir) {
+		game.getObjectsIn(dir.direccion(self.position())).forEach({ enemigo => enemigo.recibirAtaque(self)})
 	}
+
 	method pasarPortal() {
+		inventario.clear()
 		gameManager.cambiarAsiguienteNivel()
 	}
 
 }
-
 
