@@ -1,11 +1,9 @@
 # Nombre del juego (<- borrar y completar)
 
 ## Equipo de desarrollo
-
-- Alguien
-- Persona
-- etc.
-
+Raffin Francisco
+Karottupullolil  Ezequiel
+Dominguez Tomas 
 ## Capturas
 
 (agregar)
@@ -17,6 +15,6 @@
 
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
+- UNQ
+- Desarrollado con Wollok
 - Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
