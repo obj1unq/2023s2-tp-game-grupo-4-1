@@ -2,6 +2,7 @@ import wollok.game.*
 import entorno.*
 import gameManager.*
 import jugador.*
+import inventario.*
 
 describe "Portal test" {
 	
@@ -18,6 +19,7 @@ describe "Portal test" {
 	test "El nivel actual del juego cambia al pasar por el portal" {
 		const nivelInicial = gameManager.numeroDeNivel()
 		gameManager.eliminarEnemigo()
+		jugador.agregar(moneda)
 		jugador.pasarPortal()
 		assert.that(gameManager.numeroDeNivel() > nivelInicial)
 	}
@@ -25,6 +27,7 @@ describe "Portal test" {
 	test "El portal aparece al momento de completar el nivel" {
 		assert.notThat(game.allVisuals().contains(portal))
 		gameManager.eliminarEnemigo()
+		jugador.agregar(moneda)
 		assert.that(game.allVisuals().contains(portal))
 	}
 

@@ -1,0 +1,14 @@
+import wollok.game.*
+
+describe "Test jugador" {
+	
+	
+	method initialize() {
+		game.clear()
+	}
+	
+	test "El j" {
+		assert.that(true)
+
+	}
+}
