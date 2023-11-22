@@ -70,7 +70,6 @@ class Box {
 	}
 
 	method collide(e) {
-		game.removeVisual(self)
 		entity.collide(e)
 	}
 
