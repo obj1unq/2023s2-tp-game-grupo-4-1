@@ -10,7 +10,10 @@ object hud {
 	 * y actualizarlos
 	 */
 	 
-	
+	method reset(){
+		hud_HP.reset()
+		hud_inventario.reset()
+	}
 	method add() {
 		hud_HP.mostrar()
 
@@ -44,7 +47,6 @@ object hud_inventario {
 	method liberarEspacio() {
 		slotsOcupados = 0
 	}
-	
 	method actualizar(item) {
 		if (self.quedaEspacioEnInventario()) {
 			item.position(self.primerSlotLibre())
@@ -53,7 +55,9 @@ object hud_inventario {
 			game.say(jugador, "No puedo cargar con más!!")
 		} 
 	}
-	
+	method reset(){
+		slotsOcupados = 0
+	}
 	//method primerSlotLibre() = game.at(game.width()-1, 13 + slotsOcupados)
 	method primerSlotLibre() = game.at(12+slotsOcupados ,game.height()-1)
 		
@@ -81,7 +85,9 @@ object hud_HP {
 	var property position 
 
 	
-	
+	method reset(){
+		self.mostrarCorazonesSanos()
+	}
 	 
 //	 method mostrarCorazonesSanos() {
 //		var contador = jugador.vida() 

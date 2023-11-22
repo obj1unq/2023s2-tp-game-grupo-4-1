@@ -36,6 +36,7 @@ object gameManager {
 		
 		jugador.reset()
 		levelManager.reset()
+		hud.reset()
 		self.generar()
 	}
 	method victoria(){
