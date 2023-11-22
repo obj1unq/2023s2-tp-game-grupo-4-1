@@ -20,7 +20,7 @@ object jugador {
 	method vida() = vida
 
 	method mover(direccion) {
-		if (vida > 0) { 
+		if (vida > 0) {
 			self.position(direccion)
 		}
 	}
@@ -84,6 +84,7 @@ object jugador {
 			gameManager.derrota()
 		}
 	}
+
 	method comportamiento() {
 		keyboard.up().onPressDo({ self.mover(direcciones.arriba(self.position()))})
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})

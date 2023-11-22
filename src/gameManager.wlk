@@ -7,6 +7,7 @@ import mapa.*
 import generadorDePosiciones.*
 import generadorDeEnemigos.*
 import levelManagement.*
+import inventario.*
 
 object gameManager {
 	var sounds = true
@@ -49,7 +50,7 @@ object gameManager {
 		if(sounds){portal.play()}
 	}
 
-	method estaCompletoElNivel() = cantDeEnemigosVivos == 0
+	method estaCompletoElNivel() = cantDeEnemigosVivos == 0 and jugador.tieneItem(moneda)
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()
 	method eliminarEnemigo() {
