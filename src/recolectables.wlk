@@ -14,7 +14,7 @@ class ObjetoRecolectable {
 	method isSolid() = false
 	
 	method accion(item) {jugador.agregar(item)}
-	
+	method recibirAtaque(x){}
 }
 
 
