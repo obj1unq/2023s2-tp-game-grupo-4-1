@@ -1,90 +1,92 @@
 import wollok.game.*
 import jugador.*
 
-class ObjetoAnimado {
 
-	const property fotogramas
-	const property nombre
-	var fotograma = 1
-	var property position = game.at(0, 0)
 
-	method parar() {
+class ObjetoRecolectable {
+	var property position = game.at(0,0)
+	method collide(pj) {
+		self.accion(self)
+		game.removeVisual(self)
+		
 	}
-
+	
 	method isSolid() = false
+	
+	method accion(item) {jugador.agregar(item)}
+	
+}
 
+
+
+
+class ObjetoAnimado inherits ObjetoRecolectable{
+	const property fotogramas 
+	const property nombre
+	
+	
+	var fotograma = 1
+	//method parar() {}
 	method image() = nombre + fotograma + ".png"
-
+	
 	method comportamiento() {
-		game.onTick(self.msFotogramas(), "animacion", { self.animation()})
+		game.onTick(self.msFotogramas(),"animacion",{self.animation()})
 	}
-
+	
 	method msFotogramas() = 50
-
-	method animation() {
+	
+	method animation(){
 		if (fotograma != fotogramas) {
 			fotograma++
-		} else {
-			fotograma = 1
-		}
+		} else {fotograma = 1}
 	}
+	
 
-	method collide(pj) {
-		self.accion(pj)
-		game.removeVisual(self)
-	}
-
-	method accion(pj)
 
 }
 
-class ObjetoRecolectable inherits ObjetoAnimado {
 
-	method colide(pj) {
-		pj.agregar(self)
-	}
-
-}
 
 // Envenena o da vida a quioen la tome. Esto se determina de manera aleatoria
-object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") {
+object posionMisteriosa inherits ObjetoAnimado(fotogramas = 8, nombre = "posion_misteriosa-") { 
 
-	override method collide(pj) {
-		game.removeVisual(self)
-		self.accion(pj)
+	
+
+
+	override method accion(pj) { 
+		
+		#{	
+			{self.curar()},
+			{self.daniar()}
+			
+		 }.anyOne().apply()
 	}
-
-	override method accion(pj) {
-		#{ {self.curar()}, {self.daniar()} }.anyOne().apply()
-	}
-
+	
 	method curar() {
 		jugador.subirVida()
-		game.say(jugador, "Vida subida!!")
+		game.say(jugador,"Vida subida!!")
 	}
-
+	
 	method daniar() {
 		jugador.bajarVida()
-		game.say(jugador, "Has recibido daño!!")
+		game.say(jugador,"Has recibido daño!!")
 	}
-
 }
+
 
 // Recolectable que sirve apara sobornar al guardia
 object moneda inherits ObjetoAnimado(fotogramas = 10, nombre = "moneda_de_oro-rotacion-") { // Usa la validacion 
-
-	override method accion(pj) {
-	}
-
+	override method accion(pj) {}
 }
 
-// Equipabler que otorga velocidad
-object zapatosDeVelocidad { // Usa state (del pj)
-
+object escudo inherits ObjetoRecolectable{ 
+	override method accion(pj) {}
+	method image() = "escudo.png"
 }
 
-// Clase para construir distintas espadas con distintas cualidades (p.ej.: daño, visual)	
-class Espada { // Usa herencia 
 
+object espada inherits ObjetoRecolectable{ 
+	override method accion(pj) {}
+	method image() = "espada.png"
 }
 
