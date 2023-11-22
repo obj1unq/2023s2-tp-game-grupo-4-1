@@ -20,9 +20,11 @@ Cada nivel se vuelve más complicado! y una vez que se gana se da la opcion de r
 
 ## Controles 
 Para mover hay que usar las flechas, para recolectar los items hay que pasar por arriba y para atacar hay que usar la tecla A
-Atacar: a
-
-
+- Atacar: a
+- Mover Arriba: Up
+- Mover abajo: Down
+- Mover Izquierda: Left
+- Mover Derecha: Right
 ## Otros
 
 - UNQ
