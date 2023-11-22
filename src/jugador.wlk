@@ -42,7 +42,7 @@ object jugador {
 		inventario.add(item)
 	}
 
-	method recibirAtaque() {
+	method recibirAtaqueDeEnemigo() {
 		self.bajarVida()
 		hud_HP.mostrarCorazonesSanos()
 		self.pararJuegoSiElJugadorMuere()
@@ -99,12 +99,27 @@ object jugador {
 		keyboard.down().onPressDo({ self.mover(direcciones.abajo(self.position()))})
 		keyboard.left().onPressDo({ self.mover(direcciones.izquierda(self.position()))})
 		keyboard.right().onPressDo({ self.mover(direcciones.derecha(self.position()))})
+		keyboard.a().onPressDo({
+			self.atacar()
+		})
 		game.onCollideDo(self, { element => element.collide(self)})
 	}
-
+	
+	method atacar(){
+		[arriba,abajo,izquierda,derecha].forEach({dir=>
+			self.atacarTodosLosPersonajesEnLaDireccion(dir)
+			
+		})
+	}
+	method atacarTodosLosPersonajesEnLaDireccion(dir){
+		game.getObjectsIn(dir.direccion(self.position())).forEach({enemigo=>
+			enemigo.recibirAtaque(self)
+		})
+	}
 	method pasarPortal() {
 		gameManager.cambiarAsiguienteNivel()
 	}
 
 }
+
 

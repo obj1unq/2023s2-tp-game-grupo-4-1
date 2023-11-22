@@ -11,7 +11,18 @@ object movementValidator {
 	}
 
 }
-
+object arriba {
+	method direccion(position) = position.up(1)	
+}
+object abajo {
+	method direccion(position) = position.down(1)	
+}
+object derecha {
+	method direccion(position) = position.right(1)	
+}
+object izquierda {
+	method direccion(position) = position.left(1)	
+}
 object direcciones {
 
 	method arriba(position) = if (self.canMove(position.up(1))) {

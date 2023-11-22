@@ -10,8 +10,8 @@ import gameManager.*
 
 class Enemigo inherits GameEntity {
 
-	override method collide(entity) {
-		entity.recibirAtaque()
+	override method collide(jugador) {
+		jugador.recibirAtaqueDeEnemigo()
 	}
 
 	method comportamiento()
@@ -19,6 +19,11 @@ class Enemigo inherits GameEntity {
 	override method isSolid() = true
 
 	override method parar() {
+	}
+	
+	override method recibirAtaque(jugador){
+		gameManager.eliminarEnemigo()
+		game.removeVisual(self)
 	}
 
 }

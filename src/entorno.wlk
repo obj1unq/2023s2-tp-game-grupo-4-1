@@ -17,7 +17,7 @@ class Entorno {
 
 	method abrir() {
 	}
-
+	method recibirAtaque(e){}
 }
 
 object portal inherits Entorno {
