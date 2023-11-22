@@ -106,10 +106,17 @@ object jugador {
 	}
 	
 	method atacar(){
+		self.validarSiPuedeAtacar()
 		[arriba,abajo,izquierda,derecha].forEach({dir=>
 			self.atacarTodosLosPersonajesEnLaDireccion(dir)
 			
 		})
+	}
+	
+	method validarSiPuedeAtacar(){
+		if(not inventario.contains(espada)){
+			game.say(self, "Necesitas la espada para pegar")
+		}
 	}
 	method atacarTodosLosPersonajesEnLaDireccion(dir){
 		game.getObjectsIn(dir.direccion(self.position())).forEach({enemigo=>
