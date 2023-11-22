@@ -26,6 +26,12 @@ object gameManager {
 		}
 		//keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
+	
+	method opcionDeReset(){
+		keyboard.r().onPressDo({
+			self.reset()
+		})
+	}
 	method reset(){
 		
 		jugador.reset()
@@ -34,6 +40,7 @@ object gameManager {
 	}
 	method victoria(){
 		game.clear()
+		self.opcionDeReset()
 		hud.mostrarCartelDeVictoria()
 	}
 	method agregarJugador() {
@@ -49,9 +56,7 @@ object gameManager {
 	}
 	method derrota(){
 		game.clear()
-		keyboard.r().onPressDo({
-			self.reset()
-		})
+		self.opcionDeReset()
 		hud.mostrarCartelDeDerrota()
 	}
 	method cambiarAsiguienteNivel() {
