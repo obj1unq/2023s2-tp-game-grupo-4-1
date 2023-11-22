@@ -16,7 +16,8 @@ object jugador {
 	const property  inventario = #{}
 	var dir = "derecha_"
 
-	method image() = "personaje_" + self.direccion() +self.equipamento() + self.estado() + ".png"
+	method image() = "personaje_" + self.direccion() + self.equipamento() + self.estado() + ".png"
+	
 	method direccion() = dir
 	method equipamento() = self.visualAtaque() + self.visualDefensa()
 
@@ -124,9 +125,9 @@ object jugador {
 		
 	}
 
-	method atacarTodosLosPersonajesEnLaDireccion(dir) {
+	method atacarTodosLosPersonajesEnLaDireccion(_dir) {
 		if (inventario.contains(espada)) {
-			game.getObjectsIn(dir.direccion(self.position())).forEach({ enemigo => enemigo.recibirAtaque(self)})
+			game.getObjectsIn(_dir.direccion(self.position())).forEach({ enemigo => enemigo.recibirAtaque(self)})
 		}else{
 			game.say(self, "Necesitas la espada para pegar")
 			

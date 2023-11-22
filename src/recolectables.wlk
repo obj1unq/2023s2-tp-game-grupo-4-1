@@ -3,6 +3,7 @@ import jugador.*
 import hud.*
 import gameManager.*
 import animatedImage.*
+
 class ObjetoRecolectable {
 	var property position = game.at(0,0)
 	method collide(pj) {

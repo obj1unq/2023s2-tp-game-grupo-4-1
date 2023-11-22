@@ -24,9 +24,11 @@ class HitBox {
 			generated = true
 		}
 	}
+	
 	method actualizarImageDeBoxes(img){
 		boxes.forEach({box=>box.image(img)})
 	}
+	
 	method remove(){
 		entity = null
 		boxes.forEach({box=> 
@@ -48,13 +50,16 @@ class Box {
 	} else {
 		img.image()
 	}
+	
 	method remove(){
 		if(entity != null){			
 			entity = null
 			game.removeVisual(self)
 		}
 	}
+	
 	method image(nImg) {img.nameImage(nImg)}
+	
 	method position(p)
 
 	method position() = position
