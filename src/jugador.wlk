@@ -66,7 +66,7 @@ object jugador {
 	}
 
 	method subirVida() {
-		if not self.vidaAlMaximo() {
+		if (not self.vidaAlMaximo()) {
 			vida++
 			hud_HP.mostrarCorazonesSanos()
 		} else {

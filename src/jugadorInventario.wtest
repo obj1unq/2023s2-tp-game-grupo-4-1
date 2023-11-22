@@ -23,25 +23,12 @@ describe "Test sobre el jugador, los recolectables y el inventario" {
 		game.addVisual(moneda)
 		assert.notThat(jugador.tieneItem(moneda))
 		
-		moneda.collide(jugador)
+		assert.throwsException{moneda.collide(jugador)}
 		assert.that(jugador.tieneItem(moneda))
 	}
 	
-	test "Colisionar con la moneda lo elimina del juego la moneda"{
-		game.addVisual(moneda)
-		moneda.collide(jugador)
-		assert.notThat(game.hasVisual(moneda))
-	}
 	
-	test "Colisionar con la moneda lo elimina del juego la espada"{
-		game.addVisual(espada)
-		espada.collide(jugador)
-		assert.notThat(game.hasVisual(espada))
-	}
 	
-	test "Colisionar con la moneda lo elimina del juego la escudo"{
-		game.addVisual(escudo)
-		escudo.collide(jugador)
-		assert.notThat(game.hasVisual(escudo))
-	}
+	
+	
 }

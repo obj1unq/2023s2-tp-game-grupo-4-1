@@ -13,6 +13,6 @@ describe "GameManager test" {
 		gameManager.eliminarEnemigo()
 		jugador.agregar(moneda)
 		assert.that(gameManager.estaCompletoElNivel())
-		//assert.throwsException({gameManager.cambiarNivelSiEstaCompleto()})
+		
 	}
 }
