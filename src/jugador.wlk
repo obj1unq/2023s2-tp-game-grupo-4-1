@@ -53,7 +53,7 @@ object jugador {
 
 	method ataqueBloqueado() = self.chanceDeBloqueo() and self.tieneEscudo()
 
-	method chanceDeBloqueo() = (0 .. 2).anyOne() == 0
+	method chanceDeBloqueo() = (0 .. 2).anyOne() >= 1
 
 	method validarSiElItemEstaEnElInventario(item) {
 		if (self.tieneItem(item)) {

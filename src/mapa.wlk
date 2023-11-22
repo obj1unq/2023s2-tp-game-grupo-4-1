@@ -5,16 +5,16 @@ import entorno.*
 import recolectables.*
 import hud.*
 
-object _ { method generar(position) { game.addVisual(new Pasto(position = position)) 	}			}
-object p { method generar(position) { game.addVisual(new Pared(position = position)) 	} 			}
-object h { method generar(position) { game.addVisual(new Hud(position = position)) 		}			} 
-object i { method generar(position) { game.addVisual(new Hud_slot(position = position)) }			} 
+object _ { method generar(position) { game.addVisual(new Pasto(position = position)) }			}
+object p { method generar(position) { game.addVisual(new Pared(position = position)) } 			}
+object h { method generar(position) { game.addVisual(new Hud(position = position)) 	}			} 
+object i { method generar(position) { game.addVisual(new Hud_slot(position = position)) }		} 
 
-object c { method generar(position) { moneda.position(position) }   							}
-object m { method generar(position) { posionMisteriosa.position(position) }						}
-object j { method generar(position) { jugador.position(position) }								}
-object d { method generar(position) { escudo.position(position) }								}
-object a { method generar(position) { espada.position(position) }								}
+object c { method generar(position) { moneda.position(position) }   			}
+object m { method generar(position) { posionMisteriosa.position(position) }		}
+object j { method generar(position) { jugador.position(position) }				}
+object d { method generar(position) { escudo.position(position) }				}
+object a { method generar(position) { espada.position(position) }				}
 
 
 

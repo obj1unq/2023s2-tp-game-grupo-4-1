@@ -19,7 +19,7 @@ object gameManager {
 		self.agregarJugador()
 		self.generarEnemigosYAumentarDificultad()
 		hud.add()
-		keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
+		//keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
 	
 	method agregarJugador() {
@@ -58,7 +58,7 @@ object gameManager {
 		if(sounds){portal.play()}
 	}
 
-	method estaCompletoElNivel() = cantDeEnemigosVivos == 0 && jugador.tieneItem(moneda)
+	method estaCompletoElNivel() = cantDeEnemigosVivos <= 0 && jugador.tieneItem(moneda)
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()
 	method eliminarEnemigo() {
