@@ -151,7 +151,7 @@ object victoria {
 
 object derrota {
 
-	const property position = game.at(0,0)
+	const property position = game.at(0, 0)
 	const property image = "derrota.png"
 
 }

@@ -10,58 +10,61 @@ import levelManagement.*
 import recolectables.*
 
 object gameManager {
+
 	var sounds = true
 	var cantDeEnemigosVivos = 1
 	var cantEnemigos = 1
-	method generar() {
 
-		if(levelManager.quedanNiveles()){
-			game.clear()			
+	method generar() {
+		if (levelManager.quedanNiveles()) {
+			game.clear()
 			mapa.generar(levelManager.nivelActual())
 			self.agregarJugador()
 			self.generarEnemigosYAumentarDificultad()
 			hud.add()
-		}else{
+		} else {
 			self.victoria()
 		}
-		//keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
+	// keyboard.c().onPressDo({ self.completarNivel()}) // Quitar despues, solo para devs
 	}
-	
-	method opcionDeReset(){
-		keyboard.r().onPressDo({
-			self.reset()
-		})
+
+	method opcionDeReset() {
+		keyboard.r().onPressDo({ self.reset()})
 	}
-	method reset(){
-		
+
+	method reset() {
 		jugador.reset()
 		levelManager.reset()
 		hud.reset()
 		self.generar()
 	}
-	method victoria(){
+
+	method victoria() {
 		game.clear()
 		self.opcionDeReset()
 		hud.mostrarCartelDeVictoria()
 	}
+
 	method agregarJugador() {
 		game.addVisual(jugador)
-		jugador.position(game.at(1,1))
+		jugador.position(game.at(1, 1))
 		jugador.comportamiento()
 	}
-	
-	method generarEnemigosYAumentarDificultad(){
+
+	method generarEnemigosYAumentarDificultad() {
 		generadorDeEnemigos.generar(cantEnemigos)
 		cantDeEnemigosVivos = cantEnemigos
 		cantEnemigos++
 	}
-	method derrota(){
+
+	method derrota() {
 		game.clear()
 		self.opcionDeReset()
 		hud.mostrarCartelDeDerrota()
 	}
+
 	method cambiarAsiguienteNivel() {
-		//self.validarSiEstaCompleto()
+		// self.validarSiEstaCompleto()
 		self.generar()
 	}
 
@@ -79,15 +82,22 @@ object gameManager {
 
 	method generarPortal() {
 		game.addVisualIn(portal, generadorDePosiciones.validPosition({ position => generadorDeEnemigos.estaVaciaLaCelda(position)}))
-		if(sounds){portal.play()}
+		if (sounds) {
+			portal.play()
+		}
 	}
 
 	method estaCompletoElNivel() = cantDeEnemigosVivos <= 0 && jugador.tieneItem(moneda)
 
 	method numeroDeNivel() = levelManager.numeroDeNivel()
+
 	method eliminarEnemigo() {
 		cantDeEnemigosVivos--
 	}
-	method sounds(v){ sounds= v}
+
+	method sounds(v) {
+		sounds = v
+	}
+
 }
 
